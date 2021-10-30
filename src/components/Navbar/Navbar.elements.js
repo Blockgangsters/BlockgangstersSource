@@ -196,7 +196,7 @@ export const StatsItem = styled.li`
 }
 `
 
-export const MMConnect = styled(Link)`
+export const MMConnect = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

@@ -4,7 +4,7 @@ import {Container, Button} from '../../globalStyles'
 import {Link} from 'react-router-dom'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import {FaTelegram, FaTwitter, FaDiscord } from 'react-icons/fa';
-import {StateContext} from '../../App';
+import {StateContext, EthContext} from '../../App';
 import {connectWallet}  from '../EthFunctions'
 
 import AnimatedNumbers from "react-animated-numbers";
@@ -45,9 +45,9 @@ const InfoSection = ({countdownTimer, bootstrapTimer, primary, lightBg, imgStart
     const daysDuration = days * daySeconds;
 
     // start react-animated-numbers
-    const [num, setNum] = React.useState(331231);
     const [, , mmConnected, , , ] = React.useContext(StateContext);
-    
+    const [, , , , , , , , , , , , , , , , , , bootstrapUsed] = React.useContext(EthContext);
+
     return (
         <>
           <InfoSec lightBg={lightBg}>
@@ -138,7 +138,7 @@ const InfoSection = ({countdownTimer, bootstrapTimer, primary, lightBg, imgStart
                               {bootstrapTimer ?                       <><br></br>    <BootstrapWrapper>
       <AnimatedNumbers
         includeComma
-        animateToNumber={num}
+        animateToNumber={bootstrapUsed}
         fontStyle={{ fontSize: 30 }}
         configs={[
           { mass: 1, tension: 220, friction: 100 },
@@ -146,7 +146,7 @@ const InfoSection = ({countdownTimer, bootstrapTimer, primary, lightBg, imgStart
           { mass: 1, tension: 280, friction: 90 },
           { mass: 1, tension: 180, friction: 135 },
           { mass: 1, tension: 260, friction: 100 },
-          { mass: 1, tension: 210, friction: 180 },
+          { mass: 1, tension: 210, friction: 1000 },
         ]}
       ></AnimatedNumbers></BootstrapWrapper><BootstrapText> / 1,000 bootstrap slots used </BootstrapText></> : null}
                           </TextWrapper>
