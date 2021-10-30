@@ -13,7 +13,7 @@ const Gamebar = () => {
         <>
         <BootstrapContainer><><AnimatedNumbers
         includeComma
-        animateToNumber={100}
+        animateToNumber={200}
         fontStyle={{ fontSize: 20 }}
         configs={[
           { mass: 1, tension: 220, friction: 100 },
