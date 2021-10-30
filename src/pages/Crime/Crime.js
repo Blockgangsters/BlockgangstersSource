@@ -1,4 +1,4 @@
-import {PageWrapper, CrimeContainer, Title, Img, ChartContainer, SubTitle, SelectContainer} from './Crime.elements';
+import {PageWrapper, CrimeContainer, Title, ChartContainer, SubTitle, SelectContainer} from './Crime.elements';
 import React, {useEffect, useState }  from 'react';
 import {tokenAddress , crime} from '../../components/EthFunctions';
 import {ethers} from 'ethers';
@@ -7,8 +7,7 @@ import NumberFormat from "react-number-format";
 import {StateContext, EthContext} from '../../App';
 import {ColoredLine, SubmitButton} from '../../globalStyles'
 import Select from 'react-select'
-import missions from './missions.PNG';
-import { BarChart, Text, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Text, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const Crime = () => {
     const [, , mmConnected, , , ] = React.useContext(StateContext);
@@ -29,7 +28,6 @@ const Crime = () => {
     const [robChance, setRobChance] = React.useState(0);
     const [hackChance, setHackChance] = React.useState(0);
     const [hijackChance, setHijackChance] = React.useState(0);
-    const [optionsState, setOptionsState] = React.useState([]);
 
     const onChangeHandler = event => {
       setInputValue(event.value);

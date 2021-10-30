@@ -85,10 +85,3 @@ display: relative;
 color: white;
 vertical-align: text-top;
 `
-
-export const Img = styled.img`
-border-radius: 10px;
-max-width: 70%;
-height: auto;
-margin-left: 50px;
-`
