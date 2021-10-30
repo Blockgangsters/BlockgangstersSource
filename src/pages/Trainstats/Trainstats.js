@@ -50,11 +50,8 @@ const Trainstats = () => {
           <SubTitle> The following stats are trained: <ul><li> Weights training: 100% attack</li><li>Boxing training: 50% attack & 50% defense</li><li>Self-defense classes: 100% defense</li></ul></SubTitle>
 
             <CrimeContainer>
-            {jailSeconds === 0 && crimeSeconds === 0 ?
-                <Select defaultValue={options[0]} options={options} onChange={onChangeHandler} styles = { customStyles } /> : null }
-
-            {trainSeconds !== 0 ? "You are not ready yet!" : <SubmitButton onClick={() => { Statstraining(inputValue)}}> Go for it! </SubmitButton>}
-          
+            {jailSeconds === 0 && crimeSeconds === 0 && trainSeconds === 0 ?
+                <><Select defaultValue={options[0]} options={options} onChange={onChangeHandler} styles = { customStyles } /> <SubmitButton onClick={() => { Statstraining(inputValue)}}> Go for it! </SubmitButton> </>: "You are not ready yet!" }
 
             </CrimeContainer>
         

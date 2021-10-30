@@ -27,7 +27,20 @@ const IndProtection = () => {
                       <Title> Buy protection against attacks </Title><br />
                       <SubTitle>Tip: buy protection when you have big bags.</SubTitle>
             <AttackPlayerContainer>
-              Days to buy: <input type="text" value={amount} onChange={value => setAmount(value.target.value)} /> 
+              Days to buy: 
+              
+              <NumberFormat
+        thousandsGroupStyle="thousand"
+        prefix=""
+        displayType="input"
+        thousandSeparator={true}
+        allowNegative={false}
+        onValueChange={({ value }) => {setAmount(value)}}
+         value={amount} 
+         />
+              
+              
+              
               {amount > 0 ? <> This will cost: ₲<NumberFormat 
                 value={inGameFunds/100*amount}
                 displayType={"text"}

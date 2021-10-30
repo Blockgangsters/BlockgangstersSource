@@ -100,7 +100,7 @@ border-style: solid;
 border-color: transparent;
 height: 50vh;
 width: 20vw;
-margin-top: 58vh; 
+margin-top: 55vh; 
 margin-bottom: 3vh;
 position: fixed;
 justify-content: center;

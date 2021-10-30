@@ -84,7 +84,7 @@ const Familycontrol = () => {
     return (
         <PageWrapper>
           <Title> Family control page </Title><br />
-          <SubTitle> Current Family: {familyOwner === 0x0000000000000000000000000000000000000000 ? "Not in a family" : <> {myFamilyName} <LeaveButton onClick={() => { leaveFamily()}}> Leave family </LeaveButton></>}</SubTitle>
+          <SubTitle> Current Family: {familyOwner === "0x0000000000000000000000000000000000000000" ? "Not in a family" : <> {myFamilyName} <LeaveButton onClick={() => { leaveFamily()}}> Leave family </LeaveButton></>}</SubTitle>
           <SubTitle> Current family bank: <NumberFormat value={familyBank} displayType={"text"} thousandSeparator={true} prefix={"₲ "} /> </SubTitle>
           <SubTitle> Current family rank: {familyRank === 80 ? "Boss" : (familyRank === 70 ? "Underboss" : (familyRank === 50 ? "Caporegime" : (familyRank === 30 ? "Soldier" : (familyRank === 10 ? "Associate" : "Not in a family"))))}</SubTitle>
           <SubTitle> Number of family members: {familyOwner === 0x0000000000000000000000000000000000000000 ? "Not in a family" : allFamilyMembers.length}</SubTitle>

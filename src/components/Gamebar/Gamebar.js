@@ -1,11 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import NumberFormat from "react-number-format";
 import {BootstrapContainer, BootstrapInner, BootstrapText, BuyButton, ReceiveContainer, RulesWrapper, RulesItem, CounterWrapper, LevelsItem, FirstTitleBox, SecondTitleBox, GamebarContainerOne, GamebarContainerTwo, GameItemFirst, GameItem, GameLinks } from './Gamebar.elements';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {EthContext} from '../../App';
 import AnimatedNumbers from "react-animated-numbers";
-import {ethers} from 'ethers';
 import {receiveEth } from '../../components/EthFunctions';
 import Popup from 'reactjs-popup';
 import {SubmitButton} from '../../globalStyles'
@@ -36,7 +35,7 @@ display: flex;
 `
 
 const Gamebar = () => {
-    const [defenseState, , attackState, , , , , , inGameFunds, , jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, , , bootstrapUsed] = React.useContext(EthContext);
+    const [defenseState, , attackState, , , , , , inGameFunds, , jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, , , bootstrapUsed, protectionHours] = React.useContext(EthContext);
     const [popUp, setPopUp] = React.useState(false);
     const [inputValue, setInputValue] = React.useState();
 
@@ -183,6 +182,7 @@ const Gamebar = () => {
         {crimeSeconds > 0 ? <small style={{ color: 'red' }}> Crime cooldown ({crimeSeconds})</small>  :<small style={{ color: 'green' }}> Crime available</small>}<br />
         {trainSeconds > 0 ? <small style={{ color: 'red' }}> Training cooldown ({trainSeconds})</small>  :<small style={{ color: 'green' }}> Training available</small>}<br />
         {crowdfundSeconds > 0 ? <small style={{ color: 'red' }}> Crowdfund time left ({crowdfundSeconds})</small>  :<small style={{ color: 'green' }}> Crowdfund available</small>}<br />
+        {protectionHours > 0 ? <small style={{ color: 'green' }}> {protectionHours} hours protection </small>  :<small style={{ color: 'yellow' }}> Unprotected</small>}<br />
 
         <NumberFormat 
                                     value={inGameFunds}
