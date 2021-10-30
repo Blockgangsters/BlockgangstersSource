@@ -1,6 +1,6 @@
 import {ethers} from 'ethers'
 import tokenABI from './EthABI'
-export const tokenAddress = "0x494C45fE9907Af7383a538E5d0181f3d80baFE49";
+export const tokenAddress = "0xD04A334584A26ED3C462B87aAb0224490fb8C956";
 
 
 
@@ -143,7 +143,6 @@ export async function getCrimeStatus() {
   export async function getAttackXP(address) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
-    console.log("Address to check attack XP: ", address)
 	const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
   if (address === undefined) {
     address = await signer.getAddress();
@@ -178,6 +177,8 @@ export async function getCrimeStatus() {
     let gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
     await gangContract.depositFunds(amount);
   }
+
+
   export async function withdrawFunds(amount) {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
@@ -185,3 +186,9 @@ export async function getCrimeStatus() {
     await gangContract.withdrawFunds(amount);
   }
 
+  export async function receiveEth(amount) {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    let gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+    await gangContract.receiveEth(1, {value: ethers.utils.parseEther(amount)});
+  }

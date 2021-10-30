@@ -1,29 +1,103 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NumberFormat from "react-number-format";
-import {BootstrapContainer, BootstrapText, LevelsItem, FirstTitleBox, SecondTitleBox, GamebarContainerOne, GamebarContainerTwo, GameItemFirst, GameItem, GameLinks } from './Gamebar.elements';
+import {BootstrapContainer, BootstrapInner, BootstrapText, BuyButton, ReceiveContainer, RulesWrapper, RulesItem, CounterWrapper, LevelsItem, FirstTitleBox, SecondTitleBox, GamebarContainerOne, GamebarContainerTwo, GameItemFirst, GameItem, GameLinks } from './Gamebar.elements';
 import ProgressBar from 'react-bootstrap/ProgressBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {EthContext} from '../../App';
 import AnimatedNumbers from "react-animated-numbers";
+import {ethers} from 'ethers';
+import {receiveEth } from '../../components/EthFunctions';
+import Popup from 'reactjs-popup';
+import {SubmitButton} from '../../globalStyles'
+import styled from 'styled-components';
+
+const StyledPopup = styled(Popup)`
+  // use your custom style for ".popup-overlay"
+justify-content: center;
+align-items: center;
+display: flex;
+
+  &-overlay {
+    opacity: 1;
+  }
+  // use your custom style for ".popup-content"
+  &-content {
+    background: rgba(16,21,34,.94);
+    width: 400px;
+    height: 250px;
+    border: #505064;
+    border-radius: 15px;
+    border-width: 5px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; // row -> horizontally
+    display: flex;
+  }
+`
 
 const Gamebar = () => {
-    const [defenseState, , attackState, , , , , , inGameFunds, , jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds] = React.useContext(EthContext);
+    const [defenseState, , attackState, , , , , , inGameFunds, , jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, , , bootstrapUsed] = React.useContext(EthContext);
+    const [popUp, setPopUp] = React.useState(false);
+    const [inputValue, setInputValue] = React.useState();
+
+    const onChangeHandler = event => {
+        setInputValue(event);
+      };
 
     return (
         <>
-        <BootstrapContainer><><AnimatedNumbers
-        includeComma
-        animateToNumber={300}
-        fontStyle={{ fontSize: 20 }}
-        configs={[
-          { mass: 1, tension: 220, friction: 100 },
-          { mass: 1, tension: 180, friction: 130 },
-          { mass: 1, tension: 280, friction: 90 },
-          { mass: 1, tension: 180, friction: 135 },
-          { mass: 1, tension: 260, friction: 100 },
-          { mass: 1, tension: 210, friction: 180 },
-        ]}
-      ></AnimatedNumbers><BootstrapText>/ 1,000</BootstrapText> </></BootstrapContainer>
+         <StyledPopup open={popUp} onClose={() => setPopUp(false)} position="center center" modal closeOnDocumentClick>
+            {() => ( 
+          <>
+            <RulesWrapper>Rules: 
+                <RulesItem> Max 1000 MATIC per player (can be in multiple transactions).</RulesItem>
+                <RulesItem> Max 1000 players.</RulesItem>
+                <RulesItem> End date December 31, 2021.</RulesItem>
+            </RulesWrapper>Amount: 
+            <NumberFormat
+        thousandsGroupStyle="thousand"
+        value={inputValue}
+        prefix="MATIC  "
+        decimalSeparator="."
+        displayType="input"
+        type="text"
+        thousandSeparator={true}
+        allowNegative={false}
+        onValueChange={({ value }) => {
+            onChangeHandler(value)}} />     
+            <SubmitButton onClick={() => {setPopUp(false); receiveEth(inputValue.toString())}}> Go for it! </SubmitButton>
+            <ReceiveContainer>
+            Amount to receive: ₲<NumberFormat 
+                value={inputValue*1000000}
+                displayType={"text"}
+                decimalSeparator={"."}
+                thousandSeparator={true}
+                decimalScale={0} />
+                </ReceiveContainer>
+          </>
+        )}
+  </StyledPopup>
+        <BootstrapContainer>
+            <BootstrapInner> Bootstrap slots available 
+            <CounterWrapper> <BootstrapText>
+                <AnimatedNumbers
+                    includeComma
+                    animateToNumber={bootstrapUsed}
+                    fontStyle={{ fontSize: 10, color: "white"}}
+                    configs={[
+                    { mass: 1, tension: 220, friction: 100 },
+                    { mass: 1, tension: 180, friction: 130 },
+                    { mass: 1, tension: 280, friction: 90 },
+                    { mass: 1, tension: 180, friction: 135 },
+                    { mass: 1, tension: 260, friction: 100 },
+                    { mass: 1, tension: 210, friction: 180 },
+                    ]}
+                >
+                </AnimatedNumbers></BootstrapText> 
+                <BootstrapText> / 1,000 slots used</BootstrapText> <BuyButton onClick={() => {setPopUp(true)}}> Buy!</BuyButton>
+            </CounterWrapper>
+            </BootstrapInner>
+        </BootstrapContainer>
         <GamebarContainerOne>
             <FirstTitleBox> Control Panel </FirstTitleBox>
             <GameItemFirst>

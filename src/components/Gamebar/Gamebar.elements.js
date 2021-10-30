@@ -10,23 +10,71 @@ background: rgba(16,21,34,.9);
 `
 
 export const BootstrapContainer = styled(Container)`
+flex-direction: column; // row -> horizontally
 color: white;
 display: flex;
 height: 6vh;
 width: 20vw;
-margin-top: 0px; 
-padding-bottom: 10px;
 position: fixed;
 justify-content: center;
 background: rgba(16,21,34,.9);
 align-items: center;
-display: block;
 `
 
-export const BootstrapText = styled.h4`
+export const BootstrapInner = styled(Container)`
+flex-direction: column; // row -> horizontally
 color: white;
-font-size: 20px;
+display: flex;
+height: 6vh;
+width: 17vw;
+padding-bottom: 10px;
+padding-top: 10px;
+position: fixed;
+justify-content: center;
+align-items: center;
+border: 1px #A27818 solid;
+border-radius: 15px;
+    
+    animation: blink 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink { 50% { border-color: #5EA022 ; }  }
+`
+
+export const BootstrapText = styled.span`
+color: white;
+font-size: 10px;
 display: inline-block;
+padding-left: 0.5vw;
+`
+
+export const ReceiveContainer = styled.div`
+color: white;
+font-size: 10px;
+display: flex;
+padding-left: 0.5vw;
+`
+
+export const CounterWrapper = styled.div`
+color: white;
+flex-direction: row; // row -> horizontally
+display: inline;
+`
+
+export const RulesWrapper = styled.ul`
+color: white;
+flex-direction: row; // row -> horizontally
+display: inline;
+font-size: 25px;
+`
+
+export const RulesItem = styled.li`
+color: white;
+flex-direction: row; // row -> horizontally
+list-style-type: none; /* Remove bullets */
+padding-left: 10px; /* Remove padding */
+font-size: 15px;
 `
 
 export const GamebarContainerOne = styled(Container)`
@@ -162,3 +210,24 @@ export const GameLinks = styled(Link)`
         }
     }
     `
+
+export const BuyButton = styled.button`
+border-radius: 4px;
+background: #2D5A03;
+white-space: nowrap;
+padding: 1px 20px;
+color: white;
+font-size: 16px;
+outline: none;
+border: none;
+cursor: pointer;
+
+&:hover {
+    transition: all 0.3s ease-out;
+    background: #5FAA19;
+}
+
+@media screen and (max-width: 960px) {
+    width: 200px;
+}
+`

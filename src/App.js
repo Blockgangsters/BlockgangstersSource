@@ -92,7 +92,7 @@ function App() {
     const [finishedFlag, setFinishedFlag] = useState(0);
     const [balance, setBalance] = useState(0);
     const [gangbalance, setgangBalance] = useState(0);
-    
+    const [bootstrapUsed, setBootstrapUsed] = useState(0);
 
     const fetchBalance = async(address) => {
       const newETHBalance = await EthBalance(address)
@@ -118,6 +118,24 @@ function App() {
         window.location.reload();
       });
     }}, [chainConnected]);  
+
+    useEffect(() => {  
+      const fetchBootstrap = async() => {
+          if (mmConnected) {
+          const provider = new ethers.providers.Web3Provider(window.ethereum);
+          const signer = provider.getSigner();
+          const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+          let providerBlock = await provider.getBlockNumber();
+  
+          let bootstrapFilter = gangContract.filters.bootstrapBought(null, null, null)
+          let events = await gangContract.queryFilter(bootstrapFilter, providerBlock-70000 , providerBlock )
+          let eventsReversed = events.reverse();
+          setBootstrapUsed(eventsReversed[0].args[2]);
+          }
+      }
+
+      fetchBootstrap();
+  }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
     useEffect(() => {
       if (window.ethereum) {
@@ -560,7 +578,7 @@ function App() {
 
     return (
         <StateContext.Provider value={[balance, gangbalance, mmConnected, mainConnected, testConnected, adminConnected, inGameFunds]}>
-                  <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds]}>
+                  <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds, bootstrapUsed]}>
 
         <Router basename='/'>
             <GlobalStyle />
