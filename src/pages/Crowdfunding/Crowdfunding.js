@@ -1,4 +1,4 @@
-import {PageWrapper, Title, SubTitle, TitleTwo, Box} from './Crowdfunding.elements';
+import {PageWrapper, Title, SubTitle, TitleTwo, Box, TextBox} from './Crowdfunding.elements';
 import React, {useEffect }  from 'react';
 import {tokenAddress, crowdFundStart, crowdFundingReturn} from '../../components/EthFunctions';
 
@@ -8,6 +8,85 @@ import NumberFormat from "react-number-format";
 import {StateContext, EthContext} from '../../App';
 import {ColoredLine, SubmitButton} from '../../globalStyles'
 import Select from 'react-select'
+import { useTable } from 'react-table'
+import styled from 'styled-components'
+
+
+const Styles = styled.div`
+  padding: 1rem;
+
+  table {
+    border-spacing: 0;
+    border: 1px solid black;
+    color: white;
+
+    tr {
+      :last-child {
+        td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    th,
+    td {
+      margin: 0;
+      padding: 0.5rem;
+      border-bottom: 1px solid black;
+      border-right: 1px solid black;
+
+      :last-child {
+        border-right: 0;
+      }
+    }
+  }
+`
+
+function Table({ columns, data }) {
+  // Use the state and functions returned from useTable to build your UI
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({
+    columns,
+    data,
+  })
+
+  // Render the UI for your table
+  return (
+    <table {...getTableProps()}>
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map((row, i) => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
+}
+
+
+
+
+
 
 
 const Crowdfunding = () => {
@@ -73,9 +152,53 @@ const Crowdfunding = () => {
       setAmount(event);
   };
 
+  const columns = React.useMemo(
+    () => [
+ 
+          {
+            Header: 'Chosen investment',
+            accessor: 'chosen',
+          },
+          {
+            Header: 'Stable returns',
+            accessor: 'stable',
+          },
+          {
+            Header: 'outperforming',
+            accessor: 'outperform',
+          },
+          {
+            Header: 'Bankruptcy',
+            accessor: 'bankruptcy',
+          },
+        
+        ],
+ [])
+
+  const data = React.useMemo(() => 
+  [
+    {chosen: 'Stable investment',
+    stable: "90%",
+    outperform: "2%",
+    bankruptcy: "8%" },
+    {chosen: 'Growth investment',
+    stable: "60%",
+    outperform: "10%",
+    bankruptcy: "30%" },
+    {chosen: 'Stable investment',
+    stable: "0%",
+    outperform: "22%",
+    bankruptcy: "78%" },
+    ], [])
+
+
     return (
         <PageWrapper>
           <Title> Crowdfunding page </Title><br />
+          <TextBox>Stable investments give peace of mind while speculative investments can net explosive returns. Below table helps you make a choice! Which type of investor are you?</TextBox>
+          <Styles>
+      <Table columns={columns} data={data} />
+    </Styles>
 
                 
                 {crowdfundSeconds === 0 && crowdfundClaimable !== 1 ? <> <SubTitle> Start Crowdfunding </SubTitle>
@@ -88,6 +211,7 @@ const Crowdfunding = () => {
         displayType="input"
         thousandSeparator={true}
         allowNegative={false}
+        placeholder={"Enter amount.."}
         onValueChange={({ value }) => {onChangeHandler(value)}}
          value={amount} 
          />

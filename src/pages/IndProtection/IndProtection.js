@@ -35,6 +35,7 @@ const IndProtection = () => {
         displayType="input"
         thousandSeparator={true}
         allowNegative={false}
+        placeholder={"Enter days.."}
         onValueChange={({ value }) => {setAmount(value)}}
          value={amount} 
          />
