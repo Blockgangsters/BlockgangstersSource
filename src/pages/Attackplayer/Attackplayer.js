@@ -1,5 +1,5 @@
 import React, {useEffect, useState }  from 'react';
-import {PageWrapper, AttackPlayerContainer, Title, SubTitle} from './Attackplayer.elements';
+import {PageWrapper, AttackPlayerContainer, Title, SubTitle, AttackDoubleContainer} from './Attackplayer.elements';
 import {ColoredLine, SubmitButton} from '../../globalStyles'
 import {StateContext, EthContext} from '../../App';
 import {tokenAddress, attackPlayer, hireAttorney} from '../../components/EthFunctions';
@@ -12,6 +12,9 @@ const Attackplayer = () => {
     const [, , , , , , , , , , jailSeconds, attorneySeconds, attackSeconds, ] = React.useContext(EthContext);
 
     const [events, setEvents] = useState([]);
+    const [lastAttacker, setLastAttacker] = useState();
+    const [lastLoot, setLastLoot] = useState();
+    const [lastResult, setLastResult] = useState();
 
     useEffect(() => {  
         const fetchEvents = async() => {
@@ -21,8 +24,16 @@ const Attackplayer = () => {
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
             let providerBlock = await provider.getBlockNumber();
     
-            let attackFilter = gangContract.filters.playerAttacked(null, null, null, null)
+            let attackFilter = gangContract.filters.playerAttacked(null, null, null, null, null)
+            let attackMeFilter = gangContract.filters.playerAttacked(null, null, ethers.utils.getAddress(window.ethereum.selectedAddress) , null, null)
             let events = await gangContract.queryFilter(attackFilter, providerBlock-70000 , providerBlock )
+            let eventsMe = await gangContract.queryFilter(attackMeFilter, providerBlock-70000 , providerBlock )
+            let lastEventsMe = eventsMe.reverse();
+            if (lastEventsMe.length !== 0) {
+                setLastAttacker(lastEventsMe[0].args[1]);
+                setLastLoot(lastEventsMe[0].args[3].toNumber());
+                setLastResult(lastEventsMe[0].args[0]);
+            }
             setEvents(events.reverse())
             }
         }
@@ -32,14 +43,33 @@ const Attackplayer = () => {
 
     return (
         <PageWrapper>
-                      <Title> Attack another random player </Title><br />
-                      <SubTitle>Tip: train your attack for a higher chance of success!</SubTitle>
-            <AttackPlayerContainer>
-              {attackSeconds === 0 && jailSeconds === 0 ? <SubmitButton onClick={() => { attackPlayer()}}> Attack player</SubmitButton>: null }
-              {jailSeconds > 0 && attorneySeconds === 0 ? <SubmitButton onClick={() => { hireAttorney()}}> Hire attorney</SubmitButton> : null}
+                <SubTitle>Tip: train your attack for a higher chance of success!</SubTitle>
 
+            <AttackDoubleContainer>
                 
-            </AttackPlayerContainer>
+                <AttackPlayerContainer>
+                <Title> Attack random player </Title><br />
+                                      
+                {attackSeconds === 0 && jailSeconds === 0 ? <SubmitButton onClick={() => { attackPlayer("0x000000000000000000000000000000000000dEaD")}}> Attack player</SubmitButton>: null }
+                {jailSeconds > 0 && attorneySeconds === 0 ? <SubmitButton onClick={() => { hireAttorney()}}> Hire attorney</SubmitButton> : null}
+
+                    
+                </AttackPlayerContainer>
+
+                <AttackPlayerContainer>
+                <Title> Revenge yourself! </Title><br />
+                {lastResult === true ? <>{lastAttacker} stole ₲<NumberFormat 
+                value={lastLoot}
+                displayType={"text"}
+                thousandSeparator={true}
+                decimalScale={0} /> </>: "the last attacker failed!"}
+                {attackSeconds === 0 && jailSeconds === 0 ? (lastResult === true ? <SubmitButton onClick={() => { attackPlayer("1234")}}> Take revenge </SubmitButton> :
+                <SubmitButton onClick={() => { attackPlayer("1234")}}> Further Humiliation! </SubmitButton>) : null }
+                {jailSeconds > 0 && attorneySeconds === 0 ? <SubmitButton onClick={() => { hireAttorney()}}> Hire attorney</SubmitButton> : null}
+
+                    
+                </AttackPlayerContainer>
+            </AttackDoubleContainer>
             <ColoredLine color="red" />
             <h1 style={{color:"white"}}> Last attacks: </h1>
                 {events.map((option, index) => (

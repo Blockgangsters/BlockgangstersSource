@@ -93,6 +93,7 @@ function App() {
     const [balance, setBalance] = useState(0);
     const [gangbalance, setgangBalance] = useState(0);
     const [bootstrapUsed, setBootstrapUsed] = useState(0);
+    const [protectionHours, setProtectionHours] = useState(0);
 
     const fetchBalance = async(address) => {
       const newETHBalance = await EthBalance(address)
@@ -107,7 +108,7 @@ function App() {
   }
 
     useEffect(() => {
-        document.title = `Eth: ${balance}`;
+        document.title = `Blockgangsters.io`;
     }, [balance]);
 
     useEffect(() => {
@@ -130,12 +131,41 @@ function App() {
           let bootstrapFilter = gangContract.filters.bootstrapBought(null, null, null)
           let events = await gangContract.queryFilter(bootstrapFilter, providerBlock-70000 , providerBlock )
           let eventsReversed = events.reverse();
-          setBootstrapUsed(eventsReversed[0].args[2]);
+          if (events.length !== 0) {
+            setBootstrapUsed(eventsReversed[0].args[2]);         
+          }
+
           }
       }
 
       fetchBootstrap();
   }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
+
+  
+  useEffect(() => {  
+    const fetchProtection = async() => {
+        if (mmConnected) {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const signer = provider.getSigner();
+        const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+        let providerBlock = await provider.getBlockNumber();
+
+        let protectionFilter = gangContract.filters.boughtProtection(ethers.utils.getAddress(window.ethereum.selectedAddress), null, null)
+        let events = await gangContract.queryFilter(protectionFilter, providerBlock-70000 , providerBlock )
+        let eventsReversed = events.reverse();
+        if (events.length !== 0) {
+          let now = Date.now()/1000;
+          let delta = eventsReversed[0].args[2].toNumber() + 3600*24*eventsReversed[0].args[1].toNumber() - now;
+          let hoursLeft = Math.floor(delta/3600);
+          console.log("hours left: ", hoursLeft)
+          setProtectionHours(hoursLeft)
+        }
+
+        }
+    }
+
+    fetchProtection();
+}, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
     useEffect(() => {
       if (window.ethereum) {
@@ -156,7 +186,7 @@ function App() {
             console.log("Set connected to true")
             setmmConnected(true);
             fetchBalance(result[0]);
-            if (window.ethereum.chainId === "0x1") {
+            if (window.ethereum.chainId === "0x89") {
               setmainConnected(true);
               settestConnected(false);
             } else if (window.ethereum.chainId === "0x13881") {
@@ -412,10 +442,18 @@ function App() {
 
 
     const handleAttackXP = (newXP) => {
+      if (newXP > 100000000) {
+        setAttackState(100000000);
+      } else {
         setAttackState(newXP.toString())
+      }
     }
     const handleDefenseXP = (newXP) => {
+      if (newXP > 100000000) {
+        setDefenseState(100000000);
+      } else {
         setDefenseState(newXP.toString())
+      }
     }
 
     const handleAttorneyHired = (success, player, fee) => {
@@ -425,11 +463,11 @@ function App() {
         console.log("Got attorney event");
         console.log("success: ", success);
         // if success 1 --> second index is payment. if success 2 --> second index is bonus fee
-        if (success === 1 ) {
+        if (success === "1" ) {
             console.log("Attorney succesful but need to pay: ", fee);
-        } else if (success === 2) {
+        } else if (success === "2") {
             console.log("Succesful and get compensation: ", fee);
-        } else if (success === 0 ) {
+        } else if (success === "0" ) {
             console.log("Attorney unsuccesful, you stay in jail");
         }
         getingameFunds().then((data) => {
@@ -578,7 +616,7 @@ function App() {
 
     return (
         <StateContext.Provider value={[balance, gangbalance, mmConnected, mainConnected, testConnected, adminConnected, inGameFunds]}>
-                  <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds, bootstrapUsed]}>
+                  <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds, bootstrapUsed, protectionHours]}>
 
         <Router basename='/'>
             <GlobalStyle />
@@ -625,12 +663,12 @@ function App() {
             {() => ( 
           <>
 
-            {lastAttorneyResult === 1 ? <div>Attorney Successful, it cost you: {        <NumberFormat 
+            {lastAttorneyResult === "1" ? <div>Attorney Successful, it cost you: {        <NumberFormat 
                                     value={lastAttorneyFee}
                                     displayType={"text"}
                                     decimalSeparator={"."}
                                     thousandSeparator={true}
-                                    decimalScale={0} />}</div> : (lastAttorneyResult === 2 ? <div>Attorney Successful, compensation: {<NumberFormat 
+                                    decimalScale={0} />}</div> : (lastAttorneyResult === "2" ? <div>Attorney Successful, compensation: {<NumberFormat 
                                         value={lastAttorneyFee}
                                         displayType={"text"}
                                         decimalSeparator={"."}

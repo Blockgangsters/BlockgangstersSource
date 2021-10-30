@@ -69,7 +69,9 @@ const Crowdfunding = () => {
         flex: 1
       })
     }
-
+    const onChangeHandler = event => {
+      setAmount(event);
+  };
 
     return (
         <PageWrapper>
@@ -80,8 +82,15 @@ const Crowdfunding = () => {
                 
                 <Select defaultValue={options[0]} options={options} onChange={onChangeHandlerChoice} styles = { customStyles } />
 
-                <input type="text" value={amount} onChange={value => setAmount(value.target.value)} /> 
-
+                <NumberFormat
+        thousandsGroupStyle="thousand"
+        prefix="₲ "
+        displayType="input"
+        thousandSeparator={true}
+        allowNegative={false}
+        onValueChange={({ value }) => {onChangeHandler(value)}}
+         value={amount} 
+         />
                 <SubmitButton onClick={() => { setCrowdfundSeconds(600); crowdFundStart(amount, choice)}}> Go for it! </SubmitButton> </> : <SubTitle> You are already invested. </SubTitle> }
   
 

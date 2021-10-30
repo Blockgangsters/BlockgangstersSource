@@ -200,6 +200,7 @@ export const MMConnect = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     text-decoration: none;
     padding: 4px 8px;
     height: 10px;

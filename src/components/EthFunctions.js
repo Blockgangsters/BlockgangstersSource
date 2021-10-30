@@ -1,6 +1,6 @@
 import {ethers} from 'ethers'
 import tokenABI from './EthABI'
-export const tokenAddress = "0xD04A334584A26ED3C462B87aAb0224490fb8C956";
+export const tokenAddress = "0x05E1a6aDb98cca4B59A1c5cD2d526f753BC3E23e";
 
 
 
@@ -58,11 +58,17 @@ export async function getingameFunds(address) {
   return balance;
 }
 
-export async function attackPlayer() {
+export async function attackPlayer(revenge) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
 	const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
-	await gangContract.attackRandomPlayerRequest();
+  let revengeAddress;
+  if (revenge === true) {
+    revengeAddress = "0x000000000000000000000000000000000000dEaD";
+  } else {
+    revengeAddress = signer.getAddress(); // all but 0x00..00dEaD means revenge
+  }
+	await gangContract.attackRandomPlayerRequest(revengeAddress);
   }
 
   export async function crowdFundStart(amount, choice) {

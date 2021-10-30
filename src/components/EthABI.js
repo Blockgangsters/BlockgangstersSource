@@ -110,6 +110,31 @@ const tokenABI = [
 			},
 			{
 				"indexed": true,
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"indexed": true,
+				"internalType": "uint256",
+				"name": "timestamp",
+				"type": "uint256"
+			}
+		],
+		"name": "boughtProtection",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "player",
+				"type": "address"
+			},
+			{
+				"indexed": true,
 				"internalType": "bool",
 				"name": "crimeSuccess",
 				"type": "bool"

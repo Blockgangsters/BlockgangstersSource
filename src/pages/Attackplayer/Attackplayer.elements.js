@@ -8,16 +8,28 @@ max-height: 100%;
 padding: 0 0; // no padding, thats in the container
 background: rgba(16,21,34,.9);
 margin-left: 20vw;
+`
 
+export const AttackDoubleContainer = styled.div`
+max-width: 100%;
+max-height: 100%;
+padding: 00px 0;
+justify-content: space-around;
+flex-direction: row; // this is standard, fit from left to right
+display: flex;
+color: white;
+align-items: start;
+@media screen and (max-width: 768px) {
+    padding-bottom: 65px;
+};
 `
 
 //TokenomicsContainer is around whole page, sets background etc.
 export const AttackPlayerContainer = styled.div`
-max-width: 100%;
+max-width: 40%;
 max-height: 100%;
-padding: 160px 0;
-justify-content: space-around;
-flex-direction: row; // this is standard, fit from left to right
+justify-content: start;
+flex-direction: column; // this is standard, fit from left to right
 display: flex;
 color: white;
 
@@ -25,6 +37,7 @@ color: white;
     padding-bottom: 65px;
 };
 `
+
 
 export const Line = styled.hr`
 color: rgba(0, 0, 0, 0.65);
@@ -54,7 +67,7 @@ export const SubTitle = styled.h4`
 max-width: 100%;
 max-height: 10%;
 
-padding: 20px 40px 0px 40px;
+padding: 160px 40px 0px 40px;
 justify-content: space-around;
 flex-direction: row; // this is standard, fit from left to right
 display: relative;
