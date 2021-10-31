@@ -162,6 +162,7 @@ const Gamebar = () => {
                     {crimeSeconds > 0 ? <small style={{ color: 'red' }}> Crime cooldown ({crimeSeconds})</small> : <small style={{ color: 'green' }}> Crime available</small>}<br />
                     {trainSeconds > 0 ? <small style={{ color: 'red' }}> Training cooldown ({trainSeconds})</small> : <small style={{ color: 'green' }}> Training available</small>}<br />
                     {crowdfundSeconds > 0 ? <small style={{ color: 'red' }}> Crowdfund time left ({crowdfundSeconds})</small> : <small style={{ color: 'green' }}> Crowdfund available</small>}<br />
+                    {protectionHours > 0 ? <small style={{ color: 'green' }}> {protectionHours} hours protection </small> :<small style={{ color: 'yellow' }}> Unprotected</small>}<br />
 
                     <NumberFormat
                         value={inGameFunds}
