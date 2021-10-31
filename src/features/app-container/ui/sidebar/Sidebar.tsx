@@ -25,7 +25,6 @@ const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
 	z-index: ${ZIndex.Sidebar};
     max-width: 20%;
 	top: 0;
-	right: 100;
 	width: 100%;
 	overflow-y: auto;
 	opacity: 0;
@@ -34,6 +33,10 @@ const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
 	transition: all 0.4s ease;
     background-color:rgba(16,21,34,.9);
     margin-top: 80px;
+
+	::-webkit-scrollbar {
+		display: none;
+	}
 
 
 	${(props) =>
@@ -46,5 +49,5 @@ const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
 `;
 
 const StyledSidebarContent = styled.div`
-	padding: 24;
+
 `;
