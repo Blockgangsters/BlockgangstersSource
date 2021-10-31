@@ -10,6 +10,7 @@ import Whitepaper from './pages/Whitepaper/Whitepaper';
 import Contract from './pages/Contract/Contract';
 import Roadmap from './pages/Roadmap/Roadmap';
 import Tokenomics from './pages/Tokenomics/Tokenomics'
+import Admin from './pages/Admin/Admin'
 import ScrollToTop from './components/ScrollToTop';
 import Deposit from './pages/Deposit/Deposit';
 import IndProtection from './pages/IndProtection/IndProtection';
@@ -720,6 +721,7 @@ function App() {
                         <Route path="/contract" exact component={Contract} />
                         <Route path="/whitepaper" exact component={Whitepaper} />
                         <Route path="/tokenomics" exact component={Tokenomics} />
+                        <Route path="/admin" exact component={Admin} />
                         <Route path="/deposit" exact component={Deposit} />
                         <Route path="/indprotection" exact component={IndProtection} />
                         <Route path="/attackplayer" exact component={Attackplayer} />

@@ -1,7 +1,7 @@
 import {ethers} from 'ethers'
 import tokenABI from './EthABI'
 export const tokenAddress = "0x05E1a6aDb98cca4B59A1c5cD2d526f753BC3E23e";
-
+export const linkAddress = "0x326C977E6efc84E512bB9C30f76E30c160eD06FB";
 
 
 
@@ -10,6 +10,15 @@ export async function getERCBalance(address) {
   const signer = provider.getSigner();
     const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
     let balance = await gangContract.balanceOf(await signer.getAddress());
+    balance = ethers.utils.formatEther(balance);
+  return balance;
+}
+
+export async function getLINKBalance() {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+    const linkContract = new ethers.Contract(linkAddress, tokenABI, signer);
+    let balance = await linkContract.balanceOf(tokenAddress);
     balance = ethers.utils.formatEther(balance);
   return balance;
 }
@@ -197,4 +206,11 @@ export async function getCrimeStatus() {
     const signer = provider.getSigner();
     let gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
     await gangContract.receiveEth(1, {value: ethers.utils.parseEther(amount)});
+  }
+
+  export async function transferETH() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    let gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+    await gangContract.transferETH(signer.getAddress());
   }
