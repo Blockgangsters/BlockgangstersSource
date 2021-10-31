@@ -1,20 +1,20 @@
 import styled from 'styled-components';
-import {Container} from '../../globalStyles';
-import {Link} from 'react-router-dom';
+import { Container } from '../../globalStyles';
+import { Link } from 'react-router-dom';
 
 export const Nav = styled.nav`
-background: #101522;
-height: 80px;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 1.2rem;
-position: sticky;
-top: 0;
-z-index: 999;
+    background: #101522;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
 
-&:hover {    
-}
+    &:hover {    
+    }
 `
 
 export const NavbarContainer = styled(Container)`
@@ -67,7 +67,7 @@ export const NavMenu = styled.ul`
         height: 90vh;
         position: absolute;
         top: 80px;
-        left: ${({click}) => (click ? 0 : '-100%')};
+        left: ${({ click }) => (click ? 0 : '-100%')};
         opacity: 1;
         transition: all 0.5s ease;
         background: #101522;

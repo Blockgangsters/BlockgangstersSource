@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import {Link} from 'react-router-dom';
+import styled from '@emotion/styled/macro'
+import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.div`
     background-color:rgba(16,21,34,.9);
@@ -96,7 +96,7 @@ export const FooterLinksItems = styled.div`
     width: 100%;
 
 }
-` 
+`
 
 export const FooterLinkTitle = styled.h2`
     margin-bottom: 16px;
@@ -113,68 +113,68 @@ export const FooterLink = styled(Link)`
 }`
 
 export const SocialMedia = styled.section`
-max-width: 1000px;
-width: 100%;
+    max-width: 1000px;
+    width: 100%;
 `
 
 export const SocialMediaWrap = styled.div`
-display: flex;
-justify-content: space-between; //alignment of items on main axis. So here we keep space between but align-items holds centered @ cross axis
-align-items: center; // default alignment for all items inside container -- along the cross axis!
-width: 90%;
-max-width: 1000px;
-margin: 40px auto 0 auto;
+    display: flex;
+    justify-content: space-between; //alignment of items on main axis. So here we keep space between but align-items holds centered @ cross axis
+    align-items: center; // default alignment for all items inside container -- along the cross axis!
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 0 auto;
 
-@media screen and (max-width: 820px) {
-    flex-direction: column;
-}
-` 
+    @media screen and (max-width: 820px) {
+        flex-direction: column;
+    }
+`
 
 export const SocialLogo = styled(Link)`
-color: #fff;
-justify-self: start; //the surrounding box gave this box for example 1000 px width, but box is only 300px. In this case justify-self puts it left/middle/center etc
-cursor: pointer;
-text-decoration: none;
-font-size: 2rem;
-display: flex;
-align-items: center;
-margin-bottom: 16px;
+    color: #fff;
+    justify-self: start; //the surrounding box gave this box for example 1000 px width, but box is only 300px. In this case justify-self puts it left/middle/center etc
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
 `
 
 export const SocialIcon = styled.img` //FaMagento is the logo 
-margin-right: 10px;
-box-sizing: border-box;
-max-height: 50px;
-max-width: 50px; //resize to 50px in footer
+    margin-right: 10px;
+    box-sizing: border-box;
+    max-height: 50px;
+    max-width: 50px; //resize to 50px in footer
 `
 
 
 export const WebsiteRights = styled.small`
-color: #fff;
-margin-left: 20px;
-width: 600px;
-align-items: center;
+    color: #fff;
+    margin-left: 20px;
+    width: 600px;
+    align-items: center;
 `
 
 export const SocialIcons = styled.div`
-display: flex;
-justify-content: space-between;
-align-items: center;
-width: 240px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 240px;
 `
 
 export const SocialIconLink = styled.a`
-color: #fff;
-font-size: 24px;
+    color: #fff;
+    font-size: 24px;
 `
 
 export const Ulist = styled.ul`
-color: #fff;
-font-size: 14px;
-list-style-type: none;
+    color: #fff;
+    font-size: 14px;
+    list-style-type: none;
 `
 
 export const Uitem = styled.li`
-color: #fff;
-font-size: 14px;
+    color: #fff;
+    font-size: 14px;
 `
