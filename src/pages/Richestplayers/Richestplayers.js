@@ -96,10 +96,8 @@ const Richestplayers = () => {
     useEffect(() => {  
       setDatatest([]);
       if (playerList.length !== 0) { 
-        console.log("in effect")
         console.log("Player list is: ", playerList)
         playerList.forEach((row, index) => {
-          console.log("in effect, this row: ", row)
           setDatatest(datatest => [...datatest, {col1: playerList[index],
             col3: ingameFundList[index]}])    
         });
@@ -112,7 +110,6 @@ const Richestplayers = () => {
           playerList = await getActiveList();
           for (let i = 0; i < playerList.length; i++) {
             let stringAddress = playerList[i].toString();
-            console.log("String: ", stringAddress)
             let fundItem = await getingameFunds(stringAddress);
             ingameFundList.push(fundItem.toNumber());
           }

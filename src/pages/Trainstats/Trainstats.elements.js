@@ -41,11 +41,11 @@ vertical-align: text-top;
 };
 `
 
-export const SubTitle = styled.p`
+export const SubTitle = styled.div`
 max-width: 100%;
 max-height: 10%;
 
-padding: 20px 40px 0px 40px;
+padding: 0px 40px 0px 40px;
 justify-content: space-around;
 flex-direction: row; // this is standard, fit from left to right
 display: relative;

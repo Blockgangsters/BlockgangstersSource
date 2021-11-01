@@ -182,7 +182,7 @@ const Crime = () => {
                 {events.map((option, index) => (
                     index > 2 ? null : (option.args[1] === true ? 
                       
-                <h4 style={{color:"green"}}> 
+                <h4 key={index} style={{color:"green"}}> 
                 {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600) > 0 ? <> {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600)} hours ago </>: "In the last hour "}
                 you looted ₲<NumberFormat 
                 value={option.args[2].toNumber()}
@@ -190,7 +190,7 @@ const Crime = () => {
                 decimalSeparator={"."}
                 thousandSeparator={true}
                 decimalScale={0} /> </h4>  : 
-                <h4 style={{color:"red"}}> 
+                <h4 key={index} style={{color:"red"}}> 
                 {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600) > 0 ? <> {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600)} hours ago </>: "In the last hour "}
 
                 you failed.. </h4>)

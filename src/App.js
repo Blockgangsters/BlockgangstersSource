@@ -179,11 +179,9 @@ function App() {
                 console.log("connected account: ", result[0])
                 setchainConnected(window.ethereum.chainId)
 
-                console.log("result 0: ", result[0])
                 if (result[0] === "0xa338c42cd68dd24931f270836cdbddcea4132770") {
                     setadminConnected(true)
                 }
-                console.log("Result length: ", result.length)
                 if (result.length !== 0) {
                     setConnectedAccount(result[0]);
                     console.log("Set connected to true")

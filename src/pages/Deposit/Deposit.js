@@ -94,7 +94,7 @@ const Deposit = () => {
 
             <h1 style={{color:"white"}}> Last withdrawals: </h1>
                 {withdrawEvents.map((option, index) => (
-                <h4 style={{color:"green"}}> {option.args[0]} withdrew ₲<NumberFormat 
+                <h4 key={index} style={{color:"green"}}> {option.args[0]} withdrew ₲<NumberFormat 
                 value={option.args[1].toNumber()}
                 displayType={"text"}
                 decimalSeparator={"."}
@@ -104,7 +104,7 @@ const Deposit = () => {
 
 <h1 style={{color:"white"}}> Last deposits: </h1>
                 {depositEvents.map((option, index) => (
-                <h4 style={{color:"green"}}> {option.args[0]} deposited ₲<NumberFormat 
+                <h4 key={index} style={{color:"green"}}> {option.args[0]} deposited ₲<NumberFormat 
                 value={option.args[1].toNumber()}
                 displayType={"text"}
                 decimalSeparator={"."}
