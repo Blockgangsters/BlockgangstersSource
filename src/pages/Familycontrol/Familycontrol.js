@@ -1,19 +1,17 @@
 import {PageWrapper, CrimeContainer, Title, TitleTwo, SubTitle, LeaveButton} from './Familycontrol.elements';
 import React, {useEffect }  from 'react';
-import {leaveFamily, getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getFamilyRank, getAllFamilyMembers, startFamily, getFamilyBank, distributeFamilyBank, getFamilyDefBonus, getFamilyAttBonus} from '../../components/EthFamilyFunctions';
+import {joinOrUprankFamily, leaveFamily, getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getFamilyRank, getAllFamilyMembers, startFamily, getFamilyBank, distributeFamilyBank, getFamilyDefBonus, getFamilyAttBonus} from '../../components/EthFamilyFunctions';
 
 import {ethers} from 'ethers';
 
 import NumberFormat from "react-number-format";
-import {StateContext} from '../../App';
+import {StateContext, EthContext} from '../../App';
 import {ColoredLine, SubmitButton} from '../../globalStyles'
 
 
 const Familycontrol = () => {
     const [, , mmConnected, , , ] = React.useContext(StateContext);
-    
-
-    
+    const [defenseState, , attackState, , , , , , , , , , , , , , , , , ] = React.useContext(EthContext);
 
     const [familyName, setFamilyName] = React.useState("");
     const [myFamilyName, setMyFamilyName] = React.useState("");
@@ -29,7 +27,9 @@ const Familycontrol = () => {
     const [allFamilyMembers, setAllFamilyMembers] = React.useState([]);
     const [familyAttackBonus, setFamilyAttackBonus] = React.useState();
     const [familyDefenseBonus, setFamilyDefenseBonus] = React.useState();
+    const [myFamilyIndex, setMyFamilyIndex] = React.useState();
 
+    
     const onChangeHandlerEntree = event => {
         setEntreeFee(event);
       };
@@ -48,7 +48,7 @@ const Familycontrol = () => {
         if (mmConnected) {
           let familyId = await getMemberFamilyIndex();
           let familyIdNumber = familyId.toNumber();
-          console.log(familyIdNumber)
+          setMyFamilyIndex(familyIdNumber);
           let FamilyNames = await getFamilyNames();
           if (FamilyNames.length > 0 && familyIdNumber !== 0) {
               let familyNameString = ethers.utils.parseBytes32String(FamilyNames[familyIdNumber-1]);
@@ -77,8 +77,8 @@ const Familycontrol = () => {
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
 
-
-
+  let levelArray = [10, 30, 50, 70];
+  let statsArray = [0, 74, 124, 199];
 
 //<Input type="submit" value="Submit" />
     return (
@@ -90,7 +90,8 @@ const Familycontrol = () => {
           <SubTitle> Number of family members: {familyOwner === 0x0000000000000000000000000000000000000000 ? "Not in a family" : allFamilyMembers.length}</SubTitle>
           <SubTitle> Family attack bonus: {familyAttackBonus}</SubTitle>
           <SubTitle> Family defense bonus: {familyDefenseBonus}</SubTitle>
-
+          {statsArray[levelArray.indexOf(familyRank)] < (defenseState + attackState)/1000000 ? <LeaveButton onClick={() => { joinOrUprankFamily(myFamilyIndex)}}> Uprank!</LeaveButton> : null }
+          
           <ColoredLine color="red" />
           
 
