@@ -60,7 +60,8 @@ export const StyledLink = styled(Link)`
     }
     
 
-    @media screen and (max-width: 960px) {
+
+    /* @media screen and (max-width: 960px) {
         text-align: center;
         padding: 2rem;
         width: 100px;
@@ -70,5 +71,5 @@ export const StyledLink = styled(Link)`
             color: #4b59f7;
             transition: all 0.3s ease;
         }
-    }
+    } */
 `

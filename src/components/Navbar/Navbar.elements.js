@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
 import { Container } from '../../globalStyles';
 import { Link } from 'react-router-dom';
+import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
 export const Nav = styled.nav`
     background: #101522;
@@ -18,26 +19,24 @@ export const Nav = styled.nav`
 `
 
 export const NavbarContainer = styled(Container)`
-display: flex;
-justify-content: space-between;
-height: 80px;
-${Container};
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
 `
 
 export const NavLogo = styled(Link)`
-color: #fff;
-justify-self: flex-start; // = to left side
-cursor: pointer;
-text-decoration: none;
-font-size: 2rem;
-display: flex;
-align-items: center;
+    color: #fff;
+    justify-self: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
 `
 
-export const NavIcon = styled.img` //FaMagento is the logo 
-margin-right: 0rem;
-box-sizing: border-box;
-max-height: 100%;
+export const NavIcon = styled.img` 
+    margin-right: 5px;
+    max-height: 80%;
 `
 
 export const MobileIcon = styled.div`
@@ -59,14 +58,14 @@ export const NavMenu = styled.ul`
     align-items: left;
     list-style: none;
     text-align: center;
-
+    padding: 16px;
+    
     @media screen and (max-width: 960px) {
-        display: flex;
+        padding: 32px;
         flex-direction: column;
-        width: 100%;
-        height: 90vh;
+        width: 100vw;
+        height: 100vh;
         position: absolute;
-        top: 80px;
         left: ${({ click }) => (click ? 0 : '-100%')};
         opacity: 1;
         transition: all 0.5s ease;
@@ -74,20 +73,16 @@ export const NavMenu = styled.ul`
     }
 `
 
-export const NavItem = styled.li`
-    height: 80px;
+export const NavItem = styled.div`
     border-bottom: 2px solid transparent;
+    padding: 4px 0;
     
     &:hover {
         border-bottom: 2px solid #4b59f7;
     }
 
-    @media screen and (max-width: 960px) {
-        width: 100%;
-
-        &:hover {
-            border: none;
-        }
+    ${breakpoint.m} {
+        padding: 0 8px;
     }
 `
 
@@ -96,52 +91,30 @@ export const NavLinks = styled(Link)`
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0.5rem 0.8rem;
-    height: 100%;
-
-    @media screen and (max-width: 960px) {
-        text-align: center;
-        padding: 2rem;
-        width: 100px;
-        display: table;
-        
-        &:hover {
-            color: #4b59f7;
-            transition: all 0.3s ease;
-        }
-    }
     `
 
 export const BetaLink = styled(Link)`
-color: #fff;
-width: 10vw;
-display: flex;
-align-items: center;
-text-decoration: none;
-padding: 0.5rem 0.5rem;
-height: 100%;
-
-@media screen and (max-width: 960px) {
-    text-align: center;
-    padding: 2rem;
+    color: red;
     width: 100px;
-    display: table;
-    
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 12px;
+
     &:hover {
         color: #4b59f7;
         transition: all 0.3s ease;
     }
-}
 `
 
 export const NavItemBtn = styled.li`
-@media screen and (max-width: 960px) {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    width: 300px;
-    height: 120px;
-}
+    @media screen and (max-width: 960px) {
+        display: flex;
+        justify-content: left;
+        align-items: left;
+        width: 300px;
+        height: 120px;
+    }
 `
 
 export const NavBtnLink = styled(Link)`
@@ -156,8 +129,6 @@ export const NavBtnLink = styled(Link)`
     outline: none;
 `
 
-
-
 export const StatsContainer = styled.ul`
     list-style-type: none;
     justify-content: space-between;
@@ -165,35 +136,26 @@ export const StatsContainer = styled.ul`
     cursor: pointer;
     text-decoration: none;
     font-size: 0.8rem;
-    display: inline-block;
     text-align: left;
+    padding-left: 0;
 
-@media screen and (max-width: 960px) {
-    display: table;
-    justify-content: left;
-    align-items: center;
-    width: 200px;
-    height: 120px;
-    color: #fff;
-    font-size: 1.2rem;
-    &:hover {
+    @media screen and (max-width: 960px) {
+        /* display: table; */
+        justify-content: left;
+        align-items: center;
+        /* width: 200px; */
+        height: 120px;
+        color: #fff;
+        font-size: 1.2rem;
+        &:hover {
             color: #4b59f7;
             transition: all 0.3s ease;
         }
-}
+    }
 `
 export const StatsItem = styled.li`
-  position: relative;
-  padding: 7px 0px 0px 0px;
-    
-@media screen and (max-width: 960px) {
-    top: 0%;
-    text-align: center;
-        padding: 1rem;
-        width: 400px;
-        display: flex;
-
-}
+    position: relative;
+    padding: 7px 0px 0px 0px;
 `
 
 export const MMConnect = styled.div`
@@ -211,5 +173,4 @@ export const MMConnect = styled.div`
     @media screen and (max-width: 960px) {
         align-items: top;   
     }
-    
 `

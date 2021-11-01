@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro'
 import { Link } from 'react-router-dom';
+import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
 export const FooterContainer = styled.div`
     background-color:rgba(16,21,34,.9);
@@ -8,7 +9,10 @@ export const FooterContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 20vw;
+
+    ${breakpoint.m} {
+        margin-left: 20vw;
+    }
 `;
 
 export const FooterSubscription = styled.section`
@@ -36,10 +40,10 @@ export const Form = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-@media screen and (max-width: 820px) {
-    flex-direction: column;
-    width: 80%auto;
-}
+    @media screen and (max-width: 820px) {
+        flex-direction: column;
+        width: 80%auto;
+    }
 `
 
 export const FormInput = styled.input`
@@ -51,15 +55,15 @@ export const FormInput = styled.input`
     font-size: 16px;
     border: 1px solid #fff;
 
-&::placeholder {
-    color: #242424;
-}
+    &::placeholder {
+        color: #242424;
+    }
 
-@media screen and (max-width: 820px) {
-width: 100%;
-    margin: 0 0 16px 0;
+    @media screen and (max-width: 820px) {
+        width: 100%;
+        margin: 0 0 16px 0;
 
-}
+    }
 `
 
 export const FooterLinksContainer = styled.div`
@@ -151,8 +155,6 @@ export const SocialIcon = styled.img` //FaMagento is the logo
 
 export const WebsiteRights = styled.small`
     color: #fff;
-    margin-left: 20px;
-    width: 600px;
     align-items: center;
 `
 

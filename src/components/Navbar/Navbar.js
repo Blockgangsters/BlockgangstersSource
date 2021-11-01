@@ -48,8 +48,7 @@ const Navbar = () => {
                     <NavMenu onClick={handleClick} click={click}>
                         <NavItem key="helppage">
                             <BetaLink to='/helppage'>
-
-                                <h6 style={{ color: "red" }}> Beta live on Polygon testnet! Click here for guide</h6>
+                                <div>Beta live on Polygon testnet! Click here for guide</div>
                             </BetaLink>
                         </NavItem>
                         <NavItem key="homepage">

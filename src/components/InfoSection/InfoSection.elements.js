@@ -1,11 +1,16 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom';
+import { breakpoint } from '../../styles/theme/responsive/breakpoint'
 
 export const InfoSec = styled.div`
-color: #fff;
-padding: ${({firstBlock}) => (firstBlock ? '160px 0' : '60px 0')};
-background: ${({lightBg}) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
-margin-left: 20vw;
+    color: #fff;
+    padding: ${({firstBlock}) => (firstBlock ? '160px 0' : '60px 0')};
+    background: ${({lightBg}) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
+
+    ${breakpoint.m} {
+        margin-left: 20vw;
+    }
+
 `
 
 export const InfoRow = styled.div`

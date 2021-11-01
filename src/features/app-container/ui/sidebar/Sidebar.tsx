@@ -2,11 +2,12 @@ import React, { FC } from 'react';
 
 import styled from '@emotion/styled/macro'
 import { ZIndex } from '../../../../styles/globals/ZIndex';
+import { breakpoint } from '../../../../styles/theme/responsive/breakpoint';
 
 export const Sidebar: FC = ({ children }) => {
     return (
         <StyledSidebar>
-            <StyledSidebarMenu isSidebarVisible={true}>
+            <StyledSidebarMenu>
 
                 <StyledSidebarContent>{children}</StyledSidebarContent>
             </StyledSidebarMenu>
@@ -19,7 +20,7 @@ const StyledSidebar = styled.div`
 	position: absolute;
 `;
 
-const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
+const StyledSidebarMenu = styled.div`
 	height: 100vh;
 	position: fixed;
 	z-index: ${ZIndex.Sidebar};
@@ -30,7 +31,6 @@ const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
 	opacity: 0;
 	transform: translateX(25%);
 	pointer-events: none;
-	transition: all 0.4s ease;
     background-color:rgba(16,21,34,.9);
     margin-top: 80px;
 
@@ -38,14 +38,13 @@ const StyledSidebarMenu = styled.div<{ isSidebarVisible: boolean }>`
 		display: none;
 	}
 
-
-	${(props) =>
-        props.isSidebarVisible &&
-        `
+	${breakpoint.m} {
 		transform: translateX(0);
 		opacity: 1;
 		pointer-events: initial;
-	`}
+	}
+
+
 `;
 
 const StyledSidebarContent = styled.div`

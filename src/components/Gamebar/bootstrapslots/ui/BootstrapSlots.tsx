@@ -6,7 +6,7 @@ import { SubmitButton } from '../../../../globalStyles'
 import Popup from 'reactjs-popup';
 import NumberFormat from "react-number-format";
 import { EthContext } from '../../../../App';
-import { Colors } from '../../../../styles/globals/Colors';
+import { Colors } from '../../../../styles/theme/colors/Colors';
 
 
 export const BootstrapSlots: FC = () => {
@@ -186,7 +186,4 @@ export const BuyButton = styled.button`
         background: #5FAA19;
     }
 
-    @media screen and (max-width: 960px) {
-        width: 200px;
-    }
 `
