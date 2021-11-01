@@ -300,7 +300,6 @@ function App() {
                     setCrowdfundSeconds(0); // finished & unclaimed
                     setCrowdfundClaimable(1);
                 }
-                console.log(crimeSeconds)
                 if (reject != null) {
                     console.log(reject)
                 }
@@ -314,7 +313,7 @@ function App() {
                 setAttackState(data.toNumber());
             });
         }
-    }, [finishedFlag, chainConnected, mmConnected, connectedAccount, crimeSeconds]); // load these stats once on page load. Hereafter listen to events. 
+    }, [finishedFlag, chainConnected, mmConnected, connectedAccount]); // load these stats once on page load. Hereafter listen to events. 
 
 
 

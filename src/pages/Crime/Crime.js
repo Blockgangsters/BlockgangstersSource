@@ -44,10 +44,10 @@ const Crime = () => {
           let providerBlock = await provider.getBlockNumber();
   
           // attack events
-          let crimeFilter = gangContract.filters.crimeResult(null, null, null) // success, loot, stamp
+          let crimeFilter = gangContract.filters.crimeResult(window.ethereum.selectedAddress, null, null, null) // success, loot, stamp
           let events = await gangContract.queryFilter(crimeFilter, providerBlock-70000 , providerBlock )
           setEvents(events.reverse())
-          console.log(events)
+          console.log("Events are: ", events)
         }
       }
         fetchEvents();
@@ -178,16 +178,22 @@ const Crime = () => {
 
 
 
-            <h1 style={{color:"white"}}> Last crimes: </h1>
+            <h1 style={{color:"white"}}> Your last crimes: </h1>
                 {events.map((option, index) => (
-                    index > 2 ? null : (option.args[0] === true ? 
-                <h4 style={{color:"green"}}> index {index} -- A loot of: ₲<NumberFormat 
-                value={option.args[1].toNumber()}
+                    index > 2 ? null : (option.args[1] === true ? 
+                      
+                <h4 style={{color:"green"}}> 
+                {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600) > 0 ? <> {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600)} hours ago </>: "In the last hour "}
+                you looted ₲<NumberFormat 
+                value={option.args[2].toNumber()}
                 displayType={"text"}
                 decimalSeparator={"."}
                 thousandSeparator={true}
-                decimalScale={0} /></h4> :
-                <h4 style={{color:"red"}}> Index {index} -- Failed </h4>)
+                decimalScale={0} /> </h4>  : 
+                <h4 style={{color:"red"}}> 
+                {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600) > 0 ? <> {Math.floor((Date.now()/1000-option.args[3].toNumber())/3600)} hours ago </>: "In the last hour "}
+
+                you failed.. </h4>)
                 ))}
         </PageWrapper>
         

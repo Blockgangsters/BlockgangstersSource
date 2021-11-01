@@ -1,5 +1,5 @@
 import React from 'react';
-import { InfoSec, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, ImgWrapper, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
+import { TitleWrapper, ReleaseWrapper, InfoSec, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, ImgWrapper, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
 import { Container, Button } from '../../globalStyles'
 import { Link } from 'react-router-dom'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -39,7 +39,7 @@ const getTimeDays = (time) => (time / daySeconds) | 0;
 const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStart, lightTopLine, lightText, lightTextDesc, buttonLabel, description, headline, topLine, img, alt, start }) => {
     // start CountdownCircle  
     const stratTime = Date.now() / 1000; // 23 10 21
-    const endTime = 1635721200; // 1 nov 21
+    const endTime = 1637017200; // 1 nov 21
     const remainingTime = endTime - stratTime;
     const days = Math.ceil(remainingTime / daySeconds);
     const daysDuration = days * daySeconds;
@@ -55,9 +55,9 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                     <InfoRow imgStart={imgStart}>
                         <InfoColumn>
                             <TextWrapper>
+                                
 
-
-                                {countdownTimer === true ? <> <TitleBox> Public testnet release in: </TitleBox> <CircleWrapper> <CountdownCircleTimer
+                                {countdownTimer === true ? <ReleaseWrapper> <TitleWrapper to="/trainstats"> Release Candidate live on Mumbai testnet. Click here to start playing now!</TitleWrapper> <TitleBox> Main net release in: </TitleBox> <CircleWrapper> <CountdownCircleTimer
                                     {...timerProps}
                                     colors={[["#a9b3c1"]]}
                                     strokeWidth="12"
@@ -113,7 +113,7 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                                         {({ elapsedTime }) =>
                                             renderTime("seconds", getTimeSeconds(elapsedTime))
                                         }
-                                    </CountdownCircleTimer></CircleWrapper> </> : null}
+                                    </CountdownCircleTimer></CircleWrapper> </ReleaseWrapper> : null}
                                 {countdownTimer ? <> <TimerText> Join us now on social media to get started right away! </TimerText>
                                     <SocialIcons>
                                         <SocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">

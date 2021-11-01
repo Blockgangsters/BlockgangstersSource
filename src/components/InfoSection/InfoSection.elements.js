@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom';
 
 export const InfoSec = styled.div`
 color: #fff;
@@ -35,12 +36,59 @@ export const TextWrapper = styled.div`
 max-width: 800px;
 padding-top: 0;
 padding-bottom: 60px;
-
+align-items: center;
+justify-items: center;
 @media screen and (max-width: 768px) {
     padding-bottom: 65px;
 };
 `
-//flex-wrap: squeeze items together to fit or start at new line. nowrap = squeeze, flex-wrap = new line
+
+export const ReleaseWrapper = styled.div`
+max-width: 800px;
+padding-top: 0;
+padding-bottom: 60px;
+justify-items: center;
+align-items: center;
+@media screen and (max-width: 768px) {
+    padding-bottom: 65px;
+};
+`
+
+export const TitleWrapper = styled(Link)`
+padding-top: 0;
+text-decoration: none;
+padding-bottom: 60px;
+color: white;
+text-shadow:
+      0 0 21px #fff,
+      0 0 92px #0fa,
+      0 0 200px #0fa;
+      animation: neon 1s ease-in-out infinite alternate;
+
+      @keyframes neon {
+  from {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.92),
+    0 0 30px rgba(202,228,225,0.34),
+ 
+    0 0 34px rgba(30,132,242,0.78),
+    0 0 54px rgba(30,132,242,0.92);
+  }
+  to {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+
+  }
+}
+
+  
+@media screen and (max-width: 768px) {
+    padding-bottom: 65px;
+};
+`
 
 export const BootstrapWrapper = styled.div`
 max-width: 800px;
@@ -65,7 +113,6 @@ display: inline-block;
 
 
 export const CircleWrapper = styled.div`
-max-width: 800px;
 padding-top: 0;
 padding-bottom: 60px;
 flex-direction: row;
@@ -87,6 +134,7 @@ margin-bottom: 16px;
 
 export const TitleBox = styled.div`
 color: white;
+padding-top: 50px;
 font-size: 32px;
 line-height: 16px;
 letter-spacing: 1.4px;

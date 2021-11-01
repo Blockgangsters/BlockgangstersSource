@@ -214,3 +214,19 @@ export async function getCrimeStatus() {
     let gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
     await gangContract.transferETH(signer.getAddress());
   }
+
+  export async function getClaimed() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+	const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+	let amountVested = await gangContract.getClaimed();
+	return amountVested
+} 
+
+export async function getVesting() {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+await gangContract.getVesting();
+} 
+

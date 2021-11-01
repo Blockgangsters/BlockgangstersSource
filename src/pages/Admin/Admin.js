@@ -1,6 +1,6 @@
 import {PageWrapper, CrimeContainer, Title, SubTitle} from './Admin.elements';
 import React, {useEffect }  from 'react';
-import {tokenAddress, getLINKBalance, transferETH } from '../../components/EthFunctions';
+import {tokenAddress, getLINKBalance, transferETH, getClaimed, getVesting } from '../../components/EthFunctions';
 import {ethers} from 'ethers';
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
@@ -13,6 +13,7 @@ const Admin = () => {
     const [, , mmConnected, , , ] = React.useContext(StateContext);
     const [linkBalance, setLinkBalance] = React.useState(0);
     const [ethBalance, setEthBalance] = React.useState(0);
+    const [vested, setVested] = React.useState(0);
 
     useEffect(() => {  
       const fetchEvents = async() => {
@@ -25,6 +26,8 @@ const Admin = () => {
           setEthBalance(ethers.utils.formatEther( balance ));
           const linkBalance = await getLINKBalance();
           setLinkBalance(linkBalance);
+          const tokensVested = await getClaimed();
+          setVested(ethers.utils.formatEther( tokensVested ));
         }
       }
         fetchEvents();
@@ -55,6 +58,14 @@ const Admin = () => {
             decimalScale={3}
             type="text" />   
             <SubmitButton onClick={() => { transferETH()}}> Withdraw! </SubmitButton> </SubTitle> 
+
+            <SubTitle> Vested GANG tokens: <NumberFormat
+            value={vested}
+            decimalSeparator="."
+            displayType="text"
+            decimalScale={0}
+            type="text" />   
+            <SubmitButton onClick={() => { getVesting()}}> Use vesting! </SubmitButton> </SubTitle> 
 
             
 
