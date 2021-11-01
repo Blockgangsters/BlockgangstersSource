@@ -119,9 +119,10 @@ const Familycontrol = () => {
 
 
                 {familyRank === 0 ? 
-           <><TitleTwo>Start a family!</TitleTwo> <ul><li>  Family Name:        <input type="text" value={familyName} onChange={value => setFamilyName(value.target.value)} /> 
+           <><TitleTwo>Start a family!</TitleTwo> <ul><li>  Family Name:        <input placeholder={"Enter a name.."} type="text" value={familyName} onChange={value => setFamilyName(value.target.value)} /> 
 </li><li> Entree fee (>0)
                         <NumberFormat
+        placeholder={"Enter entree fee.."} 
         thousandsGroupStyle="thousand"
         value={entreeFee}
         prefix="₲"
@@ -133,7 +134,8 @@ const Familycontrol = () => {
         onValueChange={({ value }) => {
             onChangeHandlerEntree(value)}} /> 
 </li><li>
-                        Mission Fee (0-100%): <NumberFormat
+                        Family cut on income: (0-100%): <NumberFormat
+        placeholder={"Enter family cut.."} 
         thousandsGroupStyle="thousand"
         value={missionFee}
         decimalSeparator="."

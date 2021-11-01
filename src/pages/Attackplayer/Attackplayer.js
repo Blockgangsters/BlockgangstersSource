@@ -74,7 +74,7 @@ const Attackplayer = () => {
             <h1 style={{color:"white"}}> Last attacks: </h1>
                 {events.map((option, index) => (
                     index > 2 ? null : (option.args[0] === true ? 
-                <h4 style={{color:"green"}}> index {index} -- {option.args[1]} attacked {option.args[2]} for a loot of: ₲<NumberFormat 
+                <h4 key={index} style={{color:"green"}}> index {index} -- {option.args[1]} attacked {option.args[2]} for a loot of: ₲<NumberFormat 
                 value={option.args[3].toNumber()}
                 displayType={"text"}
                 decimalSeparator={"."}

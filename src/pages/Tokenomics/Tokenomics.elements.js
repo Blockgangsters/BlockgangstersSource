@@ -35,7 +35,7 @@ flex-direction: column; // to put the title above the chart (instead of next to 
 `
 
 //ChartTitle is above the chart, inside the chartwrapper
-export const ChartTitle = styled.p`
+export const ChartTitle = styled.div`
 max-width: 700px;
 justify-content: center;
 display: flex;
@@ -103,7 +103,7 @@ flex-direction: column; // to put the title above the chart (instead of next to 
 `
 
 //ChartTitle is above the chart, inside the chartwrapper
-export const PieTitle = styled.p`
+export const PieTitle = styled.div`
 max-width: 700px;
 margin-left: 150px;
 display: flex;

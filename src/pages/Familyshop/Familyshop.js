@@ -93,7 +93,7 @@ const Familyshop = () => {
                 <Title> Donate to family </Title>
            
                 <ItemContainer>
-             <NumberFormat onValueChange={({ value }) => {onChangeHandlerDeposit(value)}} value={inputValueDeposit} displayType={"input"} thousandSeparator={true} mask="Test" prefix={"₲ "} /> 
+             <NumberFormat placeholder={"enter amount.."} onValueChange={({ value }) => {onChangeHandlerDeposit(value)}} value={inputValueDeposit} displayType={"input"} thousandSeparator={true} mask="Test" prefix={"₲ "} /> 
             <SubmitButton onClick={() => { depositFamilyBank(inputValueDeposit)}}> Donate to family!</SubmitButton>
                 </ItemContainer>
                 </CrimeContainer>                
