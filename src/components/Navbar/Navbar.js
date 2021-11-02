@@ -1,166 +1,138 @@
-import React, { useState, useEffect } from 'react';
-import { Nav, BetaLink, NavbarContainer, NavLogo, NavIcon, MobileIcon, NavMenu, NavLinks, NavItem, NavItemBtn, NavBtnLink, StatsItem, StatsContainer, MMConnect } from './Navbar.elements';
+import React, { useState } from 'react';
+import { Container } from '../../globalStyles';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { IconContext } from 'react-icons/lib'
-import { Button } from '../../globalStyles'
-import NumberFormat from "react-number-format";
-import { connectWallet } from '../EthFunctions'
-
+import styled from '@emotion/styled/macro';
 import { StateContext } from '../../App';
-
+import { Link } from 'react-router-dom';
+import { Colors } from '../../styles/theme/colors/Colors';
+import { breakpoint } from '../../styles/theme/responsive/breakpoint';
+import { CoinStats } from './coinstats/CoinStats';
+import { MetaMaskConnect } from './metamaskconnect/MetaMaskConnect';
+import { IconContext } from 'react-icons/lib'
 
 
 const Navbar = () => {
 
     const [click, setClick] = useState(false)
-    const [button, setButton] = useState(true);
-    const [, gangbalance, mmConnected, mainConnected, testConnected, adminConnected, inGameFunds] = React.useContext(StateContext);
+    const [, , , , , adminConnected,] = React.useContext(StateContext);
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
 
-    const showButton = () => {
-        if (window.innerWidth <= 960) {
-            setButton(false)
-        } else {
-            setButton(true)
-        }
-    }
-
-    useEffect(() => {
-        showButton()
-    }, []);
-
-    window.addEventListener('resize', showButton);
-
     return (
-        <IconContext.Provider value={{ color: '#fff' }}>
-            <Nav>
-                <NavbarContainer>
-                    <NavLogo to="/" onClick={closeMobileMenu}>
-                        <NavIcon src="images/logo_gang_101522.png" />
-                        Blockgangsters.io
-                    </NavLogo>
-
-                    <MobileIcon onClick={handleClick}>
+        <StyledNavbar>
+            <NavbarContainer>
+                <NavLogo to="/" onClick={closeMobileMenu}>
+                    <NavIcon src="images/logo_gang_101522.png" />
+                    Blockgangsters.io
+                </NavLogo>
+                <MobileIcon onClick={handleClick}>
+                    <IconContext.Provider
+                        value={{ color: 'white' }}
+                    >
                         {click ? <FaTimes /> : <FaBars />}
-                    </MobileIcon>
 
-                    <NavMenu onClick={handleClick} click={click}>
-                        <NavItem key="helppage">
-                            <BetaLink to='/helppage'>
-                                <div>Beta live on Polygon testnet! Click here for guide</div>
-                            </BetaLink>
-                        </NavItem>
-                        <NavItem key="homepage">
-                            <NavLinks to='/'>
-                                Home
-                            </NavLinks>
-                        </NavItem>
-                        <NavItem key="whitepaper">
-                            <NavLinks to='/whitepaper'>
-                                Whitepaper
-                            </NavLinks>
-                        </NavItem>
-                        <NavItem key="contract">
-                            <NavLinks to='/contract'>
-                                Contract
-                            </NavLinks>
-                        </NavItem>
-                        <NavItem key="roadmap">
-                            <NavLinks to='/roadmap'>
-                                Roadmap
-                            </NavLinks>
-                        </NavItem>
-                        <NavItem key="tokenomics">
-                            <NavLinks to='/tokenomics'>
-                                Tokenomics
-                            </NavLinks>
-                        </NavItem>
-                        {adminConnected ?
-                            <NavItem key="admin">
-                                <NavLinks to='/admin'>
-                                    Admin page
-                                </NavLinks>
-                            </NavItem> : null}
+                    </IconContext.Provider>
+                </MobileIcon>
 
-
-                        {button && !mmConnected ?
-                            <NavItemBtn key="signup"><NavBtnLink to="/sign-up">
-                                <Button primary onClick={() => {
-                                    const reaction = connectWallet();
-                                    console.log(reaction.then((data) => {
-                                        if (data.connectedStatus === false) {
-                                            console.log(data.status)
-                                        }
-                                    }))
-                                }}>Connect MetaMask</Button>
-                            </NavBtnLink></NavItemBtn> :
-                            (!button && !mmConnected
-                                ?
-                                <NavItemBtn key="signupmobile"><NavBtnLink to="/sign-up">
-                                    <Button onClick={() => {
-                                        const reaction = connectWallet();
-                                        console.log(reaction.then((data) => {
-                                            if (data.connectedStatus === false) {
-                                                console.log(data.status)
-                                            }
-                                        }))
-                                    }}>Connect MetaMask</Button>
-                                </NavBtnLink> </NavItemBtn>
-                                : null)
-                        }
-                        {mmConnected && mainConnected === true ? (
-                            <StatsContainer key="statscontainerMain">
-                                <StatsItem key="gangmainBalance">
-                                    <NumberFormat
-                                        value={gangbalance}
-                                        displayType={"text"}
-                                        decimalSeparator={"."}
-                                        thousandSeparator={true}
-                                        decimalScale={0}
-                                        prefix={"Wallet ₲ Balance: "}
-                                    />
-                                </StatsItem>
-
-                                <StatsItem key="inGamemainFunds">
-                                    <NumberFormat
-                                        value={inGameFunds}
-                                        displayType={"text"}
-                                        decimalSeparator={"."}
-                                        thousandSeparator={true}
-                                        decimalScale={0}
-                                        prefix={"In-game ₲ Balance: "} />
-                                </StatsItem>
-                            </StatsContainer>) : [(mmConnected && mainConnected !== true && testConnected === true ?
-                                <StatsContainer key="statscontainerTest">
-                                    <StatsItem key="gangtestbalance">
-                                        <NumberFormat
-                                            value={gangbalance}
-                                            displayType={"text"}
-                                            decimalSeparator={"."}
-                                            thousandSeparator={true}
-                                            decimalScale={0}
-                                            prefix={"Wallet ₲ Balance: "}
-                                        />
-                                    </StatsItem>
-
-                                    <StatsItem key="inGametestFunds">
-                                        <NumberFormat
-                                            value={inGameFunds}
-                                            displayType={"text"}
-                                            decimalSeparator={"."}
-                                            thousandSeparator={true}
-                                            decimalScale={0}
-                                            prefix={"In-game ₲ Balance: "} />
-                                    </StatsItem>
-                                    <MMConnect key="TestNetMMConnect">Testnet connected</MMConnect>
-                                </StatsContainer> : (mmConnected ? <MMConnect key="UnsupportedChain">Unsupported chain</MMConnect> : null))]
-                        }
-                    </NavMenu>
-                </NavbarContainer>
-            </Nav>
-        </IconContext.Provider>
+                <NavMenu onClick={handleClick} click={click}>
+                    <StyledBetaLink to="/helppage">Beta live on Polygon testnet! Click here for guide</StyledBetaLink>
+                    <StyledNavLink to="/">Home</StyledNavLink>
+                    <StyledNavLink to="/whitepaper">Whitepaper</StyledNavLink>
+                    <StyledNavLink to="/contract">Contract</StyledNavLink>
+                    <StyledNavLink to="/roadmap">Roadmap</StyledNavLink>
+                    <StyledNavLink to="/tokenomics">Tokenomics</StyledNavLink>
+                    {adminConnected && <StyledNavLink to="/admin">Admin page</StyledNavLink>}
+                    <CoinStats />
+                    <MetaMaskConnect />
+                </NavMenu>
+            </NavbarContainer>
+        </StyledNavbar>
     )
 }
 
-export default Navbar
+export default Navbar;
+
+const StyledNavbar = styled.nav`
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+
+    background: #101522;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+
+`
+const NavbarContainer = styled(Container)`
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+`
+
+const StyledNavLink = styled(Link)`
+    color: ${Colors.White};
+    text-decoration: none;
+    text-align: left;
+    
+    ${breakpoint.m} {
+        padding: 0 10px;
+    }
+`
+const StyledBetaLink = styled(Link)`
+    color: ${Colors.Red};
+    font-size: 10px;
+`
+
+const NavLogo = styled(Link)`
+    color: #fff;
+    justify-self: flex-start;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+`
+
+const NavIcon = styled.img` 
+    margin-right: 5px;
+    max-height: 60px;
+`
+
+const MobileIcon = styled.div`
+    display: none;
+
+    @media screen and (max-width: 960px) {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+    }
+`
+
+const NavMenu = styled.ul`
+    display: flex;
+    align-items: left;
+    list-style: none;
+    text-align: center;
+    padding: 16px;
+    
+    @media screen and (max-width: 960px) {
+        padding: 32px;
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        left: ${({ click }) => (click ? 0 : '-100%')};
+        opacity: 1;
+        transition: all 0.5s ease;
+        background: #101522;
+    }
+` 
