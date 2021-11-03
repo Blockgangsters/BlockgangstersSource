@@ -4,7 +4,7 @@ export const ObjectRoadmap = {
     imgStart: '',
     lightTopLine: true,
     lightTextDesc: true,
-    buttonLabel: "Connect MetaMask to start",
+    buttonLabel: "Connect MetaMask",
     description: "Placeholder Roadmap",
     headline: "Placeholder Roadmap",
     lightText: true,
