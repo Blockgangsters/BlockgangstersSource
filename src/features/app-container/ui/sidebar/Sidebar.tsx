@@ -5,14 +5,14 @@ import { ZIndex } from '../../../../styles/globals/ZIndex';
 import { breakpoint } from '../../../../styles/theme/responsive/breakpoint';
 
 export const Sidebar: FC = ({ children }) => {
-    return (
-        <StyledSidebar>
-            <StyledSidebarMenu>
+	return (
+		<StyledSidebar>
+			<StyledSidebarMenu>
 
-                <StyledSidebarContent>{children}</StyledSidebarContent>
-            </StyledSidebarMenu>
-        </StyledSidebar>
-    );
+				<StyledSidebarContent>{children}</StyledSidebarContent>
+			</StyledSidebarMenu>
+		</StyledSidebar>
+	);
 };
 
 
@@ -25,9 +25,8 @@ const StyledSidebarMenu = styled.div`
 	height: 100vh;
 	position: fixed;
 	z-index: ${ZIndex.Sidebar};
-    max-width: 20%;
+    width: 20vw;
 	top: 0;
-	width: 100%;
 	overflow-y: auto;
 	opacity: 0;
 	transform: translateX(25%);

@@ -58,14 +58,18 @@ const StyledNavbar = styled.nav`
     height: 80px;
 
     background: #101522;
-    height: 80px;
+    height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    // justify-content: center;
+    // align-items: center;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
     z-index: 999;
+
+    ${breakpoint.m} {
+        height: 80px;
+    }
 
 `
 

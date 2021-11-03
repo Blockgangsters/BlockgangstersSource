@@ -55,7 +55,7 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                     <InfoRow imgStart={imgStart}>
                         <InfoColumn>
                             <TextWrapper>
-                                
+
 
                                 {countdownTimer === true ? <ReleaseWrapper> <TitleWrapper to="/trainstats"> Release Candidate live on Mumbai testnet. Click here to start playing now!</TitleWrapper> <TitleBox> Main net release in: </TitleBox> <CircleWrapper> <CountdownCircleTimer
                                     {...timerProps}

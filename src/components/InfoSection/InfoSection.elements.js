@@ -1,37 +1,34 @@
-import styled from 'styled-components'
+import styled from '@emotion/styled/macro'
 import { Link } from 'react-router-dom';
-import { breakpoint } from '../../styles/theme/responsive/breakpoint'
+//import { breakpoint } from '../../styles/theme/responsive/breakpoint'
 
 export const InfoSec = styled.div`
     color: #fff;
-    padding: ${({firstBlock}) => (firstBlock ? '160px 0' : '60px 0')};
-    background: ${({lightBg}) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
-
-    ${breakpoint.m} {
-        margin-left: 20vw;
+    padding: ${({ firstBlock }) => (firstBlock ? '160px 0' : '60px 0')};
+    background: ${({ lightBg }) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
+    margin-left: 20vw;
+    @media screen and (max-width: 768px) {
+        padding: 0;
+        margin-left: 0;
+        width: 100vw;
+     //   padding-left: 30px;
     }
+}
 
 `
 
 export const InfoRow = styled.div`
 display: flex;
-margin: 0 -15px -15px -15px;
+//margin: 0 -15px -15px -15px;
 flex-wrap: wrap;
 align-items: center;
-flex-direction: ${({imgStart}) => (imgStart ? 'row-reverse' : 'row')};
-
+flex-direction: ${({ imgStart }) => (imgStart ? 'row-reverse' : 'row')};
 `
 
 export const InfoColumn = styled.div`
 flex: 1;
 max-width: 50%;
 flex-basis: 50%;
-@media screen and (max-width: 768px) {
-    max-width: 100%;
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
-}
 `
 
 export const TextWrapper = styled.div`
@@ -53,6 +50,7 @@ justify-items: center;
 align-items: center;
 @media screen and (max-width: 768px) {
     padding-bottom: 65px;
+    width: 100vw;
 };
 `
 
@@ -95,6 +93,7 @@ color: black;
 
 @media screen and (max-width: 768px) {
     padding-bottom: 65px;
+    width: 100vw;
 };
 `
 
@@ -111,7 +110,7 @@ export const CircleWrapper = styled.div`
 max-width: 100%;
 padding-top: 0;
 padding-bottom: 60px;
-display: inline-block;
+display: flex;
 justify-content: center;
 transform: scale(80%);
 @media screen and (max-width: 768px) {
@@ -120,7 +119,7 @@ transform: scale(80%);
 `
 
 export const TopLine = styled.div`
-color: ${({lightTopLine}) => (lightTopLine ? '#a9b3c1' : '#4B59F7')};
+color: ${({ lightTopLine }) => (lightTopLine ? '#a9b3c1' : '#4B59F7')};
 font-size: 18px;
 line-height: 16px;
 letter-spacing: 1.4px;
@@ -150,7 +149,7 @@ export const Heading = styled.h1`
 margin-bottom: 24px;
 font-size: 48px;
 line-height: 1.1;
-color: ${({lightText}) => (lightText ? '#f7f8fa' : '#1c2237')};
+color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#1c2237')};
 `
 
 export const Subtitle = styled.p`
@@ -158,13 +157,13 @@ max-width: 440px;
 margin-bottom: 35px;
 font-size: 18px;
 line-height: 24px;
-color: ${({lightTextDesc}) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
+color: ${({ lightTextDesc }) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
 `
 
 export const ImgWrapper = styled.div`
 max-width: 555px;
 display: flex;
-justify-content: ${({start}) => (start ? 'flex-start' : 'flex-end')};
+justify-content: ${({ start }) => (start ? 'flex-start' : 'flex-end')};
 `
 
 export const Img = styled.img`
