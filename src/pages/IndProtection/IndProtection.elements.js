@@ -1,16 +1,5 @@
 import styled from 'styled-components';
 
-
-//TokenomicsContainer is around whole page, sets background etc.
-export const PageWrapper = styled.div`
-max-width: 100%;
-max-height: 100%;
-padding: 0 0; // no padding, thats in the container
-background: rgba(16,21,34,.9);
-margin-left: 20vw;
-
-`
-
 //TokenomicsContainer is around whole page, sets background etc.
 export const AttackPlayerContainer = styled.div`
 max-width: 100%;

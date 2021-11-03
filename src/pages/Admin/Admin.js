@@ -1,10 +1,10 @@
-import {PageWrapper, CrimeContainer, Title, SubTitle} from './Admin.elements';
+import {CrimeContainer, Title, SubTitle} from './Admin.elements';
 import React, {useEffect }  from 'react';
 import {tokenAddress, getLINKBalance, transferETH, getClaimed, getVesting } from '../../components/EthFunctions';
 import {ethers} from 'ethers';
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 
 
 

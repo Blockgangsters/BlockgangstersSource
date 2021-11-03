@@ -1,7 +1,8 @@
 import React, { useCallback, useState }  from 'react';
-import {TokenomicsContainer, ChartWrapper, TextWrapper, TopLine, Heading, ChartTitle, ListItem, UnorderedList, PageWrapper, AllocationContainer, PieWrapper, PieTitle, HeadingPie, TopLinePie, PieTextWrapper} from './Tokenomics.elements';
+import {TokenomicsContainer, ChartWrapper, TextWrapper, TopLine, Heading, ChartTitle, ListItem, UnorderedList, AllocationContainer, PieWrapper, PieTitle, HeadingPie, TopLinePie, PieTextWrapper} from './Tokenomics.elements';
 import {dataSet, data} from './Data' 
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Sector} from 'recharts';
+import {PageWrapper} from '../../globalStyles'
 
 const renderActiveShape = (props: any) => {
   const RADIAN = Math.PI / 180;

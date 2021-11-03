@@ -1,4 +1,4 @@
-import {PageWrapper, CrimeContainer, Title, TitleTwo, SubTitle, LeaveButton} from './Familycontrol.elements';
+import { CrimeContainer, Title, TitleTwo, SubTitle, LeaveButton} from './Familycontrol.elements';
 import React, {useEffect }  from 'react';
 import {joinOrUprankFamily, leaveFamily, getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getFamilyRank, getAllFamilyMembers, startFamily, getFamilyBank, distributeFamilyBank, getFamilyDefBonus, getFamilyAttBonus} from '../../components/EthFamilyFunctions';
 
@@ -6,7 +6,7 @@ import {ethers} from 'ethers';
 
 import NumberFormat from "react-number-format";
 import {StateContext, EthContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 
 
 const Familycontrol = () => {

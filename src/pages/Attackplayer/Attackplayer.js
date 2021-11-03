@@ -1,6 +1,6 @@
 import React, {useEffect, useState }  from 'react';
-import {PageWrapper, AttackPlayerContainer, Title, SubTitle, AttackDoubleContainer} from './Attackplayer.elements';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {AttackPlayerContainer, Title, SubTitle, AttackDoubleContainer} from './Attackplayer.elements';
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 import {StateContext, EthContext} from '../../App';
 import {tokenAddress, attackPlayer, hireAttorney} from '../../components/EthFunctions';
 import {ethers} from 'ethers';

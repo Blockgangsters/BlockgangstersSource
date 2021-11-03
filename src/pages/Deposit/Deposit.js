@@ -1,11 +1,11 @@
-import {PageWrapper, CrimeContainer, Title, SubTitle} from './Deposit.elements';
+import {CrimeContainer, Title, SubTitle} from './Deposit.elements';
 import React, {useEffect, useState }  from 'react';
 import {tokenAddress, withdrawFunds, depositFunds } from '../../components/EthFunctions';
 import {ethers} from 'ethers';
 import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 
 
 

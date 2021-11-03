@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
 export const Nav = styled.nav`
+
     background: #101522;
     height: 80px;
     display: flex;
@@ -13,6 +14,7 @@ export const Nav = styled.nav`
     position: sticky;
     top: 0;
     z-index: 999;
+    width: 100%;
 
     &:hover {    
     }
@@ -22,21 +24,23 @@ export const NavbarContainer = styled(Container)`
     display: flex;
     justify-content: space-between;
     height: 80px;
+    max-width: 100%;
 `
 
 export const NavLogo = styled(Link)`
     color: #fff;
-    justify-self: flex-start;
     cursor: pointer;
     text-decoration: none;
     font-size: 30px;
     display: flex;
     align-items: center;
+    max-width: 20vw;
 `
 
 export const NavIcon = styled.img` 
     margin-right: 5px;
     max-height: 80%;
+    width: auto;
 `
 
 export const MobileIcon = styled.div`
@@ -50,6 +54,7 @@ export const MobileIcon = styled.div`
     transform: translate(-100%, 60%);
     font-size: 1.8rem;
     cursor: pointer;
+    z-index: 110;
 }
 `
 
@@ -61,10 +66,11 @@ export const NavMenu = styled.ul`
     padding: 16px;
     
     @media screen and (max-width: 960px) {
-        padding: 32px;
+        padding: 0;
+        margin-top: 80px;
         flex-direction: column;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
         position: absolute;
         left: ${({ click }) => (click ? 0 : '-100%')};
         opacity: 1;

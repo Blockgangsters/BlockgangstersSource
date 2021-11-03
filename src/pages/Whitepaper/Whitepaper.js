@@ -1,7 +1,8 @@
 import React, {useState}  from 'react';
-import {PageWrapper, PDFContainer, TextBox, PDFBox} from './Whitepaper.elements';
+import {PDFContainer, TextBox, PDFBox} from './Whitepaper.elements';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-//import whitepaperPDF from './Whitepaper.pdf'; 
+import {PageWrapper} from '../../globalStyles'
+
 
 const Whitepaper = () => {
   const [numPages, setNumPages] = useState(null);

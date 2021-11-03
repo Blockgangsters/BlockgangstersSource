@@ -1,8 +1,8 @@
-import {PageWrapper, CrimeContainer, Title, SubTitle} from './Trainstats.elements';
+import {CrimeContainer, Title, SubTitle} from './Trainstats.elements';
 import React  from 'react';
 import {Statstraining} from '../../components/EthFunctions';
 import {EthContext} from '../../App';
-import {SubmitButton} from '../../globalStyles'
+import {SubmitButton, PageWrapper} from '../../globalStyles'
 import Select from 'react-select'
 
 const Trainstats = () => {

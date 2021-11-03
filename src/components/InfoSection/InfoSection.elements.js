@@ -23,9 +23,6 @@ flex-direction: ${({imgStart}) => (imgStart ? 'row-reverse' : 'row')};
 `
 
 export const InfoColumn = styled.div`
-margin-bottom: 15px;
-padding-right: 15px;
-padding-left: 15px;
 flex: 1;
 max-width: 50%;
 flex-basis: 50%;
@@ -38,7 +35,7 @@ flex-basis: 50%;
 `
 
 export const TextWrapper = styled.div`
-max-width: 800px;
+max-width: 100%;
 padding-top: 0;
 padding-bottom: 60px;
 align-items: center;
@@ -111,12 +108,12 @@ display: inline-block;
 
 
 export const CircleWrapper = styled.div`
+max-width: 100%;
 padding-top: 0;
 padding-bottom: 60px;
-flex-direction: row;
-display: flex;
+display: inline-block;
 justify-content: center;
-
+transform: scale(80%);
 @media screen and (max-width: 768px) {
     padding-bottom: 65px;
 };

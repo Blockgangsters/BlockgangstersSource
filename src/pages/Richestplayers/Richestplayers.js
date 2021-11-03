@@ -1,7 +1,7 @@
-import {PageWrapper, CrimeContainer, Title} from './Richestplayers.elements';
+import {CrimeContainer, Title} from './Richestplayers.elements';
 import React, {useEffect }  from 'react';
 import {getActiveList, getingameFunds} from '../../components/EthFunctions';
-
+import {PageWrapper} from '../../globalStyles'
 import {StateContext} from '../../App';
 import { useTable, useSortBy  } from "react-table";
 

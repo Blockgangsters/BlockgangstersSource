@@ -18,6 +18,7 @@ export const Sidebar: FC = ({ children }) => {
 
 const StyledSidebar = styled.div`
 	position: absolute;
+	box-sizing: border-box;
 `;
 
 const StyledSidebarMenu = styled.div`
@@ -48,5 +49,5 @@ const StyledSidebarMenu = styled.div`
 `;
 
 const StyledSidebarContent = styled.div`
-
+	
 `;

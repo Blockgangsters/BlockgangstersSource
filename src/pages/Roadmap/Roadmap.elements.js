@@ -7,6 +7,9 @@ padding: 160px 0;
 margin-left: 20vw;
 
 background: ${({lightBg}) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
+@media screen and (max-width: 768px) {
+    margin: 0;
+};
 `
 
 

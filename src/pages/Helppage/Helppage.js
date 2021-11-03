@@ -1,6 +1,6 @@
 import React  from 'react';
-import {TokenomicsContainer, TextWrapper, Heading, ListItem, UnorderedList, PageWrapper, AllocationContainer, HeadingPie, PieTextWrapper, Hyperlink, HyperlinkWhite} from './Helppage.elements';
-
+import {TokenomicsContainer, TextWrapper, Heading, ListItem, UnorderedList, AllocationContainer, HeadingPie, PieTextWrapper, Hyperlink, HyperlinkWhite} from './Helppage.elements';
+import {PageWrapper} from '../../globalStyles'
 
 const Helppage = () => {
 

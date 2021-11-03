@@ -1,11 +1,11 @@
-import {PageWrapper, CrimeContainer, Title, ChartContainer, SubTitle, SelectContainer} from './Crime.elements';
+import {CrimeContainer, Title, ChartContainer, SubTitle, SelectContainer} from './Crime.elements';
 import React, {useEffect, useState }  from 'react';
 import {tokenAddress , crime} from '../../components/EthFunctions';
 import {ethers} from 'ethers';
 import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
 import {StateContext, EthContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 import Select from 'react-select'
 import { BarChart, Text, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
