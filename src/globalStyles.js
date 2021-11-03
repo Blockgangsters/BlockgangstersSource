@@ -11,13 +11,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 export const PageWrapper = styled.div`
-max-width: 100%;
+width: 80vw;
 max-height: 100%;
 padding: 0 0; // no padding, thats in the container
 background: rgba(16,21,34,.9);
 margin-left: 20vw;
 @media screen and (max-width: 768px) {
     margin: 0;
+    width: 100vw;
 };
 `
 
@@ -31,9 +32,10 @@ export const Container = styled.div`
     padding-right: 50px;
     padding-left: 50px;
     
-    @media screen and (max-width: 991px) {
+    @media screen and (max-width: 768px) {
         padding: 0;
-    //    padding-right: 30px;
+        margin-left: 0;
+        width: 100vw;
      //   padding-left: 30px;
     }
 `

@@ -58,7 +58,7 @@ const StyledNavbar = styled.nav`
     height: 80px;
 
     background: #101522;
-    height: 80px;
+    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,6 +66,7 @@ const StyledNavbar = styled.nav`
     position: sticky;
     top: 0;
     z-index: 999;
+
 
 `
 
@@ -150,7 +151,7 @@ export const NavMenu = styled.ul`
         margin-top: 80px;
         flex-direction: column;
         width: 100%;
-        height: 100%;
+        height: 100vh;
         position: absolute;
         left: ${({ click }) => (click ? 0 : '-100%')};
         opacity: 1;
