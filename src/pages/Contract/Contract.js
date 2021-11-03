@@ -1,8 +1,8 @@
 import React  from 'react';
-import {PageWrapper, PDFContainer} from './Contract.elements';
+import {PDFContainer} from './Contract.elements';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import solidity from 'react-syntax-highlighter/dist/esm/languages/prism/solidity';
-
+import {PageWrapper} from '../../globalStyles'
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 SyntaxHighlighter.registerLanguage('solidity', solidity);

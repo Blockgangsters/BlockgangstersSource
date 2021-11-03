@@ -1,17 +1,5 @@
 import styled from 'styled-components'
 
-//flex-wrap: squeeze items together to fit or start at new line. nowrap = squeeze, flex-wrap = new line
-
-//TokenomicsContainer is around whole page, sets background etc.
-export const PageWrapper = styled.div`
-max-width: 100%;
-max-height: 100%;
-padding: 0 0; // no padding, thats in the tokenomicscontainer
-background: rgba(16,21,34,.9);
-margin-left: 20vw;
-
-`
-
 //TokenomicsContainer is around whole page, sets background etc.
 export const PDFContainer = styled.div`
 max-width: 100%;

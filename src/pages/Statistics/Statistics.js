@@ -1,8 +1,8 @@
-import {PageWrapper, CrimeContainer, Title, SubTitle} from './Statistics.elements';
+import {CrimeContainer, Title, SubTitle} from './Statistics.elements';
 import React, {useEffect}  from 'react';
 import {getAttackXP, getDefenseXP, getActiveList, getingameFunds} from '../../components/EthFunctions';
 import {getFamilyNames} from '../../components/EthFamilyFunctions';
-
+import {PageWrapper} from '../../globalStyles'
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
 

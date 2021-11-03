@@ -1,11 +1,11 @@
-import {PageWrapper, CrimeContainer, Title, ItemContainer} from './Attackfamily.elements';
+import {CrimeContainer, Title, ItemContainer} from './Attackfamily.elements';
 import React, {useEffect, useState }  from 'react';
 import {tokenAddress} from '../../components/EthFunctions';
 import {ethers} from 'ethers';
 import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 import {getFamilyNames, organizedAttack} from '../../components/EthFamilyFunctions';
 
 const Attackfamily = () => {

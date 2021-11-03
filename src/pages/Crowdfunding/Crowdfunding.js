@@ -1,4 +1,4 @@
-import {PageWrapper, Title, SubTitle, TitleTwo, Box, TextBox} from './Crowdfunding.elements';
+import {Title, SubTitle, TitleTwo, Box, TextBox} from './Crowdfunding.elements';
 import React, {useEffect }  from 'react';
 import {tokenAddress, crowdFundStart, crowdFundingReturn} from '../../components/EthFunctions';
 
@@ -6,7 +6,7 @@ import {ethers} from 'ethers';
 import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
 import {StateContext, EthContext} from '../../App';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 import Select from 'react-select'
 import { useTable } from 'react-table'
 import styled from 'styled-components'

@@ -9,6 +9,7 @@ export const FooterContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 
     ${breakpoint.m} {
         margin-left: 20vw;
@@ -61,7 +62,8 @@ export const FormInput = styled.input`
 
     @media screen and (max-width: 820px) {
         width: 100%;
-        margin: 0 0 16px 0;
+        padding: 0 0 0 0;
+        margin: 0 0 0 0;
 
     }
 `
@@ -74,6 +76,7 @@ export const FooterLinksContainer = styled.div`
 
 @media screen and (max-width: 820px) {
     padding-top: 32px;
+    max-width: 100%;
 }`
 
 export const FooterLinksWrapper = styled.div` //wrapper is to wrap into two columns when resizing
@@ -96,7 +99,6 @@ export const FooterLinksItems = styled.div`
 
 @media screen and (max-width: 420px) {
     margin: 0;
-    padding: 10px;
     width: 100%;
 
 }
@@ -117,7 +119,7 @@ export const FooterLink = styled(Link)`
 }`
 
 export const SocialMedia = styled.section`
-    max-width: 1000px;
+   // max-width: 1000px;
     width: 100%;
 `
 
@@ -126,7 +128,6 @@ export const SocialMediaWrap = styled.div`
     justify-content: space-between; //alignment of items on main axis. So here we keep space between but align-items holds centered @ cross axis
     align-items: center; // default alignment for all items inside container -- along the cross axis!
     width: 90%;
-    max-width: 1000px;
     margin: 40px auto 0 auto;
 
     @media screen and (max-width: 820px) {

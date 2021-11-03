@@ -1,6 +1,6 @@
 import React, {useEffect, useState }  from 'react';
-import {PageWrapper, AttackPlayerContainer, Title, SubTitle} from './IndProtection.elements';
-import {ColoredLine, SubmitButton} from '../../globalStyles'
+import {AttackPlayerContainer, Title, SubTitle} from './IndProtection.elements';
+import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
 import {StateContext, EthContext} from '../../App';
 import {buyProtection} from '../../components/EthFunctions';
 import NumberFormat from "react-number-format";

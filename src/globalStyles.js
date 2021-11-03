@@ -10,19 +10,31 @@ const GlobalStyle = createGlobalStyle`
     }
 `;
 
+export const PageWrapper = styled.div`
+max-width: 100%;
+max-height: 100%;
+padding: 0 0; // no padding, thats in the container
+background: rgba(16,21,34,.9);
+margin-left: 20vw;
+@media screen and (max-width: 768px) {
+    margin: 0;
+};
+`
+
 export const Container = styled.div`
     z-index: 1;
-    border: 50px;
+    box-sizing: border-box; 
     width: 100%;
-    max-width: 1700px;
+    max-width: 100%;
     margin-right: auto;
     margin-left: auto;
     padding-right: 50px;
     padding-left: 50px;
     
     @media screen and (max-width: 991px) {
-        padding-right: 30px;
-        padding-left: 30px;
+        padding: 0;
+    //    padding-right: 30px;
+     //   padding-left: 30px;
     }
 `
 

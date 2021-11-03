@@ -20,7 +20,8 @@ export default Gamebar
 
 const StyledGamebar = styled.div`
     padding-left: 30px;
-    padding-right: 30px
+    padding-right: 30px;
+    box-sizing: border-box;
 `
 
 

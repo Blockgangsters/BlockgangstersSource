@@ -1,9 +1,10 @@
-import {PageWrapper, CrimeContainer, Title} from './Highestlevels.elements';
+import {CrimeContainer, Title} from './Highestlevels.elements';
 import React, {useEffect }  from 'react';
 import {getAttackXP, getDefenseXP, getActiveList} from '../../components/EthFunctions';
 
 import {StateContext} from '../../App';
 import { useTable, useSortBy  } from "react-table";
+import {PageWrapper} from '../../globalStyles'
 
 
 

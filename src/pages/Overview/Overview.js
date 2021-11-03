@@ -1,10 +1,10 @@
-import {PageWrapper, CrimeContainer, Title, SubTitle, LeaveButton, JoinButton} from './Overview.elements';
+import {CrimeContainer, Title, SubTitle, LeaveButton, JoinButton} from './Overview.elements';
 import React, {useEffect}  from 'react';
 import {getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getAllFamilyMembers, getFamilyBank, getFamilyFees, joinOrUprankFamily, leaveFamily} from '../../components/EthFamilyFunctions';
 
 import {ethers} from 'ethers';
 import {StateContext} from '../../App';
-import {ColoredLine} from '../../globalStyles'
+import {ColoredLine, PageWrapper} from '../../globalStyles'
 import { useTable, useSortBy  } from "react-table";
 
 

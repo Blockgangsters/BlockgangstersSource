@@ -9,15 +9,20 @@ const Video = styled.video`
 position: fixed;
 min-height: 100%;
 min-width: 100%;
+max-height: 100%;
+max-width: 100%;
+object-fit: contain;
+
 z-index: -2;
+
+@media screen and (max-width: 960px) {
+
+}
 `;
 
 ReactDOM.render(
     <React.StrictMode>
 
-<Video className='videoTag' autoPlay loop muted>
-    <source src={videobackground} type='video/mp4' />
-</Video>      
 <App />
     </React.StrictMode>,
     document.getElementById('root')
