@@ -1,6 +1,6 @@
 import React from 'react';
-import { TitleWrapper, ReleaseWrapper, InfoSec, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, ImgWrapper, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
-import { Container, Button } from '../../globalStyles'
+import { TitleWrapper, ReleaseWrapper, StyledInfoSection, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
+import { Button } from '../../features/shared/ui/buttons/Button';
 import { Link } from 'react-router-dom'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import { FaTelegram, FaTwitter, FaDiscord } from 'react-icons/fa';
@@ -16,7 +16,7 @@ const daySeconds = 86400;
 
 const timerProps = {
     isPlaying: true,
-    size: 90,
+    size: 80,
     strokeWidth: 6
 };
 
@@ -50,14 +50,14 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
 
     return (
         <>
-            <InfoSec lightBg={lightBg}>
-                <Container>
-                    <InfoRow imgStart={imgStart}>
-                        <InfoColumn>
-                            <TextWrapper>
+            <StyledInfoSection lightBg={lightBg}>
+                <InfoRow imgStart={imgStart}>
+                    <InfoColumn>
+                        <TextWrapper>
 
 
-                                {countdownTimer === true ? <ReleaseWrapper> <TitleWrapper to="/trainstats"> Release Candidate live on Mumbai testnet. Click here to start playing now!</TitleWrapper> <TitleBox> Main net release in: </TitleBox> <CircleWrapper> <CountdownCircleTimer
+                            {countdownTimer === true ? <ReleaseWrapper>
+                                <TitleWrapper to="/trainstats"> Release Candidate live on Mumbai testnet. Click here to start playing now!</TitleWrapper> <TitleBox> Main net release in: </TitleBox> <CircleWrapper> <CountdownCircleTimer
                                     {...timerProps}
                                     colors={[["#a9b3c1"]]}
                                     strokeWidth="12"
@@ -113,33 +113,36 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                                         {({ elapsedTime }) =>
                                             renderTime("seconds", getTimeSeconds(elapsedTime))
                                         }
-                                    </CountdownCircleTimer></CircleWrapper> </ReleaseWrapper> : null}
-                                {countdownTimer ? <> <TimerText> Join us now on social media to get started right away! </TimerText>
-                                    <SocialIcons>
-                                        <SocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">
-                                            <FaDiscord />
-                                        </SocialIconLink>
-                                        <SocialIconLink href="https://twitter.com/blockgangsters" target="_blank" aria-label="Twitter">
-                                            <FaTwitter />
-                                        </SocialIconLink>
-                                        <SocialIconLink href="https://t.me/joinchat/hIJ1FYLDul1jNGQ0" target="_blank" aria-label="Telegram">
-                                            <FaTelegram />
-                                        </SocialIconLink>
-                                    </SocialIcons>
+                                    </CountdownCircleTimer>
+                                </CircleWrapper>
+                            </ReleaseWrapper> : null}
+                            {countdownTimer ? <> <TimerText> Join us now on social media to get started right away! </TimerText>
+                                <SocialIcons>
+                                    <SocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">
+                                        <FaDiscord />
+                                    </SocialIconLink>
+                                    <SocialIconLink href="https://twitter.com/blockgangsters" target="_blank" aria-label="Twitter">
+                                        <FaTwitter />
+                                    </SocialIconLink>
+                                    <SocialIconLink href="https://t.me/joinchat/hIJ1FYLDul1jNGQ0" target="_blank" aria-label="Telegram">
+                                        <FaTelegram />
+                                    </SocialIconLink>
+                                </SocialIcons>
 
 
-                                </>
-                                    : <> <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
-                                        <Heading lightText={lightText}>{headline}</Heading>
-                                        <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
-                                        <Link to='/sign-up'>
-                                            {mmConnected ? null : <Button big fontBig onClick={connectWallet} primary={primary}>{buttonLabel}</Button>}
-                                        </Link> </>}
-                                {bootstrapTimer ? <><br></br>    <BootstrapWrapper>
+                            </>
+                                : <> <TopLine lightTopLine={lightTopLine}>{topLine}</TopLine>
+                                    <Heading lightText={lightText}>{headline}</Heading>
+                                    <Subtitle lightTextDesc={lightTextDesc}>{description}</Subtitle>
+                                    <Link to='/sign-up'>
+                                        {mmConnected ? null : <Button big fontBig onClick={connectWallet} primary={primary}>{buttonLabel}</Button>}
+                                    </Link> </>}
+                            {bootstrapTimer ? <>
+                                <BootstrapWrapper>
                                     <AnimatedNumbers
                                         includeComma
                                         animateToNumber={bootstrapUsed}
-                                        fontStyle={{ fontSize: 30 }}
+                                        fontStyle={{ fontSize: 20 }}
                                         configs={[
                                             { mass: 1, tension: 220, friction: 100 },
                                             { mass: 1, tension: 180, friction: 130 },
@@ -148,18 +151,18 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                                             { mass: 1, tension: 260, friction: 100 },
                                             { mass: 1, tension: 210, friction: 1000 },
                                         ]}
-                                    ></AnimatedNumbers></BootstrapWrapper><BootstrapText> / 1,000 bootstrap slots used </BootstrapText></> : null}
-                            </TextWrapper>
-                        </InfoColumn>
+                                    />
+                                    <BootstrapText> /1,000 bootstrap slots used </BootstrapText>
+                                </BootstrapWrapper>
+                            </> : null}
+                        </TextWrapper>
+                    </InfoColumn>
 
-                        <InfoColumn>
-                            <ImgWrapper start={start}>
-                                <Img src={img} alt={alt} />
-                            </ImgWrapper>
-                        </InfoColumn>
-                    </InfoRow>
-                </Container>
-            </InfoSec>
+                    <InfoColumn>
+                        <Img src={img} alt={alt} />
+                    </InfoColumn>
+                </InfoRow>
+            </StyledInfoSection>
         </>
     )
 }

@@ -1,108 +1,102 @@
 import styled from '@emotion/styled/macro'
 import { Link } from 'react-router-dom';
-//import { breakpoint } from '../../styles/theme/responsive/breakpoint'
+import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
-export const InfoSec = styled.div`
+export const StyledInfoSection = styled.div`
     color: #fff;
-    padding: ${({ firstBlock }) => (firstBlock ? '160px 0' : '60px 0')};
     background: ${({ lightBg }) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
-    margin-left: 20vw;
-    @media screen and (max-width: 768px) {
-        padding: 0;
-        margin-left: 0;
-        width: 100vw;
-     //   padding-left: 30px;
-    }
-}
+    padding: ${({ firstBlock }) => (firstBlock ? '130px 20px' : '30px 20px')};
+    
 
+    ${breakpoint.m} {
+        width: 80vw;
+        margin-left: 20vw;
+        padding: ${({ firstBlock }) => (firstBlock ? '160px 50px' : '60px 50px')};
+    }
 `
 
 export const InfoRow = styled.div`
-display: flex;
-//margin: 0 -15px -15px -15px;
-flex-wrap: wrap;
-align-items: center;
-flex-direction: ${({ imgStart }) => (imgStart ? 'row-reverse' : 'row')};
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+
+    ${breakpoint.m} {
+        flex-direction: row;
+    }
 `
 
 export const InfoColumn = styled.div`
-flex: 1;
-max-width: 50%;
-flex-basis: 50%;
+    display: flex;
+    
+    ${breakpoint.l} {
+        justify-content: center;
+        width: 50%;
+    }
 `
 
 export const TextWrapper = styled.div`
-max-width: 100%;
-padding-top: 0;
-padding-bottom: 60px;
-align-items: center;
-justify-items: center;
-@media screen and (max-width: 768px) {
+    max-width: 100%;
+    padding-top: 0;
     padding-bottom: 65px;
-};
+    align-items: center;
+    justify-items: center;
+
+    ${breakpoint.m} {
+        padding-bottom: 60px;
+    }
 `
 
 export const ReleaseWrapper = styled.div`
-max-width: 800px;
-padding-top: 0;
-padding-bottom: 60px;
-justify-items: center;
-align-items: center;
-@media screen and (max-width: 768px) {
+    
+    padding-top: 0;
     padding-bottom: 65px;
-    width: 100vw;
-};
+    justify-items: center;
+    align-items: center;
+
+    ${breakpoint.m} {
+        padding-bottom: 60px;
+    }
 `
 
 export const TitleWrapper = styled(Link)`
-padding-top: 0;
-text-decoration: none;
-padding-bottom: 60px;
-color: white;
-animation: neon 1s ease-in-out infinite alternate;
-
-      @keyframes neon {
-  from {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.92),
-    0 0 30px rgba(202,228,225,0.34),
-     0 0 54px rgba(30,132,242,0.92);
-  }
-  to {
-    text-shadow:
-    0 0 6px rgba(202,228,225,0.98),
-    0 0 30px rgba(202,228,225,0.42),
-    0 0 22px rgba(30,132,242,0.84),
-
-  }
-}
-
-  
-@media screen and (max-width: 768px) {
+    padding-top: 0;
+    text-decoration: none;
     padding-bottom: 65px;
-};
+    color: white;
+    animation: neon 1s ease-in-out infinite alternate;
+
+    @keyframes neon {
+        from {
+            text-shadow:
+            0 0 6px rgba(202,228,225,0.92),
+            0 0 30px rgba(202,228,225,0.34),
+            0 0 54px rgba(30,132,242,0.92);
+        }
+        to {
+            text-shadow:
+            0 0 6px rgba(202,228,225,0.98),
+            0 0 30px rgba(202,228,225,0.42),
+            0 0 22px rgba(30,132,242,0.84),
+
+        }
+    }
+
+    ${breakpoint.m} {
+        padding-bottom: 60px;
+    }
 `
 
 export const BootstrapWrapper = styled.div`
-max-width: 800px;
-padding-top: 0;
-padding-bottom: 60px;
-flex-direction: row;
-display: inline-block;
-color: black;
+    display: flex;
+    color: black;
 
-@media screen and (max-width: 768px) {
-    padding-bottom: 65px;
-    width: 100vw;
-};
 `
 
-export const BootstrapText = styled.h4`
-color: black;
-font-size: 30px;
-margin-left: 10px;
-margin-right: 30px;
-display: inline-block;
+export const BootstrapText = styled.div`
+    color: black;
+    font-size: 20px;
+
 `
 
 
@@ -160,19 +154,11 @@ line-height: 24px;
 color: ${({ lightTextDesc }) => (lightTextDesc ? '#a9b3c1' : '#1c2237')};
 `
 
-export const ImgWrapper = styled.div`
-max-width: 555px;
-display: flex;
-justify-content: ${({ start }) => (start ? 'flex-start' : 'flex-end')};
-`
+
 
 export const Img = styled.img`
-padding-right: 0;
-border: 0;
-max-width: 100%;
-vertical-align: middle;
-display: inline-block;
-max-height: 500px;
+    max-width: 100%;
+    max-height: 100;
 `
 
 export const SocialIcons = styled.div`

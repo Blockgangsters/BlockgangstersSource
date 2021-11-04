@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled/macro';
 import AnimatedNumbers from "react-animated-numbers";
 import { receiveEth } from '../../../../components/EthFunctions';
-import { SubmitButton } from '../../../../globalStyles'
+import { SubmitButton } from '../../../../features/shared/ui/buttons/SubmitButton';
 import Popup from 'reactjs-popup';
 import NumberFormat from "react-number-format";
 import { EthContext } from '../../../../App';

@@ -3,17 +3,13 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import videobackground from './videobackground.mp4';
 
-import styled from "styled-components";
+import styled from "@emotion/styled/macro";
 
 const Video = styled.video`
-position: fixed;
-min-height: 100%;
-min-width: 100%;
-z-index: -2;
-
-@media screen and (max-width: 960px) {
-
-}
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: -2;
 `;
 
 ReactDOM.render(
