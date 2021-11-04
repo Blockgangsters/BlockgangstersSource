@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { StateContext } from "../../../App";
-import { Button } from '../../../globalStyles'
+import { Button } from '../../../features/shared/ui/buttons/Button';
 import { connectWallet } from "../../EthFunctions";
 
 export const MetaMaskConnect = () => {

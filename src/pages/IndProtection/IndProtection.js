@@ -1,18 +1,19 @@
-import React, {useEffect, useState }  from 'react';
-import {AttackPlayerContainer, Title, SubTitle} from './IndProtection.elements';
-import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
-import {StateContext, EthContext} from '../../App';
-import {buyProtection} from '../../components/EthFunctions';
+import React, { useEffect, useState } from 'react';
+import { AttackPlayerContainer, Title, SubTitle } from './IndProtection.elements';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { StateContext, EthContext } from '../../App';
+import { buyProtection } from '../../components/EthFunctions';
 import NumberFormat from "react-number-format";
 
 const IndProtection = () => {
-    const [, , mmConnected, , , ] = React.useContext(StateContext);
-    const [, , , , , , , , inGameFunds , , , , , ] = React.useContext(EthContext);
+    const [, , mmConnected, , ,] = React.useContext(StateContext);
+    const [, , , , , , , , inGameFunds, , , , ,] = React.useContext(EthContext);
 
     const [amount, setAmount] = useState();
 
-    useEffect(() => {  
-        const fetchEvents = async() => {
+    useEffect(() => {
+        const fetchEvents = async () => {
             if (mmConnected) {
 
 
@@ -24,39 +25,39 @@ const IndProtection = () => {
 
     return (
         <PageWrapper>
-                      <Title> Buy protection against attacks </Title><br />
-                      <SubTitle>Tip: buy protection when you have big bags.</SubTitle>
+            <Title> Buy protection against attacks </Title><br />
+            <SubTitle>Tip: buy protection when you have big bags.</SubTitle>
             <AttackPlayerContainer>
-              Days to buy: 
-              
-              <NumberFormat
-        thousandsGroupStyle="thousand"
-        prefix=""
-        displayType="input"
-        thousandSeparator={true}
-        allowNegative={false}
-        placeholder={"Enter days.."}
-        onValueChange={({ value }) => {setAmount(value)}}
-         value={amount} 
-         />
-              
-              
-              
-              {amount > 0 ? <> This will cost: ₲<NumberFormat 
-                value={inGameFunds/100*amount}
-                displayType={"text"}
-                decimalSeparator={"."}
-                thousandSeparator={true}
-                decimalScale={0} /> </> : null }
+                Days to buy:
 
-<SubmitButton onClick={() => { buyProtection(amount)}}> Buy protection! </SubmitButton>
-                
+                <NumberFormat
+                    thousandsGroupStyle="thousand"
+                    prefix=""
+                    displayType="input"
+                    thousandSeparator={true}
+                    allowNegative={false}
+                    placeholder={"Enter days.."}
+                    onValueChange={({ value }) => { setAmount(value) }}
+                    value={amount}
+                />
+
+
+
+                {amount > 0 ? <> This will cost: ₲<NumberFormat
+                    value={inGameFunds / 100 * amount}
+                    displayType={"text"}
+                    decimalSeparator={"."}
+                    thousandSeparator={true}
+                    decimalScale={0} /> </> : null}
+
+                <SubmitButton onClick={() => { buyProtection(amount) }}> Buy protection! </SubmitButton>
+
             </AttackPlayerContainer>
             <ColoredLine color="red" />
 
-        
+
         </PageWrapper>
-        
+
     )
 }
 

@@ -28,13 +28,14 @@ import { getCrimeStatus, getAttackStatus, tokenAddress, getERCBalance, EthBalanc
 import tokenABI from './components/EthABI'
 import { ethers } from 'ethers'
 import detectEthereumProvider from '@metamask/detect-provider';
-import styled from 'styled-components';
+import styled from '@emotion/styled/macro';
 import NumberFormat from "react-number-format";
 
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Sidebar } from './features/app-container/ui/sidebar/Sidebar';
 import "./styles/globals/globals.css"
+import { Button } from './features/shared/ui/buttons/Button';
 
 export const StateContext = React.createContext();
 export const EthContext = React.createContext();
@@ -59,31 +60,6 @@ const StyledPopup = styled(Popup)`
 		align-items: center;
 		display: flex;
 	}
-`
-
-const Button = styled.button`
-border-radius: 4px;
-background: #0467FB;
-white-space: nowrap;
-padding:'10px 20px';
-color: #fff;
-font-size: '16px';
-outline: none;
-border: none;
-cursor: pointer;
-width: 50px;
-justify-self: center;
-
-
-&:hover {
-    transition: all 0.3s ease-ease-out;
-    background: #fff;
-    background: ${({ primary }) => (primary ? '#0467FB' : '#4B59F7')};
-}
-
-@media screen and (max-width: 960px) {
-    width: 200px;
-}
 `
 
 

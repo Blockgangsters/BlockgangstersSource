@@ -4,7 +4,8 @@ import {tokenAddress, getLINKBalance, transferETH, getClaimed, getVesting } from
 import {ethers} from 'ethers';
 import NumberFormat from "react-number-format";
 import {StateContext} from '../../App';
-import {ColoredLine, SubmitButton, PageWrapper} from '../../globalStyles'
+import {ColoredLine, PageWrapper} from '../../globalStyles'
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
 
 
 

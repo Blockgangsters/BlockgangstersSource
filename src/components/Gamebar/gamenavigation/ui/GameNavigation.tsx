@@ -58,18 +58,4 @@ export const StyledLink = styled(Link)`
     &:hover {
         border-left: 2px solid #4b59f7;
     }
-    
-
-
-    /* @media screen and (max-width: 960px) {
-        text-align: center;
-        padding: 2rem;
-        width: 100px;
-        display: table;
-        
-        &:hover {
-            color: #4b59f7;
-            transition: all 0.3s ease;
-        }
-    } */
 `
