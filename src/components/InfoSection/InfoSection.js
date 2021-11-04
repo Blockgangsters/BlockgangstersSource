@@ -1,5 +1,5 @@
 import React from 'react';
-import { TitleWrapper, ReleaseWrapper, StyledInfoSection, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
+import { TitleWrapper, ReleaseWrapper, StyledInfoSection, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
 import { Button } from '../../features/shared/ui/buttons/Button';
 import { Link } from 'react-router-dom'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -8,6 +8,8 @@ import { StateContext, EthContext } from '../../App';
 import { connectWallet } from '../EthFunctions'
 
 import AnimatedNumbers from "react-animated-numbers";
+import styled from '@emotion/styled/macro';
+import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
 const minuteSeconds = 60;
 const hourSeconds = 3600;
@@ -159,7 +161,7 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                     </InfoColumn>
 
                     <InfoColumn>
-                        <Img src={img} alt={alt} />
+                        <StyledImage src={img} alt={alt} />
                     </InfoColumn>
                 </InfoRow>
             </StyledInfoSection>
@@ -167,4 +169,13 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
     )
 }
 
-export default InfoSection
+export default InfoSection;
+
+const StyledImage = styled.img`
+    width: 100%;
+    height: 100%;
+
+    ${breakpoint.l} {
+        padding-left: 20px;
+    }
+`

@@ -9,6 +9,7 @@ import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CoinStats } from './coinstats/CoinStats';
 import { MetaMaskConnect } from './metamaskconnect/MetaMaskConnect';
 import { IconContext } from 'react-icons/lib'
+import { ZIndex } from '../../styles/globals/ZIndex';
 
 
 const Navbar = () => {
@@ -85,20 +86,14 @@ const StyledBetaLink = styled(Link)`
 `
 
 export const Nav = styled.nav`
-
-    background: #101522;
-    height: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.2rem;
+    background: #101522;
+    height: 80px;
+    width: 100vw;
     position: sticky;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-
-    &:hover {    
-    }
+    z-index: ${ZIndex.Navbar};
 `
 
 export const NavbarContainer = styled(Container)`
@@ -115,7 +110,6 @@ export const NavLogo = styled(Link)`
     font-size: 30px;
     display: flex;
     align-items: center;
-    max-width: 20vw;
 `
 
 export const NavIcon = styled.img` 
@@ -125,10 +119,6 @@ export const NavIcon = styled.img`
 `
 
 export const MobileIcon = styled.div`
-    display: none;
-
-@media screen and (max-width: 960px) {
-    display: block;
     position: absolute;
     top: 0;
     right: 0;
@@ -136,27 +126,32 @@ export const MobileIcon = styled.div`
     font-size: 1.8rem;
     cursor: pointer;
     z-index: 110;
-}
+
+    ${breakpoint.l} {
+        display: none;
+    }
 `
 
 export const NavMenu = styled.ul`
     display: flex;
-    align-items: left;
-    list-style: none;
-    text-align: center;
-    padding: 16px;
+    flex-direction: column;
+    margin-top: 80px;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: ${({ click }) => (click ? 0 : '-100%')};
+    transition: all 0.5s ease;
+    background: #101522;
     
-    @media screen and (max-width: 960px) {
-        padding: 0;
-        margin-top: 80px;
-        flex-direction: column;
-        width: 100%;
-        height: 100vh;
-        position: absolute;
-        left: ${({ click }) => (click ? 0 : '-100%')};
-        opacity: 1;
-        transition: all 0.5s ease;
-        background: #101522;
+    ${breakpoint.l} {
+        flex-direction: row;
+        position: unset;
+        height: auto;
+        width: auto;
+        list-style: none;
+        text-align: center;
+        margin: 0;
+        padding: 16px;
     }
 `
 
@@ -195,12 +190,14 @@ export const BetaLink = styled(Link)`
 `
 
 export const NavItemBtn = styled.li`
-    @media screen and (max-width: 960px) {
-        display: flex;
-        justify-content: left;
-        align-items: left;
-        width: 300px;
-        height: 120px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    width: 300px;
+    height: 120px;
+
+    ${breakpoint.l} {
+        display: none;
     }
 `
 
@@ -217,47 +214,28 @@ export const NavBtnLink = styled(Link)`
 `
 
 export const StatsContainer = styled.ul`
-    list-style-type: none;
-    justify-content: space-between;
+    justify-content: left;
+    align-items: center;
+    height: 120px;
     color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 0.8rem;
-    text-align: left;
-    padding-left: 0;
+    font-size: 1.2rem;
+    &:hover {
+        color: #4b59f7;
+        transition: all 0.3s ease;
+    }
 
-    @media screen and (max-width: 960px) {
-        /* display: table; */
-        justify-content: left;
-        align-items: center;
-        /* width: 200px; */
-        height: 120px;
+    ${breakpoint.l} {
+        list-style-type: none;
+        justify-content: space-between;
         color: #fff;
-        font-size: 1.2rem;
-        &:hover {
-            color: #4b59f7;
-            transition: all 0.3s ease;
-        }
+        cursor: pointer;
+        text-decoration: none;
+        font-size: 0.8rem;
+        text-align: left;
+        padding-left: 0;
     }
 `
 export const StatsItem = styled.li`
     position: relative;
     padding: 7px 0px 0px 0px;
-`
-
-export const MMConnect = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    text-decoration: none;
-    padding: 4px 8px;
-    height: 10px;
-    width: 100%;
-    border: none;
-    outline: none;
-    color: red;
-    @media screen and (max-width: 960px) {
-        align-items: top;   
-    }
 `
