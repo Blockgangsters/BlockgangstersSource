@@ -1,25 +1,15 @@
-// main CSS file
-
-import styled, { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-    * {
-        box-sizing: border-box; // inner boxes are nicely fit in outer box
-        padding: 0;
-        font-family: 'Source Sans Pro', sans-serif;
-    }
-`;
+import styled from "@emotion/styled/macro";
 
 export const PageWrapper = styled.div`
-width: 80vw;
-max-height: 100%;
-padding: 0 0; // no padding, thats in the container
-background: rgba(16,21,34,.9);
-margin-left: 20vw;
-@media screen and (max-width: 768px) {
-    margin: 0;
-    width: 100vw;
-};
+    width: 80vw;
+    max-height: 100%;
+    padding: 0 0; // no padding, thats in the container
+    background: rgba(16,21,34,.9);
+    margin-left: 20vw;
+    @media screen and (max-width: 768px) {
+        margin: 0;
+        width: 100vw;
+    };
 `
 
 export const Container = styled.div`
@@ -70,7 +60,8 @@ export const Button = styled.button`
     }
 
     @media screen and (max-width: 960px) {
-        width: 200px;
+        /* width: 200px; */
+        padding: 9px 6px;
     }
 `
 
@@ -120,5 +111,3 @@ export const SubmitButton = styled.button`
         width: 200px;
     }
 `
-
-export default GlobalStyle

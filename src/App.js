@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import GlobalStyle from './globalStyles'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
@@ -35,6 +34,7 @@ import NumberFormat from "react-number-format";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Sidebar } from './features/app-container/ui/sidebar/Sidebar';
+import "./styles/globals/globals.css"
 
 export const StateContext = React.createContext();
 export const EthContext = React.createContext();
@@ -628,7 +628,7 @@ function App() {
             <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds, bootstrapUsed, protectionHours]}>
 
                 <Router basename='/'>
-                    <GlobalStyle />
+                 
                     <ScrollToTop />
                     <StyledPopup open={crimePopup} position="center center" modal closeOnDocumentClick>
                         {() => (
