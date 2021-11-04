@@ -1,6 +1,5 @@
 import React from 'react';
 import { TitleWrapper, ReleaseWrapper, StyledInfoSection, InfoRow, InfoColumn, TextWrapper, TopLine, Heading, Subtitle, Img, CircleWrapper, TitleBox, TimerText, SocialIcons, SocialIconLink, BootstrapText, BootstrapWrapper } from './InfoSection.elements';
-import { Container } from '../../globalStyles'
 import { Button } from '../../features/shared/ui/buttons/Button';
 import { Link } from 'react-router-dom'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
@@ -17,7 +16,7 @@ const daySeconds = 86400;
 
 const timerProps = {
     isPlaying: true,
-    size: 90,
+    size: 80,
     strokeWidth: 6
 };
 
@@ -138,20 +137,24 @@ const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStar
                                     <Link to='/sign-up'>
                                         {mmConnected ? null : <Button big fontBig onClick={connectWallet} primary={primary}>{buttonLabel}</Button>}
                                     </Link> </>}
-                            {bootstrapTimer ? <><br></br>    <BootstrapWrapper>
-                                <AnimatedNumbers
-                                    includeComma
-                                    animateToNumber={bootstrapUsed}
-                                    fontStyle={{ fontSize: 30 }}
-                                    configs={[
-                                        { mass: 1, tension: 220, friction: 100 },
-                                        { mass: 1, tension: 180, friction: 130 },
-                                        { mass: 1, tension: 280, friction: 90 },
-                                        { mass: 1, tension: 180, friction: 135 },
-                                        { mass: 1, tension: 260, friction: 100 },
-                                        { mass: 1, tension: 210, friction: 1000 },
-                                    ]}
-                                ></AnimatedNumbers></BootstrapWrapper><BootstrapText> / 1,000 bootstrap slots used </BootstrapText></> : null}
+                            {bootstrapTimer ? <>
+                                <BootstrapWrapper>
+                                    <AnimatedNumbers
+                                        includeComma
+                                        animateToNumber={bootstrapUsed}
+                                        fontStyle={{ fontSize: 20 }}
+                                        configs={[
+                                            { mass: 1, tension: 220, friction: 100 },
+                                            { mass: 1, tension: 180, friction: 130 },
+                                            { mass: 1, tension: 280, friction: 90 },
+                                            { mass: 1, tension: 180, friction: 135 },
+                                            { mass: 1, tension: 260, friction: 100 },
+                                            { mass: 1, tension: 210, friction: 1000 },
+                                        ]}
+                                    />
+                                    <BootstrapText> /1,000 bootstrap slots used </BootstrapText>
+                                </BootstrapWrapper>
+                            </> : null}
                         </TextWrapper>
                     </InfoColumn>
 

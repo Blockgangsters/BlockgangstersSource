@@ -5,7 +5,7 @@ import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 export const StyledInfoSection = styled.div`
     color: #fff;
     background: ${({ lightBg }) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
-    padding: 0;
+    padding: ${({ firstBlock }) => (firstBlock ? '130px 20px' : '30px 20px')};
     
 
     ${breakpoint.m} {
@@ -88,24 +88,15 @@ export const TitleWrapper = styled(Link)`
 `
 
 export const BootstrapWrapper = styled.div`
-    max-width: 800px;
-    padding-top: 0;
-    padding-bottom: 65px;
-    flex-direction: row;
-    display: inline-block;
+    display: flex;
     color: black;
 
-    ${breakpoint.m} {
-        padding-bottom: 60px;
-    }
 `
 
-export const BootstrapText = styled.h4`
-color: black;
-font-size: 30px;
-margin-left: 10px;
-margin-right: 30px;
-display: inline-block;
+export const BootstrapText = styled.div`
+    color: black;
+    font-size: 20px;
+
 `
 
 
