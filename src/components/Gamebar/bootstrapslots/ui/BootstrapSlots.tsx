@@ -93,7 +93,7 @@ const StyledPopup = styled(Popup)`
     }
     &-content {
         padding: 20px;
-        background: ${Colors.TransparantBackground};
+        background: ${Colors.DarkTransparant};
         width: 400px;
         height: 250px;
         border: #505064;
