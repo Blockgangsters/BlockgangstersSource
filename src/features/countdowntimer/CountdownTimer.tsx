@@ -13,7 +13,7 @@ export const CountdowndTimer = ({ countdownDate }: ICountdownTimerProps) => {
     const hour = minute * 60;
     const day = hour * 24;
 
-    const [days, setDays] = useState(100);
+    const [days, setDays] = useState(0);
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
