@@ -11,11 +11,6 @@ import styled from '@emotion/styled/macro';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CountdowndTimer } from '../../features/countdowntimer/CountdownTimer';
 
-
-
-
-
-
 const InfoSection = ({ countdownTimer, bootstrapTimer, primary, lightBg, imgStart, lightTopLine, lightText, lightTextDesc, buttonLabel, description, headline, topLine, img, alt, start }) => {
 
     const [, , mmConnected, , ,] = React.useContext(StateContext);
