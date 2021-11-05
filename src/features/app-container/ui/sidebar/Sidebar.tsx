@@ -3,13 +3,13 @@ import React, { FC } from 'react';
 import styled from '@emotion/styled/macro'
 import { ZIndex } from '../../../../styles/globals/ZIndex';
 import { breakpoint } from '../../../../styles/theme/responsive/breakpoint';
+import { Colors } from '../../../../styles/theme/colors/Colors';
 
 export const Sidebar: FC = ({ children }) => {
 	return (
 		<StyledSidebar>
 			<StyledSidebarMenu>
-
-				<StyledSidebarContent>{children}</StyledSidebarContent>
+				{children}
 			</StyledSidebarMenu>
 		</StyledSidebar>
 	);
@@ -19,6 +19,7 @@ export const Sidebar: FC = ({ children }) => {
 const StyledSidebar = styled.div`
 	position: absolute;
 	box-sizing: border-box;
+	
 `;
 
 const StyledSidebarMenu = styled.div`
@@ -31,8 +32,9 @@ const StyledSidebarMenu = styled.div`
 	opacity: 0;
 	transform: translateX(25%);
 	pointer-events: none;
-    background-color:rgba(16,21,34,.9);
     margin-top: 80px;
+
+	background-color: ${Colors.TransparantBackground};
 
 	::-webkit-scrollbar {
 		display: none;
@@ -45,8 +47,4 @@ const StyledSidebarMenu = styled.div`
 	}
 
 
-`;
-
-const StyledSidebarContent = styled.div`
-	
 `;

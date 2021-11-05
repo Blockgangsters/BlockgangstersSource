@@ -4,8 +4,8 @@ import styled from '@emotion/styled/macro';
 export const GameNavigation = () => {
     return (
         <StyledGameNavigation>
-            <StyledTitle> Control Panel: </StyledTitle>
-            <StyledLink to='/deposit'>Deposit or Withdraw</StyledLink>
+            <StyledTitle> Control Panel</StyledTitle>
+            <StyledLink to='/deposit'>Deposit/Withdraw</StyledLink>
             <StyledSubtitle> Lone wolf </StyledSubtitle>
             <StyledLink to='/indprotection'>Buy protection</StyledLink>
             <StyledLink to='/attackplayer'>Attack a player</StyledLink>
@@ -30,10 +30,10 @@ export const StyledGameNavigation = styled.div`
     padding-bottom: 10px;
 `
 
-export const StyledTitle = styled.div`
+export const StyledTitle = styled.h1`  
+    font-size: 20px;
     color: white;
     font-weight: bold;
-    padding-bottom: 8px;
 `
 
 export const StyledSubtitle = styled.div`

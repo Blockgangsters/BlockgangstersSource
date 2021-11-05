@@ -88,10 +88,6 @@ function App() {
     }
 
     useEffect(() => {
-        document.title = `Blockgangsters.io`;
-    }, [balance]);
-
-    useEffect(() => {
         if (window.ethereum) {
 
             window.ethereum.on('chainChanged', (chainId) => {

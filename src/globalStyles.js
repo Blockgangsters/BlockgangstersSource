@@ -13,24 +13,6 @@ export const PageWrapper = styled.div`
     }
 `
 
-export const Container = styled.div`
-    z-index: 1;
-    box-sizing: border-box; 
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
-    margin-left: 0;
-    width: 100vw;
-    
-
-    ${breakpoint.m} {
-        padding-right: 50px;
-        padding-left: 50px;
-        margin: auto;
-        
-    }
-
-`
 
 export const ColoredLine = ({ color }) => (
     <hr

@@ -1,5 +1,6 @@
 import styled from "@emotion/styled/macro"
 import { ButtonHTMLAttributes } from "react"
+import { Colors } from "../../../../styles/theme/colors/Colors"
 import { breakpoint } from "../../../../styles/theme/responsive/breakpoint"
 
 interface IButtonProps
@@ -18,11 +19,11 @@ export const Button = (props: IButtonProps) => {
 
 const StyledButton = styled.button<{ primary?: boolean, big?: boolean, fontBig?: boolean }>`
     border-radius: 4px;
-    background: ${({ primary }) => (primary ? '#4B59F7' : '#0467FB')};
+    background: ${({ primary }) => (primary ? Colors.PrimaryBlue : Colors.SecondaryBlue)};
     white-space: nowrap;
     padding: 9px 6px;
     color: #fff;
-    font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
+    font-size: ${({ fontBig }) => (fontBig ? '16px' : '12px')};
     outline: none;
     border: none;
     cursor: pointer;
@@ -30,10 +31,11 @@ const StyledButton = styled.button<{ primary?: boolean, big?: boolean, fontBig?:
     &:hover {
         transition: all 0.3s ease-ease-out;
         background: #fff;
-        background: ${({ primary }) => (primary ? '#0467FB' : '#4B59F7')};
+        background: ${({ primary }) => (primary ? Colors.PrimaryBlue : Colors.SecondaryBlue)};
     }
 
-    ${breakpoint.m} {
-        padding: ${({ big }) => (big ? '12px 64px' : '10px 20px')};
+    ${breakpoint.l} {
+        padding: ${({ big }) => (big ? '12px 30px' : '12px 10px')};
+        font-size: ${({ fontBig }) => (fontBig ? '20px' : '16px')};
     }
 `

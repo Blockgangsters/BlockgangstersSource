@@ -62,7 +62,9 @@ export const CountdowndTimer = ({ countdownDate }: ICountdownTimerProps) => {
 }
 
 const StyledCountdownTimer = styled.div`
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 
 const StyledCountdown = styled.div`

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Container } from '../../globalStyles';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import styled from '@emotion/styled/macro';
 import { StateContext } from '../../App';
@@ -7,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CoinStats } from './coinstats/CoinStats';
-import { MetaMaskConnect } from './metamaskconnect/MetaMaskConnect';
 import { IconContext } from 'react-icons/lib'
 import { ZIndex } from '../../styles/globals/ZIndex';
 
@@ -24,8 +22,21 @@ const Navbar = () => {
             <NavbarContainer>
                 <NavLogo to="/" onClick={closeMobileMenu}>
                     <NavIcon src="images/logo_gang_101522.png" />
-                    Blockgangsters.io
+                    Blockgangsters
                 </NavLogo>
+                
+
+                <NavMenu onClick={handleClick} click={click}>
+                    <StyledNavLink to="/">Home</StyledNavLink>
+                    <StyledNavLink to="/helppage">Guide</StyledNavLink>
+                    <StyledNavLink to="/whitepaper">Whitepaper</StyledNavLink>
+                    <StyledNavLink to="/contract">Contract</StyledNavLink>
+                    <StyledNavLink to="/roadmap">Roadmap</StyledNavLink>
+                    <StyledNavLink to="/tokenomics">Tokenomics</StyledNavLink>
+                    {adminConnected && <StyledNavLink to="/admin">Admin page</StyledNavLink>}
+                    <CoinStats />
+                    
+                </NavMenu>
                 <MobileIcon onClick={handleClick}>
                     <IconContext.Provider
                         value={{ color: 'white' }}
@@ -34,18 +45,6 @@ const Navbar = () => {
 
                     </IconContext.Provider>
                 </MobileIcon>
-
-                <NavMenu onClick={handleClick} click={click}>
-                    <StyledBetaLink to="/helppage">Beta live on Polygon testnet! Click here for guide</StyledBetaLink>
-                    <StyledNavLink to="/">Home</StyledNavLink>
-                    <StyledNavLink to="/whitepaper">Whitepaper</StyledNavLink>
-                    <StyledNavLink to="/contract">Contract</StyledNavLink>
-                    <StyledNavLink to="/roadmap">Roadmap</StyledNavLink>
-                    <StyledNavLink to="/tokenomics">Tokenomics</StyledNavLink>
-                    {adminConnected && <StyledNavLink to="/admin">Admin page</StyledNavLink>}
-                    <CoinStats />
-                    <MetaMaskConnect />
-                </NavMenu>
             </NavbarContainer>
         </StyledNavbar>
     )
@@ -59,16 +58,14 @@ const StyledNavbar = styled.nav`
     height: 80px;
 
     background: #101522;
-    /* height: 100vh; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     position: sticky;
     top: 0;
-    z-index: 999;
-
-
+    z-index: ${ZIndex.Navbar};
+    border-bottom: 1px solid ${Colors.Border};
 `
 
 const StyledNavLink = styled(Link)`
@@ -76,13 +73,10 @@ const StyledNavLink = styled(Link)`
     text-decoration: none;
     text-align: left;
     
-    ${breakpoint.m} {
+    ${breakpoint.l} {
         padding: 0 10px;
+        line-height: 80px;
     }
-`
-const StyledBetaLink = styled(Link)`
-    color: ${Colors.Red};
-    font-size: 10px;
 `
 
 export const Nav = styled.nav`
@@ -93,14 +87,15 @@ export const Nav = styled.nav`
     height: 80px;
     width: 100vw;
     position: sticky;
-    z-index: ${ZIndex.Navbar};
 `
 
-export const NavbarContainer = styled(Container)`
+export const NavbarContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
     height: 80px;
-    max-width: 100%;
+    padding-right: 30px;
+    padding-left: 30px;
 `
 
 export const NavLogo = styled(Link)`
@@ -132,26 +127,28 @@ export const MobileIcon = styled.div`
     }
 `
 
-export const NavMenu = styled.ul`
+export const NavMenu = styled.div`
     display: flex;
     flex-direction: column;
+    position: absolute;
     margin-top: 80px;
     width: 100vw;
     height: 100vh;
-    position: absolute;
     left: ${({ click }) => (click ? 0 : '-100%')};
     transition: all 0.5s ease;
     background: #101522;
     
+    
     ${breakpoint.l} {
+        display: flex;
         flex-direction: row;
-        position: unset;
+        position: inherit;
         height: auto;
         width: auto;
         list-style: none;
         text-align: center;
         margin: 0;
-        padding: 16px;
+        background: none;
     }
 `
 
