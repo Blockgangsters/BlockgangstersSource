@@ -1,5 +1,6 @@
 import styled from "@emotion/styled/macro"
 import { useEffect, useState } from "react"
+import { breakpoint } from "../../styles/theme/responsive/breakpoint";
 
 
 interface ICountdownTimerProps {
@@ -36,7 +37,7 @@ export const CountdowndTimer = ({ countdownDate }: ICountdownTimerProps) => {
 
     return (
         <StyledCountdownTimer>
-            <StyledHeadline>Countdown to mainnet release</StyledHeadline>
+            <StyledHeadline>Countdown mainnet release</StyledHeadline>
             <StyledCountdown>
                 <StyledCountdownList>
                     <StyledCountdownElement>
@@ -78,25 +79,46 @@ const StyledCountdownList = styled.div`
 `
 
 const StyledHeadline = styled.h1`
+    font-size: 20px;
     font-weight: normal;
-    letter-spacing: .125rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
+
+    ${breakpoint.l} {
+        font-size: revert;
+        letter-spacing: .125rem;
+    }
+
 `
 
 const StyledCountdownElement = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1em;
+    padding: 5px;
     text-transform: uppercase;
+
+    ${breakpoint.l} {
+        padding: 1em;
+    }
+
 `
 
 const StyledNumber = styled.span`
     display: block;
-    font-size: 4.5rem;
+    font-size: 40px;
+
+    ${breakpoint.l} {
+        font-size: 4.5rem;
+    }
+
 `
 
 const StyledText = styled.span`
     display: block;
-    font-size: 1.5em;
+    font-size: 20px;
+
+    ${breakpoint.l} {
+        font-size: 1.5em;
+    }
 `
