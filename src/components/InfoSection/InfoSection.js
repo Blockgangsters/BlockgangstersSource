@@ -10,6 +10,7 @@ import AnimatedNumbers from "react-animated-numbers";
 import styled from '@emotion/styled/macro';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CountdowndTimer } from '../../features/countdowntimer/CountdownTimer';
+import { Colors } from '../../styles/theme/colors/Colors';
 
 const InfoSection = ({ children, countdownTimer, bootstrapTimer, primary, lightBg, imgStart, lightTopLine, lightText, lightTextDesc, buttonLabel, description, headline, topLine, img, alt, start }) => {
 
@@ -17,11 +18,8 @@ const InfoSection = ({ children, countdownTimer, bootstrapTimer, primary, lightB
     const [, , , , , , , , , , , , , , , , , , bootstrapUsed] = React.useContext(EthContext);
 
     return (
-        <>
-            <StyledInfoSection lightBg={lightBg}>
-
-                <StyledInfoColumn>
-
+            <StyledPageSection>
+                <StyledSectionPart>
                     {countdownTimer && <CountdowndTimer countdownDate={new Date('2021-11-15')} />}
                     {countdownTimer &&
                         <>
@@ -68,36 +66,49 @@ const InfoSection = ({ children, countdownTimer, bootstrapTimer, primary, lightB
                         </>
                     }
 
-                </StyledInfoColumn>
+                </StyledSectionPart>
 
-                <StyledInfoColumn>
+                <StyledSectionPart>
                     <StyledImage src={img} alt={alt} />
-                </StyledInfoColumn>
+                </StyledSectionPart>
 
-            </StyledInfoSection>
-        </>
+            </StyledPageSection>
     )
 }
 
 export default InfoSection;
 
-const StyledInfoSection = styled.div`
+const StyledPageSection = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
-    color: #fff;
-    background: ${({ lightBg }) => (lightBg ? 'rgba(255,255,255,.9);' : 'rgba(16,21,34,.9);')};
-    padding: ${({ firstBlock }) => (firstBlock ? '130px 20px' : '30px 20px')};
+    color: ${Colors.White};
+    background: ${Colors.DarkTransparant};
+    padding: 16px 16px;
     
     ${breakpoint.m} {
         flex-direction: row;
         width: 80vw;
         margin-left: 20vw;
-        /* padding: ${({ firstBlock }) => (firstBlock ? '160px 50px' : '60px 50px')}; */
+        padding: 60px 50px;
+    }
+
+    :nth-child(even) {
+        background: ${Colors.LightTransparant};
+        color: ${Colors.Black};
     }
 `
 
+const StyledSectionPart = styled.div`
+    display: flex;
+    flex-direction: column;
+    
+    ${breakpoint.l} {
+        justify-content: center;
+        width: 50%;
+    }
+`
 
 const StyledImage = styled.img`
     width: 100%;
@@ -108,12 +119,3 @@ const StyledImage = styled.img`
     }
 `
 
-export const StyledInfoColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    ${breakpoint.l} {
-        justify-content: center;
-        width: 50%;
-    }
-`

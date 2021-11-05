@@ -34,7 +34,7 @@ const StyledSidebarMenu = styled.div`
 	pointer-events: none;
     margin-top: 80px;
 
-	background-color: ${Colors.TransparantBackground};
+	background-color: ${Colors.DarkTransparant};
 
 	::-webkit-scrollbar {
 		display: none;
