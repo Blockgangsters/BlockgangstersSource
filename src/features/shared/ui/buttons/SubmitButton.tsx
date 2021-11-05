@@ -16,7 +16,7 @@ export const SubmitButton = (props: ISubmitButtonProps) => {
 
 const StyledSubmitButton = styled.button`
     border-radius: 4px;
-    background: ${Colors.Blue};
+    background: ${Colors.PrimaryBlue};
     height: 38px;
     width: 150px;
     white-space: nowrap;
