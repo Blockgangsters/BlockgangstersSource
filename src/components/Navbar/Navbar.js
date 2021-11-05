@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CoinStats } from './coinstats/CoinStats';
-import { IconContext } from 'react-icons/lib'
 import { ZIndex } from '../../styles/globals/ZIndex';
 
 
@@ -20,11 +19,11 @@ const Navbar = () => {
     return (
         <StyledNavbar>
             <NavbarContainer>
-                <NavLogo to="/" onClick={closeMobileMenu}>
-                    <NavIcon src="images/logo_gang_101522.png" />
+                <StyledLogoLink to="/" onClick={closeMobileMenu}>
+                    <StyledLogo src="images/logo_gang_101522.png" />
                     Blockgangsters
-                </NavLogo>
-                
+                </StyledLogoLink>
+
 
                 <NavMenu onClick={handleClick} click={click}>
                     <StyledNavLink to="/">Home</StyledNavLink>
@@ -35,16 +34,13 @@ const Navbar = () => {
                     <StyledNavLink to="/tokenomics">Tokenomics</StyledNavLink>
                     {adminConnected && <StyledNavLink to="/admin">Admin page</StyledNavLink>}
                     <CoinStats />
-                    
-                </NavMenu>
-                <MobileIcon onClick={handleClick}>
-                    <IconContext.Provider
-                        value={{ color: 'white' }}
-                    >
-                        {click ? <FaTimes /> : <FaBars />}
 
-                    </IconContext.Provider>
-                </MobileIcon>
+                </NavMenu>
+                <StyledMenuButton onClick={handleClick}>
+                    {click
+                        ? <FaTimes size={36} color='white' />
+                        : <FaBars size={36} color='white' />}
+                </StyledMenuButton>
             </NavbarContainer>
         </StyledNavbar>
     )
@@ -98,7 +94,7 @@ export const NavbarContainer = styled.div`
     padding-left: 30px;
 `
 
-export const NavLogo = styled(Link)`
+export const StyledLogoLink = styled(Link)`
     color: #fff;
     cursor: pointer;
     text-decoration: none;
@@ -107,20 +103,17 @@ export const NavLogo = styled(Link)`
     align-items: center;
 `
 
-export const NavIcon = styled.img` 
-    margin-right: 5px;
+export const StyledLogo = styled.img` 
+    padding-right: 5px;
     max-height: 80%;
-    width: auto;
+    max-width: 80%;
 `
 
-export const MobileIcon = styled.div`
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+export const StyledMenuButton = styled.div`
     cursor: pointer;
-    z-index: 110;
+    z-index: ${ZIndex.NavIcon};
+    display: flex;
+    align-items: center;
 
     ${breakpoint.l} {
         display: none;
@@ -131,11 +124,12 @@ export const NavMenu = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
+    left: 0;
+    top: 0;
     margin-top: 80px;
     width: 100vw;
     height: 100vh;
-    left: ${({ click }) => (click ? 0 : '-100%')};
-    transition: all 0.5s ease;
+    display: ${({ click }) => (!click && 'none')};
     background: #101522;
     
     
@@ -152,87 +146,3 @@ export const NavMenu = styled.div`
     }
 `
 
-export const NavItem = styled.div`
-    border-bottom: 2px solid transparent;
-    padding: 4px 0;
-    
-    &:hover {
-        border-bottom: 2px solid #4b59f7;
-    }
-
-    ${breakpoint.m} {
-        padding: 0 8px;
-    }
-`
-
-export const NavLinks = styled(Link)`
-    color: #fff;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    `
-
-export const BetaLink = styled(Link)`
-    color: red;
-    width: 100px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    font-size: 12px;
-
-    &:hover {
-        color: #4b59f7;
-        transition: all 0.3s ease;
-    }
-`
-
-export const NavItemBtn = styled.li`
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    width: 300px;
-    height: 120px;
-
-    ${breakpoint.l} {
-        display: none;
-    }
-`
-
-export const NavBtnLink = styled(Link)`
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    text-decoration: none;
-    padding: 8px 16px;
-    height: 100%;
-    width: 100%;
-    border: none;
-    outline: none;
-`
-
-export const StatsContainer = styled.ul`
-    justify-content: left;
-    align-items: center;
-    height: 120px;
-    color: #fff;
-    font-size: 1.2rem;
-    &:hover {
-        color: #4b59f7;
-        transition: all 0.3s ease;
-    }
-
-    ${breakpoint.l} {
-        list-style-type: none;
-        justify-content: space-between;
-        color: #fff;
-        cursor: pointer;
-        text-decoration: none;
-        font-size: 0.8rem;
-        text-align: left;
-        padding-left: 0;
-    }
-`
-export const StatsItem = styled.li`
-    position: relative;
-    padding: 7px 0px 0px 0px;
-`
