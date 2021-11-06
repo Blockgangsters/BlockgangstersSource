@@ -8,7 +8,6 @@ import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { CoinStats } from './coinstats/CoinStats';
 import { ZIndex } from '../../styles/globals/ZIndex';
 
-
 const Navbar = () => {
 
     const [click, setClick] = useState(false)
@@ -47,6 +46,7 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
 
 const StyledNavbar = styled.nav`
     display: flex;
@@ -95,10 +95,11 @@ export const NavbarContainer = styled.div`
 `
 
 export const StyledLogoLink = styled(Link)`
+    font-family: 'The Godfather';
     color: #fff;
     cursor: pointer;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 65px;
     display: flex;
     align-items: center;
 `
