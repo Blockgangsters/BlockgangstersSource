@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import videobackground from './videobackground.mp4';
-
+import { FontStyles } from "./globalStyles";
 import styled from "@emotion/styled/macro";
 
 const Video = styled.video`
@@ -17,6 +17,7 @@ ReactDOM.render(
         <Video className='videoTag' autoPlay playsInline loop muted>
             <source src={videobackground} type='video/mp4' />
         </Video>
+        <FontStyles />
         <App />
     </React.StrictMode>,
     document.getElementById('root')
