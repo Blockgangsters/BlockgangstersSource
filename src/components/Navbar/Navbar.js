@@ -99,9 +99,13 @@ export const StyledLogoLink = styled(Link)`
     color: #fff;
     cursor: pointer;
     text-decoration: none;
-    font-size: 65px;
+    font-size: 30px;
     display: flex;
     align-items: center;
+
+    ${breakpoint.l} {
+        font-size: 65px;
+    }
 `
 
 export const StyledLogo = styled.img` 
