@@ -1,7 +1,7 @@
-import React, {useState}  from 'react';
-import {PDFContainer, TextBox, PDFBox} from './Whitepaper.elements';
+import React, { useState } from 'react';
+import { PDFContainer, TextBox, PDFBox } from './Whitepaper.elements';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import {PageWrapper} from '../../globalStyles'
+import { PageWrapper } from '../../globalStyles'
 
 
 const Whitepaper = () => {
@@ -26,43 +26,44 @@ const Whitepaper = () => {
   }
 
 
-    return (
+  return (
 
-      <PageWrapper>
-        <PDFContainer>
-    <>
-    <TextBox>
-        <p>
-          Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
-        </p>
-        <button
-          type="button"
-          disabled={pageNumber <= 1}
-          onClick={previousPage}
-        >
-          Previous
-        </button>
-        <button
-          type="button"
-          disabled={pageNumber >= numPages}
-          onClick={nextPage}
-        >
-          Next
-        </button>
-      </TextBox>
-    <PDFBox>
-      <Document
-        file='Whitepaper.pdf'
-        onLoadSuccess={onDocumentLoadSuccess}
-      >
-        <Page pageNumber={pageNumber} />
-      </Document>
-      </PDFBox>
+    <PageWrapper>
+      <PDFContainer>
+        <>
+          <TextBox>
+            <p>
+              Page {pageNumber || (numPages ? 1 : '--')} of {numPages || '--'}
+            </p>
+            <button
+              type="button"
+              disabled={pageNumber <= 1}
+              onClick={previousPage}
+            >
+              Previous
+            </button>
+            <button
+              type="button"
+              disabled={pageNumber >= numPages}
+              onClick={nextPage}
+            >
+              Next
+            </button>
+          </TextBox>
+          <PDFBox>
+            <Document
+              file='Whitepaper.pdf'
+              onLoadSuccess={onDocumentLoadSuccess}
+            >
+              <Page pageNumber={pageNumber} />
 
-    </>
-    </PDFContainer>
-   </PageWrapper>
-    )
+            </Document>
+          </PDFBox>
+
+        </>
+      </PDFContainer>
+    </PageWrapper>
+  )
 }
 
 export default Whitepaper

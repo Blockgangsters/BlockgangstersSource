@@ -6,7 +6,6 @@ import { GameStats } from './gamestats/ui/GameStats';
 import { MetaMaskConnect } from '../Navbar/metamaskconnect/MetaMaskConnect';
 
 const Gamebar = () => {
-
     return (
         <StyledGamebar>
             <MetaMaskConnect />
@@ -26,5 +25,3 @@ const StyledGamebar = styled.div`
     padding-top: 10px;
     box-sizing: border-box;
 `
-
-

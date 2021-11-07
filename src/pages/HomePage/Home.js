@@ -72,7 +72,9 @@ const Home = () => {
 export default Home;
 
 const StyledHome = styled.div`
-box-sizing: content-box;
+::-webkit-scrollbar {
+display: none;
+}
 `
 const StyledPageSection = styled.div`
 
@@ -87,8 +89,8 @@ const StyledPageSection = styled.div`
     
     ${breakpoint.m} {
         flex-direction: row;
-        width: 80vw;
-        margin-left: 20vw;
+        width: 80%;
+        margin-left: 20%;
         padding: 60px 50px;
     }
 
