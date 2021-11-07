@@ -19,6 +19,16 @@ const Video = styled.video`
     left: 0;
 `;
 
+const Overflow = styled.div`
+    overflow: scroll;
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+`;
+
+
 ReactDOM.render(
     <React.StrictMode>
         <Video className='videoTag' autoPlay playsInline loop muted>
@@ -26,6 +36,7 @@ ReactDOM.render(
         </Video>
         <FontStyles />
         <App />
+        <Overflow />
     </React.StrictMode>,
     document.getElementById('root')
 );

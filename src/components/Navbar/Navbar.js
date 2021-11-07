@@ -59,7 +59,7 @@ const StyledNavbar = styled.nav`
     display: flex;
     justify-content: space-between;
     height: 80px;
-
+    width: 100vw;
     background: #101522;
     display: flex;
     justify-content: center;
@@ -121,9 +121,13 @@ export const StyledLogoLink = styled(Link)`
 `
 
 export const StyledLogo = styled.img` 
-    padding-right: 5px;
-    max-height: 80%;
-    max-width: 80%;
+display: none;
+    ${breakpoint.l} {
+        padding-right: 5px;
+        max-height: 80%;
+        max-width: 80%;
+    }
+
 `
 
 export const StyledMenuButton = styled.div`

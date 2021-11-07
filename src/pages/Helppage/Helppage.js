@@ -1,6 +1,5 @@
 import React from 'react';
-import { TokenomicsContainer, TextWrapper, Heading, ListItem, UnorderedList, AllocationContainer, HeadingPie, PieTextWrapper, Hyperlink, HyperlinkWhite } from './Helppage.elements';
-import { PageWrapper } from '../../globalStyles'
+import { ListItem, UnorderedList, Hyperlink, HyperlinkWhite } from './Helppage.elements';
 import styled from '@emotion/styled/macro';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
@@ -80,50 +79,9 @@ const StyledSectionPart = styled.div`
     }
 `
 
-const StyledTimerText = styled.div`
-    color: white;
-    font-size: 20px;
-    text-align: center;
-`;
-
-const StyledSocialIcons = styled.div`
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-`
-
-const StyledSocialIconLink = styled.a`
-    color: #fff;
-    font-size: 24px;
-    margin-left: 30px;
-    margin-right: 30px;
-`
-
-const StyledImage = styled.img`
-    width: 100%;
-    height: 100%;
-
-    ${breakpoint.l} {
-        padding-left: 20px;
-    }
-`
-
-const StyledTopLine = styled.div`
-    font-size: 18px;
-    line-height: 16px;
-    letter-spacing: 1.4px;
-    margin-bottom: 16px;
-`;
 
 const StyledTitle = styled.h1`
     margin-bottom: 24px;
     font-size: 48px;
     line-height: 1.1;
-`
-
-const StyledSubtitle = styled.p`
-    margin-bottom: 35px;
-    font-size: 18px;
-    line-height: 24px;
 `
