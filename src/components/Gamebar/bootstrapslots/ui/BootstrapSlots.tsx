@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import styled from '@emotion/styled/macro';
-import AnimatedNumbers from "react-animated-numbers";
 import { receiveEth } from '../../../../components/EthFunctions';
 import { SubmitButton } from '../../../../features/shared/ui/buttons/SubmitButton';
 import Popup from 'reactjs-popup';
 import NumberFormat from "react-number-format";
 import { EthContext } from '../../../../App';
 import { Colors } from '../../../../styles/theme/colors/Colors';
+import { BootstrapCounter } from '../../../../features/bootstrapcounter/BootstrapCounter';
 
 
 export const BootstrapSlots: FC = () => {
@@ -52,25 +52,11 @@ export const BootstrapSlots: FC = () => {
                     </>
                 )}
             </StyledPopup>
-            <StyledContent> Bootstrap slots available
+            <StyledContent> 
+                <StyledTitle>Bootstrap slots available</StyledTitle>
                 <CounterWrapper>
-                    <BootstrapText>
-                        <AnimatedNumbers
-                            includeComma
-                            animateToNumber={bootstrapUsed}
-                            fontStyle={{ fontSize: 10, color: "white" }}
-                            configs={[
-                                { mass: 1, tension: 220, friction: 100 },
-                                { mass: 1, tension: 180, friction: 130 },
-                                { mass: 1, tension: 280, friction: 90 },
-                                { mass: 1, tension: 180, friction: 135 },
-                                { mass: 1, tension: 260, friction: 100 },
-                                { mass: 1, tension: 210, friction: 180 },
-                            ]}
-                        >
-                        </AnimatedNumbers>
-                    </BootstrapText>
-                    <BootstrapText> / 1,000 slots used</BootstrapText> <BuyButton onClick={() => { setPopUp(true) }}> Buy!</BuyButton>
+                    <BootstrapCounter bootstrapUsed={bootstrapUsed}/>
+                    <BuyButton onClick={() => { setPopUp(true) }}> Get them!</BuyButton>
                 </CounterWrapper>
             </StyledContent>
 
@@ -106,7 +92,7 @@ const StyledPopup = styled(Popup)`
     }
 `
 
-export const StyledContent = styled.div`
+const StyledContent = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -121,14 +107,14 @@ export const StyledContent = styled.div`
     @keyframes blink { 50% { border-color: #5EA022 ; }  }
 `
 
-export const StyledRules = styled.div`
+const StyledRules = styled.div`
     color: white;
     flex-direction: row; 
     display: inline;
     font-size: 25px;
 `
 
-export const StyledRulesTitle = styled.div`
+const StyledRulesTitle = styled.div`
     color: white;
     flex-direction: row; 
     list-style-type: none; 
@@ -136,7 +122,7 @@ export const StyledRulesTitle = styled.div`
     font-size: 20px;
 `
 
-export const StyledRulesItem = styled.div`
+const StyledRulesItem = styled.div`
     color: white;
     flex-direction: row; 
     list-style-type: none; 
@@ -144,46 +130,36 @@ export const StyledRulesItem = styled.div`
     font-size: 15px;
 `
 
-export const StyledAmount = styled.div`
+const StyledAmount = styled.div`
     color: white;
 `
 
-export const ReceiveContainer = styled.div`
+const ReceiveContainer = styled.div`
     color: white;
     font-size: 10px;
     display: flex;
     padding-left: 0.5vw;
 `
 
-
-
-export const BootstrapText = styled.span`
-    color: white;
-    font-size: 10px;
-    display: inline-block;
-    padding-left: 0.5vw;
+const CounterWrapper = styled.div`
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
 `
 
-export const CounterWrapper = styled.div`
-    color: white;
-    
-    flex-direction: row; 
-    display: inline;
+const StyledTitle = styled.div`
+    font-size: 20px;
 `
-export const BuyButton = styled.button`
+
+const BuyButton = styled.button`
     border-radius: 4px;
-    background: #2D5A03;
-    white-space: nowrap;
-    padding: 1px 20px;
+    background: ${Colors.Green};
     color: white;
-    font-size: 16px;
-    outline: none;
     border: none;
-    cursor: pointer;
 
     &:hover {
         transition: all 0.3s ease-out;
-        background: #5FAA19;
+        background: ${Colors.LightGreen};
     }
 
 `
