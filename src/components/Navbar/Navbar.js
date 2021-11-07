@@ -154,6 +154,7 @@ export const StyledLogo = styled.img`
         padding-right: 5px;
         max-height: 80%;
         max-width: 80%;
+        display: flex;
     }
 `
 
@@ -163,7 +164,7 @@ export const StyledMenuButton = styled.div`
             display: flex;
             align-self: center; // vertically
             ${breakpoint.l} {
-                display: flex; // set to none when finished (7 nov 21)
+                display: none; // set to none when finished (7 nov 21)
     }
   `
 
