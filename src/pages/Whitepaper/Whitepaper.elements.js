@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export const PDFContainer = styled.div`
 max-width: 100%;
 max-height: 100%;
-padding: 160px 0 0 0 ;
+padding: 0 0 0 0 ;
 flex-direction: column; // this is standard, fit from left to right
 display: flex;
 color: white;

@@ -9,14 +9,14 @@ import Godfather5 from "./styles/fonts/Godfather.woff2";
 import { createGlobalStyle } from "styled-components";
 
 export const PageWrapper = styled.div`
-    width: 100vw;
+    width: 100%;
     max-height: 100%;
     padding: 0 0;
     background: ${Colors.DarkTransparant};
 
     ${breakpoint.m} {
-        margin-left: 20vw;
-        width: 80vw;
+        margin-left: 20%;
+        width: 80%;
     }
 `
 

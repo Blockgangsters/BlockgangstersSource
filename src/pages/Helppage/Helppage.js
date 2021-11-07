@@ -54,12 +54,12 @@ const StyledPageSection = styled.div`
     color: ${Colors.White};
     background: ${Colors.DarkTransparant};
     padding: 16px 16px;
-    max-width: 100vw;
+    max-width: 100%;
     
     ${breakpoint.m} {
         flex-direction: row;
-        width: 80vw;
-        margin-left: 20vw;
+        width: 80%;
+        margin-left: 20%;
         padding: 60px 50px;
     }
 
