@@ -9,7 +9,7 @@ import { BootstrapCounter } from '../../features/bootstrapcounter/BootstrapCount
 
 const Home = () => {
 
-    const [, , mmConnected, , ,] = React.useContext(StateContext);
+    // const [, , mmConnected, , ,] = React.useContext(StateContext);
     const [, , , , , , , , , , , , , , , , , , bootstrapUsed] = React.useContext(EthContext);
 
     return (
