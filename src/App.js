@@ -595,12 +595,11 @@ function App() {
     }
 
     return (
-        
         <StateContext.Provider value={[balance, gangbalance, mmConnected, mainConnected, testConnected, adminConnected, inGameFunds]}>
             <EthContext.Provider value={[defenseState, setDefenseState, attackState, setAttackState, jailState, setJailState, attorneyState, setAttorneyState, inGameFunds, setInGameFunds, jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, crowdfundClaimable, setCrowdfundSeconds, bootstrapUsed, protectionHours]}>
 
                 <Router basename='/'>
-                 
+
                     <ScrollToTop />
                     <StyledPopup open={crimePopup} position="center center" modal closeOnDocumentClick>
                         {() => (

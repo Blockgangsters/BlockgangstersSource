@@ -7,10 +7,27 @@ import styled from "@emotion/styled/macro";
 
 const Video = styled.video`
     position: fixed;
-    min-height: 100%;
-    min-width: 100%;
+    height: 100%;
+    width: 100%;
     z-index: -2;
+    overflow: hidden;
+    margin: 0; 
+    padding: 0; 
+    top: 0; 
+    bottom:0; 
+    right: 0; 
+    left: 0;
 `;
+
+const Overflow = styled.div`
+    overflow: scroll;
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+`;
+
 
 ReactDOM.render(
     <React.StrictMode>
@@ -19,6 +36,7 @@ ReactDOM.render(
         </Video>
         <FontStyles />
         <App />
+        <Overflow />
     </React.StrictMode>,
     document.getElementById('root')
 );

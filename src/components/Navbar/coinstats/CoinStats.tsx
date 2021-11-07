@@ -71,13 +71,14 @@ const StatsContainer = styled.ul`
     justify-content: space-between;
     color: ${Colors.White};
     font-size: 10px;
-    text-align: left;
+    text-align: center;
     padding-left: 0;
 
     @media screen and (max-width: 960px) {
         height: 120px;
         color: #fff;
         font-size: 1.2rem;
+        text-align: center;
         &:hover {
             color: #4b59f7;
             transition: all 0.3s ease;

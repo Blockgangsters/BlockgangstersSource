@@ -52,10 +52,10 @@ export const BootstrapSlots: FC = () => {
                     </>
                 )}
             </StyledPopup>
-            <StyledContent> 
+            <StyledContent>
                 <StyledTitle>Bootstrap slots available</StyledTitle>
                 <CounterWrapper>
-                    <BootstrapCounter bootstrapUsed={bootstrapUsed}/>
+                    <BootstrapCounter bootstrapUsed={bootstrapUsed} />
                     <BuyButton onClick={() => { setPopUp(true) }}> Get them!</BuyButton>
                 </CounterWrapper>
             </StyledContent>
