@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { GiThompsonM1 } from "react-icons/gi";
+
 import styled from '@emotion/styled/macro';
 import { StateContext } from '../../App';
 import { Link } from 'react-router-dom';
@@ -18,6 +20,11 @@ const Navbar = () => {
     return (
         <StyledNavbar>
             <NavbarContainer>
+                <StyledMenuButton onClick={handleClick}>
+                    {click
+                        ? <FaTimes size={36} color='white' />
+                        : <GiThompsonM1 size={36} color='white' />}
+                </StyledMenuButton>
                 <StyledLogoLink to="/" onClick={closeMobileMenu}>
                     <StyledLogo src="images/logo_gang_101522.png" />
                     Blockgangsters
@@ -67,11 +74,13 @@ const StyledNavbar = styled.nav`
 const StyledNavLink = styled(Link)`
     color: ${Colors.White};
     text-decoration: none;
-    text-align: left;
-    
+    text-align: center;
+    margin-left: 10px;
     ${breakpoint.l} {
         padding: 0 10px;
         line-height: 80px;
+        text-align: left;
+
     }
 `
 
@@ -92,6 +101,9 @@ export const NavbarContainer = styled.div`
     height: 80px;
     padding-right: 30px;
     padding-left: 30px;
+    ${breakpoint.l} {
+
+    }
 `
 
 export const StyledLogoLink = styled(Link)`
@@ -102,7 +114,7 @@ export const StyledLogoLink = styled(Link)`
     font-size: 30px;
     display: flex;
     align-items: center;
-
+    text-align: center; 
     ${breakpoint.l} {
         font-size: 65px;
     }
@@ -118,8 +130,7 @@ export const StyledMenuButton = styled.div`
     cursor: pointer;
     z-index: ${ZIndex.NavIcon};
     display: flex;
-    align-items: center;
-
+    align-self: center; // vertically
     ${breakpoint.l} {
         display: none;
     }

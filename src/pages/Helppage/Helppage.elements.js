@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 //TokenomicsContainer is around whole page, sets background etc.
 export const TokenomicsContainer = styled.div`
-max-width: 100%;
-max-height: 100%;
+max-width: 100vw;
+max-height: 100vh;
 padding: 160px 0 0 0 ;
 justify-content: space-around;
 flex-direction: row; // this is standard, fit from left to right
@@ -17,7 +17,7 @@ display: flex;
 
 //ChartTitle is above the chart, inside the chartwrapper
 export const ChartTitle = styled.p`
-max-width: 700px;
+max-width: 100vw;
 justify-content: center;
 display: flex;
 position: relative;
@@ -25,7 +25,7 @@ position: relative;
 
 //TextWrapper is upper right, contains text explaining the chart
 export const TextWrapper = styled.div`
-max-width: 800px;
+max-width: 100vw;
 padding-top: 0;
 padding-bottom: 60px;
 display:flex;
@@ -57,8 +57,8 @@ padding-left: 5px;
 
 //AllocationContainer is around whole page (below TokenomicsContainer), sets background etc.
 export const AllocationContainer = styled.div`
-max-width: 100%;
-max-height: 100%;
+max-width: 100vw;
+max-height: 100vh;
 padding: 0 0 0 0; // set the pie chart to 0 but text is (as standard) set to 160 px
 background: rgba(255,255,255,.7);
 justify-content: space-around;
