@@ -7,6 +7,7 @@ import NumberFormat from "react-number-format";
 import { StateContext } from '../../App';
 import { ColoredLine, PageWrapper } from '../../globalStyles'
 import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import styled from "@emotion/styled/macro";
 
 
 
@@ -93,30 +94,44 @@ const Deposit = () => {
                 <SubmitButton onClick={() => { depositFunds(inputValueDeposit) }}> Go for it! </SubmitButton>
 
             </CrimeContainer>
-            <ColoredLine color="red" />
+            {withdrawEvents.length > 0 || depositEvents.length > 0 ?
+                <ColoredLine color="red" /> : null}
 
-            <h1 style={{ color: "white" }}> Last withdrawals: </h1>
-            {withdrawEvents.map((option, index) => (
-                <h4 key={index} style={{ color: "green" }}> {option.args[0]} withdrew ₲<NumberFormat
-                    value={option.args[1].toNumber()}
-                    displayType={"text"}
-                    decimalSeparator={"."}
-                    thousandSeparator={true}
-                    decimalScale={0} /></h4>
-            ))}
+            {withdrawEvents.length > 0 ?
 
-            <h1 style={{ color: "white" }}> Last deposits: </h1>
-            {depositEvents.map((option, index) => (
-                <h4 key={index} style={{ color: "green" }}> {option.args[0]} deposited ₲<NumberFormat
-                    value={option.args[1].toNumber()}
-                    displayType={"text"}
-                    decimalSeparator={"."}
-                    thousandSeparator={true}
-                    decimalScale={0} /></h4>
-            ))}
+                <>
+                    <h1 style={{ color: "white" }}> Last withdrawals: </h1>
+                    {withdrawEvents.map((option, index) => (
+                        <h4 key={index} style={{ color: "green" }}> {option.args[0]} withdrew ₲<NumberFormat
+                            value={option.args[1].toNumber()}
+                            displayType={"text"}
+                            decimalSeparator={"."}
+                            thousandSeparator={true}
+                            decimalScale={0} /></h4>
+                    ))}</> : null}
+            {depositEvents.length > 0 ?
+
+                <>
+                    <h1 style={{ color: "white" }}> Last deposits: </h1>
+                    {depositEvents.map((option, index) => (
+                        <h4 key={index} style={{ color: "green" }}> {option.args[0]} deposited ₲<NumberFormat
+                            value={option.args[1].toNumber()}
+                            displayType={"text"}
+                            decimalSeparator={"."}
+                            thousandSeparator={true}
+                            decimalScale={0} /></h4>
+                    ))}</> : null}
+            <FillBox />
         </PageWrapper>
 
     )
 }
 
 export default Deposit
+
+const FillBox = styled.div`
+flex-grow: 1;
+    display: flex;
+
+
+`;

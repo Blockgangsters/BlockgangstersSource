@@ -138,7 +138,7 @@ const ReceiveContainer = styled.div`
     color: white;
     font-size: 10px;
     display: flex;
-    padding-left: 0.5vw;
+    padding-left: 0.5%;
 `
 
 const CounterWrapper = styled.div`

@@ -23,10 +23,10 @@ const StyledSidebar = styled.div`
 `;
 
 const StyledSidebarMenu = styled.div`
-	height: 100vh;
+	height: 100%;
 	position: fixed;
 	z-index: ${ZIndex.Sidebar};
-    width: 20vw;
+    width: 20%;
 	top: 0;
 	overflow-y: auto;
 	opacity: 0;
@@ -35,10 +35,6 @@ const StyledSidebarMenu = styled.div`
     margin-top: 80px;
 
 	background-color: ${Colors.DarkTransparant};
-
-	::-webkit-scrollbar {
-		display: none;
-	}
 
 	${breakpoint.m} {
 		transform: translateX(0);

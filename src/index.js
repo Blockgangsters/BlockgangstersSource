@@ -7,36 +7,36 @@ import styled from "@emotion/styled/macro";
 
 const Video = styled.video`
     position: fixed;
-    height: 100%;
-    width: 100%;
     z-index: -2;
-    overflow: hidden;
-    margin: 0; 
-    padding: 0; 
-    top: 0; 
-    bottom:0; 
-    right: 0; 
-    left: 0;
+@media (min-aspect-ratio: 16/9) {
+  Video {
+    height: 300%; top: -100%;
+    /* or height: 200%; top: -50%;
+       or height: 400%; top: -150%; */
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  Video {
+    width: 300%; left: -100%;
+    /* or width: 200%; left: -50%;
+       or width: 400%; left: -150%; */
+  }
+
 `;
 
 const Overflow = styled.div`
-    overflow: scroll;
 
-::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-}
 `;
 
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Video className='videoTag' autoPlay playsInline loop muted>
-            <source src={videobackground} type='video/mp4' />
-        </Video>
-        <FontStyles />
-        <App />
-        <Overflow />
-    </React.StrictMode>,
-    document.getElementById('root')
+  <React.StrictMode>
+    <Video className='videoTag' autoPlay playsInline loop muted>
+      <source src={videobackground} type='video/mp4' />
+    </Video>
+    <FontStyles />
+    <App />
+    <Overflow />
+  </React.StrictMode>,
+  document.getElementById('root')
 );

@@ -10,9 +10,9 @@ export const FooterContainer = styled.div`
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-
+    height: 100%;
     ${breakpoint.m} {
-        margin-left: 20vw;
+        margin-left: 20%;
     }
 `;
 
@@ -22,31 +22,25 @@ export const FooterSubscription = styled.section`
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: 24px;
-    padding: 24px;
     color: #fff;
 `;
 
 export const FooterSubHeading = styled.p`
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
-    margin-bottom: 24px;
     font-size: 24px;
 `;
 
 export const FooterSubText = styled.p`
-    margin-bottom: 24px;
     font-size: 20px;
 `
 
 
 export const FooterLinkTitle = styled.h2`
-    margin-bottom: 16px;
 `
 
 export const FooterLink = styled(Link)`
     color: #fff;
     text-decoration: none;
-    margin-bottom: 0.5rem;
 
 &:hover {
     color: #0467fb;
@@ -78,7 +72,6 @@ export const SocialLogo = styled(Link)`
     font-size: 2rem;
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
 `
 
 export const SocialIcon = styled.img` //FaMagento is the logo 
