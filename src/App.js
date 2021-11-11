@@ -1,41 +1,44 @@
 import React, { useState, useEffect } from 'react';
+
+
+
+import styled from '@emotion/styled/macro';
+import detectEthereumProvider from '@metamask/detect-provider';
+import { ethers } from 'ethers'
+import NumberFormat from "react-number-format";
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
-import Navbar from './components/Navbar/Navbar'
+import { Popup } from 'reactjs-popup';
+
+import tokenABI from './components/EthABI'
+import { getCrimeStatus, getAttackStatus, tokenAddress, getERCBalance, EthBalance, getingameFunds, getJailStatus, getAttackXP, getDefenseXP, getCrowdfundStatus } from './components/EthFunctions';
 import Footer from './components/Footer/Footer'
 import Gamebar from './components/Gamebar/Gamebar'
-import Home from './pages/HomePage/Home';
-import Helppage from './pages/Helppage/Helppage';
-import Whitepaper from './pages/Whitepaper/Whitepaper';
-import Contract from './pages/Contract/Contract';
-import Roadmap from './pages/Roadmap/Roadmap';
-import Tokenomics from './pages/Tokenomics/Tokenomics'
-import Admin from './pages/Admin/Admin'
+import Navbar from './components/Navbar/Navbar'
 import ScrollToTop from './components/ScrollToTop';
-import Deposit from './pages/Deposit/Deposit';
-import IndProtection from './pages/IndProtection/IndProtection';
-import Attackplayer from './pages/Attackplayer/Attackplayer';
-import Crime from './pages/Crime/Crime';
-import Crowdfunding from './pages/Crowdfunding/Crowdfunding';
-import Trainstats from './pages/Trainstats/Trainstats';
-import Familycontrol from './pages/Familycontrol/Familycontrol';
-import Familyshop from './pages/Familyshop/Familyshop';
-import Attackfamily from './pages/Attackfamily/Attackfamily';
-import Overview from './pages/Overview/Overview';
-import Highestlevels from './pages/Highestlevels/Highestlevels';
-import Richestplayers from './pages/Richestplayers/Richestplayers';
-import Statistics from './pages/Statistics/Statistics';
-import { getCrimeStatus, getAttackStatus, tokenAddress, getERCBalance, EthBalance, getingameFunds, getJailStatus, getAttackXP, getDefenseXP, getCrowdfundStatus } from './components/EthFunctions';
-import tokenABI from './components/EthABI'
-import { ethers } from 'ethers'
-import detectEthereumProvider from '@metamask/detect-provider';
-import styled from '@emotion/styled/macro';
-import NumberFormat from "react-number-format";
-
-import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { Sidebar } from './features/app-container/ui/sidebar/Sidebar';
 import "./styles/globals/globals.css"
 import { Button } from './features/shared/ui/buttons/Button';
+import Admin from './pages/Admin/Admin'
+import Attackfamily from './pages/Attackfamily/Attackfamily';
+import Attackplayer from './pages/Attackplayer/Attackplayer';
+import Contract from './pages/Contract/Contract';
+import Crime from './pages/Crime/Crime';
+import Crowdfunding from './pages/Crowdfunding/Crowdfunding';
+import Deposit from './pages/Deposit/Deposit';
+import Familycontrol from './pages/Familycontrol/Familycontrol';
+import Familyshop from './pages/Familyshop/Familyshop';
+import Helppage from './pages/Helppage/Helppage';
+import Highestlevels from './pages/Highestlevels/Highestlevels';
+import Home from './pages/HomePage/Home';
+import IndProtection from './pages/IndProtection/IndProtection';
+import Overview from './pages/Overview/Overview';
+import Richestplayers from './pages/Richestplayers/Richestplayers';
+import Roadmap from './pages/Roadmap/Roadmap';
+import Statistics from './pages/Statistics/Statistics';
+import Tokenomics from './pages/Tokenomics/Tokenomics'
+import Trainstats from './pages/Trainstats/Trainstats';
+import Whitepaper from './pages/Whitepaper/Whitepaper';
 
 export const StateContext = React.createContext();
 export const EthContext = React.createContext();
@@ -78,8 +81,10 @@ function App() {
     const fetchBalance = async (address) => {
         const newETHBalance = await EthBalance(address)
         const newBalanceWei = ethers.utils.formatEther(newETHBalance)
+
         if (window.ethereum.chainId === "0x89") {
             const newGANGBalance = await getERCBalance(address);
+
             setgangBalance(newGANGBalance);
         } else {
             setgangBalance(0);
@@ -108,6 +113,7 @@ function App() {
                 let bootstrapFilter = gangContract.filters.bootstrapBought(null, null, null)
                 let events = await gangContract.queryFilter(bootstrapFilter, providerBlock - 70000, providerBlock)
                 let eventsReversed = events.reverse();
+
                 if (events.length !== 0) {
                     setBootstrapUsed(eventsReversed[0].args[2]);
                 }
@@ -128,10 +134,12 @@ function App() {
                 let protectionFilter = gangContract.filters.boughtProtection(ethers.utils.getAddress(window.ethereum.selectedAddress), null, null)
                 let events = await gangContract.queryFilter(protectionFilter, providerBlock - 70000, providerBlock)
                 let eventsReversed = events.reverse();
+
                 if (events.length !== 0) {
                     let now = Date.now() / 1000;
                     let delta = eventsReversed[0].args[2].toNumber() + 3600 * 24 * eventsReversed[0].args[1].toNumber() - now;
                     let hoursLeft = Math.floor(delta / 3600);
+
                     console.log("hours left: ", hoursLeft)
                     setProtectionHours(hoursLeft)
                 }
@@ -148,6 +156,7 @@ function App() {
             const fetchConnected = async () => {
                 const provider = await detectEthereumProvider();
                 const result = await provider.request({ method: "eth_accounts", params: [] });
+
                 console.log("connected account: ", result[0])
                 setchainConnected(window.ethereum.chainId)
 
@@ -178,6 +187,7 @@ function App() {
                     setFinishedFlag(1);
                 }
             }
+
             fetchConnected(); // run fetchConnected when [] changes (i.e. main/test/chainConnected).
         }
     }, [chainConnected]);
@@ -227,6 +237,7 @@ function App() {
     const [lastAttorneyResult, setLastAttorneyResult] = useState(0);
     const [lastAttorneyFee, setLastAttorneyFee] = useState(0);
     const [connectedAccount, setConnectedAccount] = useState();
+
     // --------------------- get all values initially ------------
     useEffect(() => {
         if (chainConnected === "0x89" && mmConnected) {
@@ -296,6 +307,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("trainedStats", (choice, address, newXP) => {
                 console.log("trainedstats, address: ", address)
                 console.log("compared to: ", ethers.utils.getAddress(window.ethereum.selectedAddress))
@@ -322,6 +334,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("attorneyHired", (success, player, amount) => {
                 if (player === ethers.utils.getAddress(window.ethereum.selectedAddress)) {
                     handleAttorneyHired(success.toString(), player, amount);
@@ -337,6 +350,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("Transfer", (from, to, amount) => {
                 console.log("Got the event");
                 console.log(from);
@@ -352,7 +366,8 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
-            gangContract.on("playerJailed", (address, jailStamp) => {
+
+            gangContract.on("playerJailed", (address) => {
                 if (address === ethers.utils.getAddress(window.ethereum.selectedAddress)) {
                     console.log("Got the jailed event");
                     console.log(address);
@@ -375,6 +390,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("playerAttacked", (successAttack, attacker, defender, loot, attackStamp) => {
                 if (attacker === ethers.utils.getAddress(window.ethereum.selectedAddress)) {
                     handlePlayerAttacked(successAttack, loot, attackStamp);
@@ -390,6 +406,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("crimeResult", (initiator, succesfulCrime, totalLootCrime, crimeStamp) => {
                 console.log("Crime Initiator is: ", initiator)
                 console.log(typeof initiator)
@@ -408,6 +425,7 @@ function App() {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const gangContract = new ethers.Contract(tokenAddress, tokenABI, signer);
+
             gangContract.on("crowdFundGains", (initiator, reward) => {
                 console.log("Crowdfundgains initiator: ", initiator)
                 console.log(typeof initiator)
@@ -428,6 +446,7 @@ function App() {
             setAttackState(newXP.toString())
         }
     }
+
     const handleDefenseXP = (newXP) => {
         if (newXP > 100000000) {
             setDefenseState(100000000);
@@ -470,6 +489,7 @@ function App() {
     useEffect(() => {
         if (attorneySeconds > 0) {
             const timer = setTimeout(() => setAttorneySeconds(attorneySeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else {
             setAttorneyState(1);
@@ -480,6 +500,7 @@ function App() {
     useEffect(() => {
         if (jailSeconds > 0) {
             const timer = setTimeout(() => setJailSeconds(jailSeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else {
             setJailState(1);
@@ -489,6 +510,7 @@ function App() {
     useEffect(() => {
         if (attackSeconds > 0) {
             const timer = setTimeout(() => setAttackSeconds(attackSeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else {
             setAttackSeconds(0);
@@ -498,6 +520,7 @@ function App() {
     useEffect(() => {
         if (crimeSeconds > 0) {
             const timer = setTimeout(() => setCrimeSeconds(crimeSeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else {
             setCrimeSeconds(0);
@@ -507,6 +530,7 @@ function App() {
     useEffect(() => {
         if (trainSeconds > 0) {
             const timer = setTimeout(() => setTrainSeconds(trainSeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else {
             setTrainSeconds(0);
@@ -517,6 +541,7 @@ function App() {
     useEffect(() => {
         if (crowdfundSeconds > 0) {
             const timer = setTimeout(() => setCrowdfundSeconds(crowdfundSeconds - 1), 1000);
+
             return () => clearTimeout(timer);
         } else if (crowdfundSeconds === 1) {
             setCrowdfundClaimable(1); // its only 1 once, little bit of a cheat but works (0 fails on page reload)
@@ -590,7 +615,7 @@ function App() {
     }
 
     // no timestamp necessary since transaction goes through directly, just do + 300 sec 
-    const handleTrained = (choice, address, newXP) => {
+    const handleTrained = () => {
         setTrainSeconds(86400);
     }
 

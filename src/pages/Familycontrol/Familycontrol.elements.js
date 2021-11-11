@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 //TokenomicsContainer is around whole page, sets background etc.
 

@@ -1,13 +1,16 @@
-import { CrimeContainer, Title, ItemContainer } from './Attackfamily.elements';
 import React, { useEffect, useState } from 'react';
-import { tokenAddress } from '../../components/EthFunctions';
+
 import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
+
 import { StateContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
+import tokenABI from '../../components/EthABI'
 import { getFamilyNames, organizedAttack } from '../../components/EthFamilyFunctions';
+import { tokenAddress } from '../../components/EthFunctions';
 import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { CrimeContainer, Title, ItemContainer } from './Attackfamily.elements';
 
 const Attackfamily = () => {
     const [, , mmConnected, , ,] = React.useContext(StateContext);
@@ -25,13 +28,17 @@ const Attackfamily = () => {
 
                 // attack events
                 let familyAttackFilter = gangContract.filters.organizedAttackResult(null, null, null) // familyindex, fam att bonus, fam def bonus
+
                 console.log(familyAttackFilter)
                 let event = await gangContract.queryFilter(familyAttackFilter, providerBlock - 70000, providerBlock)
+
                 setAttackEvent(event.reverse())
                 let FamilyNames = await getFamilyNames();
+
                 setFamilyNamesState(FamilyNames);
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 

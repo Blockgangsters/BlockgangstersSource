@@ -1,14 +1,16 @@
 import React from 'react';
 
 
-import NumberFormat from "react-number-format";
-import { EthContext } from '../../../../App';
 import styled from '@emotion/styled/macro';
+import NumberFormat from "react-number-format";
+
+import { EthContext } from '../../../../App';
 import { ProgressBar } from '../../../../features/progressbar/ProgressBar';
 
 export const GameStats = () => {
 
     const [defenseState, , attackState, , , , , , inGameFunds, , jailSeconds, attorneySeconds, attackSeconds, crimeSeconds, trainSeconds, crowdfundSeconds, , , , protectionHours] = React.useContext(EthContext);
+
     return (
         <StyledGameStats>
             <LevelsItem>

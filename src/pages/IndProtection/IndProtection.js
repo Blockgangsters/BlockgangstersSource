@@ -1,27 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import { AttackPlayerContainer, Title, SubTitle } from './IndProtection.elements';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
-import { StateContext, EthContext } from '../../App';
-import { buyProtection } from '../../components/EthFunctions';
+import React, { useState } from 'react';
+
 import NumberFormat from "react-number-format";
 
+import { EthContext } from '../../App';
+import { buyProtection } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { AttackPlayerContainer, Title, SubTitle } from './IndProtection.elements';
+
+
 const IndProtection = () => {
-    const [, , mmConnected, , ,] = React.useContext(StateContext);
+
     const [, , , , , , , , inGameFunds, , , , ,] = React.useContext(EthContext);
 
     const [amount, setAmount] = useState();
 
-    useEffect(() => {
-        const fetchEvents = async () => {
-            if (mmConnected) {
+    // useEffect(() => {
+    //     const fetchEvents = async () => {
+    //         if (mmConnected) {
 
 
-            }
-        }
+    //         }
+    //     }
 
-        fetchEvents();
-    }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
+    //     fetchEvents();
+    // }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
     return (
         <PageWrapper>

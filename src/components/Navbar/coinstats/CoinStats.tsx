@@ -1,7 +1,9 @@
 import React from "react";
-import { StateContext } from "../../../App";
-import NumberFormat from "react-number-format";
+
 import styled from "@emotion/styled/macro";
+import NumberFormat from "react-number-format";
+
+import { StateContext } from "../../../App";
 import { Colors } from "../../../styles/theme/colors/Colors";
 
 export const CoinStats = () => {

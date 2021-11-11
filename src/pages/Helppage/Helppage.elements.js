@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { Link } from "react-router-dom";
+import styled from 'styled-components/macro'
 
 //TokenomicsContainer is around whole page, sets background etc.
 export const TokenomicsContainer = styled.div`

@@ -1,14 +1,17 @@
-import { CrimeContainer, Title, ChartContainer, SubTitle, SelectContainer } from './Crime.elements';
 import React, { useEffect, useState } from 'react';
-import { tokenAddress, crime } from '../../components/EthFunctions';
+
 import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
-import { StateContext, EthContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
 import Select from 'react-select'
 import { BarChart, Text, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+
+import { StateContext, EthContext } from '../../App';
+import tokenABI from '../../components/EthABI'
+import { tokenAddress, crime } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { CrimeContainer, Title, ChartContainer, SubTitle, SelectContainer } from './Crime.elements';
 
 const Crime = () => {
     const [, , mmConnected, , ,] = React.useContext(StateContext);
@@ -36,6 +39,7 @@ const Crime = () => {
 
 
     const [events, setEvents] = useState([]);
+
     useEffect(() => {
         const fetchEvents = async () => {
             if (mmConnected) {
@@ -47,10 +51,12 @@ const Crime = () => {
                 // attack events
                 let crimeFilter = gangContract.filters.crimeResult(window.ethereum.selectedAddress, null, null, null) // success, loot, stamp
                 let events = await gangContract.queryFilter(crimeFilter, providerBlock - 70000, providerBlock)
+
                 setEvents(events.reverse())
                 console.log("Events are: ", events)
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
@@ -72,6 +78,7 @@ const Crime = () => {
                 //])
             }
         }
+
         setChances();
     }, [attackState, mmConnected]);
 
@@ -119,7 +126,7 @@ const Crime = () => {
         })
     }
 
-    const CustomizedLabelB = ({ kapi, metric, viewBox }) => {
+    const CustomizedLabelB = () => {
         return (
             <Text
                 x={0}

@@ -1,13 +1,14 @@
-import { CrimeContainer, Title, TitleTwo, SubTitle, LeaveButton } from './Familycontrol.elements';
 import React, { useEffect } from 'react';
-import { joinOrUprankFamily, leaveFamily, getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getFamilyRank, getAllFamilyMembers, startFamily, getFamilyBank, distributeFamilyBank, getFamilyDefBonus, getFamilyAttBonus } from '../../components/EthFamilyFunctions';
 
 import { ethers } from 'ethers';
-
 import NumberFormat from "react-number-format";
+
 import { StateContext, EthContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
+import { joinOrUprankFamily, leaveFamily, getMemberFamilyIndex, getFamilyNames, getFamilyOwner, getFamilyRank, getAllFamilyMembers, startFamily, getFamilyBank, distributeFamilyBank, getFamilyDefBonus, getFamilyAttBonus } from '../../components/EthFamilyFunctions';
 import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { CrimeContainer, Title, TitleTwo, SubTitle, LeaveButton } from './Familycontrol.elements';
 
 
 const Familycontrol = () => {
@@ -49,31 +50,41 @@ const Familycontrol = () => {
             if (mmConnected) {
                 let familyId = await getMemberFamilyIndex();
                 let familyIdNumber = familyId.toNumber();
+
                 setMyFamilyIndex(familyIdNumber);
                 let FamilyNames = await getFamilyNames();
+
                 if (FamilyNames.length > 0 && familyIdNumber !== 0) {
                     let familyNameString = ethers.utils.parseBytes32String(FamilyNames[familyIdNumber - 1]);
+
                     setMyFamilyName(familyNameString)
                 }
                 let familyOwner = await getFamilyOwner(familyIdNumber);
+
                 console.log("fam owner: ", familyOwner)
                 setFamilyOwner(familyOwner)
                 let familyRank = await getFamilyRank(); // if rank = 80 -> youre the boss
+
                 setFamilyRank(familyRank.toNumber())
                 console.log(familyRank.toNumber())
 
 
                 let familyBank = await getFamilyBank(familyIdNumber);
+
                 setFamilyBank(familyBank.toNumber())
                 let allMembers = await getAllFamilyMembers(familyIdNumber);
+
                 setAllFamilyMembers(allMembers)
 
                 let defBonus = await getFamilyDefBonus();
+
                 setFamilyDefenseBonus(defBonus.toNumber());
                 let attBonus = await getFamilyAttBonus();
+
                 setFamilyAttackBonus(attBonus.toNumber());
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 

@@ -1,0 +1,84 @@
+{
+    "plugins": [
+        "testing-library",
+        "jest-dom",
+        "@emotion",
+        "@typescript-eslint",
+        "react",
+        "react-hooks"
+    ],
+    "extends": [
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended",
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:import/recommended"
+    ],
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "@emotion/import-from-emotion": "error",
+        "@emotion/syntax-preference": [2, "string"],
+        "no-restricted-imports": [
+            "error",
+            {
+                "paths": [
+                    {
+                        "name": "styled-components",
+                        "message": "Please import from styled-components/macro."
+                    }
+                ],
+                "patterns": ["!styled-components/macro"]
+            }
+        ],
+        "padding-line-between-statements": [
+            "error",
+            {
+                "blankLine": "always",
+                "prev": ["const", "let", "var"],
+                "next": "*"
+            },
+            {
+                "blankLine": "any",
+                "prev": ["const", "let", "var"],
+                "next": ["const", "let", "var"]
+            },
+            { "blankLine": "always", "prev": "*", "next": "return" },
+            { "blankLine": "never", "prev": ["case", "default"], "next": "*" },
+            { "blankLine": "always", "prev": ["multiline-const"], "next": "*" }
+        ],
+        "import/order": [
+            "error",
+            {
+                "pathGroups": [
+                    {
+                        "pattern": "react",
+                        "group": "external",
+                        "position": "before"
+                    },
+                    {
+                        "pattern": "~/{utils,helpers}/**",
+                        "group": "external",
+                        "position": "after"
+                    },
+                    {
+                        "pattern": "~/test-helpers/**",
+                        "group": "external",
+                        "position": "after"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["react", "builtin"],
+                "newlines-between": "always",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "import/no-unresolved": "off"
+    }
+}

@@ -1,8 +1,11 @@
 import React from 'react';
-import { ListItem, UnorderedList, Hyperlink, StyledLinkWhite } from './Helppage.elements';
+
 import styled from '@emotion/styled/macro';
+
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
+
+import { ListItem, UnorderedList, Hyperlink, StyledLinkWhite } from './Helppage.elements';
 
 const Helppage = () => {
 
@@ -47,6 +50,7 @@ export default Helppage
 const StyledHome = styled.div`
 
 `
+
 const StyledPageSection = styled.div`
     display: flex;
     align-items: center;

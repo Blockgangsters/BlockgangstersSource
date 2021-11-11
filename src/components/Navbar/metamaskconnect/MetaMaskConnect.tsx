@@ -1,6 +1,8 @@
-import styled from "@emotion/styled";
 import React from "react";
+
+import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+
 import { StateContext } from "../../../App";
 import { Button } from '../../../features/shared/ui/buttons/Button';
 import { connectWallet } from "../../EthFunctions";
@@ -11,6 +13,7 @@ export const MetaMaskConnect = () => {
 
     const connectToWallet = () => {
         const reaction = connectWallet();
+
         console.log(reaction.then((data) => {
             if (data.connectedStatus === false) {
                 console.log(data.status)

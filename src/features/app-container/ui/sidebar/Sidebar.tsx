@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import styled from '@emotion/styled/macro'
+
 import { ZIndex } from '../../../../styles/globals/ZIndex';
-import { breakpoint } from '../../../../styles/theme/responsive/breakpoint';
 import { Colors } from '../../../../styles/theme/colors/Colors';
+import { breakpoint } from '../../../../styles/theme/responsive/breakpoint';
 
 export const Sidebar: FC = ({ children }) => {
 	return (

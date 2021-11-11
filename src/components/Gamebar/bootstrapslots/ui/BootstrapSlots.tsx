@@ -1,12 +1,14 @@
 import React, { FC } from 'react';
+
 import styled from '@emotion/styled/macro';
-import { receiveEth } from '../../../../components/EthFunctions';
-import { SubmitButton } from '../../../../features/shared/ui/buttons/SubmitButton';
-import Popup from 'reactjs-popup';
 import NumberFormat from "react-number-format";
+import { Popup } from 'reactjs-popup';
+
 import { EthContext } from '../../../../App';
-import { Colors } from '../../../../styles/theme/colors/Colors';
+import { receiveEth } from '../../../../components/EthFunctions';
 import { BootstrapCounter } from '../../../../features/bootstrapcounter/BootstrapCounter';
+import { SubmitButton } from '../../../../features/shared/ui/buttons/SubmitButton';
+import { Colors } from '../../../../styles/theme/colors/Colors';
 
 
 export const BootstrapSlots: FC = () => {

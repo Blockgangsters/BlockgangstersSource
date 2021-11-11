@@ -1,42 +1,32 @@
 import React from 'react';
+
+import styled from "@emotion/styled/macro";
 import ReactDOM from 'react-dom';
+
 import App from './App';
 import videobackground from './videobackground.mp4';
-import { FontStyles } from "./globalStyles";
-import styled from "@emotion/styled/macro";
 
 const Video = styled.video`
     position: fixed;
-    z-index: -2;
-@media (min-aspect-ratio: 16/9) {
-  Video {
-    height: 300%; top: -100%;
-    /* or height: 200%; top: -50%;
-       or height: 400%; top: -150%; */
-  }
-}
-@media (max-aspect-ratio: 16/9) {
-  Video {
-    width: 300%; left: -100%;
-    /* or width: 200%; left: -50%;
-       or width: 400%; left: -150%; */
-  }
-
-`;
-
-const Overflow = styled.div`
-
-`;
-
+    top: 50%; 
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%; 
+    min-height: 100%; 
+    width: auto; 
+    height: auto;
+    z-index: -1000; 
+    overflow: hidden;
+`
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Video className='videoTag' autoPlay playsInline loop muted>
-      <source src={videobackground} type='video/mp4' />
-    </Video>
-    <FontStyles />
-    <App />
-    <Overflow />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Video className='videoTag' autoPlay playsInline loop muted>
+            <source src={videobackground} type='video/mp4' />
+        </Video>
+
+        <App />
+    </React.StrictMode>,
+    document.getElementById('root')
 );
