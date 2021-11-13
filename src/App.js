@@ -151,7 +151,7 @@ function App() {
                 console.log("connected account: ", result[0])
                 setchainConnected(window.ethereum.chainId)
 
-                if (result[0] === "0x212057855F52669966a472Dc48B543dEEFE32A38") {
+                if (result[0] === "0x212057855f52669966a472dc48b543deefe32a38") {
                     setadminConnected(true)
                 }
                 if (result.length !== 0) {
