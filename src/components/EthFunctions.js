@@ -3,8 +3,6 @@ import tokenABI from './EthABI'
 export const tokenAddress = "0x3D75D25B181D489E273290EdE9996F2159F6713f";
 export const linkAddress = "0xb0897686c545045aFc77CF20eC7A532E3120E0F1";
 
-
-
 export async function getERCBalance(address) {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
