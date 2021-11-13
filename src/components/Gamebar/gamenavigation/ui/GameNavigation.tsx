@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom'
 import styled from '@emotion/styled/macro';
 import { getIfActive } from '../../../EthFunctions';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { StateContext } from '../../../../App';
+
 export const GameNavigation = () => {
     const [activePlayer, setActivePlayer] = useState(false);
-    useEffect(() => {
-        const getActiveStatus = async () => {
-            let resultActive = await getIfActive();
-            setActivePlayer(resultActive)
-        }
+    const [, , mmConnected, mainConnected, , ,] = React.useContext(StateContext);
 
-        getActiveStatus();
-    }, []); // trigger on setTriggerEvents if we want to update every 20s
+    useEffect(() => {
+        if (mmConnected && mainConnected) {
+            const getActiveStatus = async () => {
+                let resultActive = await getIfActive();
+                setActivePlayer(resultActive)
+            }
+            getActiveStatus();
+        }
+    }, [mmConnected, mainConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
     return (
         <StyledGameNavigation>
