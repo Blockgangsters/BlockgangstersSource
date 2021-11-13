@@ -1,11 +1,12 @@
 import styled from '@emotion/styled/macro';
-import { CountdowndTimer } from '../../features/countdowntimer/CountdownTimer';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 import { FaTelegram, FaTwitter, FaDiscord } from 'react-icons/fa';
 import React from 'react';
 import { EthContext } from '../../App';
 import { BootstrapCounter } from '../../features/bootstrapcounter/BootstrapCounter';
+import ReactAudioPlayer from 'react-audio-player';
+import gemsblockgang from './gemsblockgang.mp4';
 
 const Home = () => {
 
@@ -16,23 +17,33 @@ const Home = () => {
         <StyledHome>
             <StyledPageSection>
                 <StyledSectionPart>
-                    <CountdowndTimer countdownDate={new Date('2021-11-15')} />
-                    <StyledTimerText> Join us now on social media to get started right away! </StyledTimerText>
-                    <StyledSocialIcons>
-                        <StyledSocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">
-                            <FaDiscord />
-                        </StyledSocialIconLink>
-                        <StyledSocialIconLink href="https://twitter.com/blockgangsters" target="_blank" aria-label="Twitter">
-                            <FaTwitter />
-                        </StyledSocialIconLink>
-                        <StyledSocialIconLink href="https://t.me/joinchat/hIJ1FYLDul1jNGQ0" target="_blank" aria-label="Telegram">
-                            <FaTelegram />
-                        </StyledSocialIconLink>
-                    </StyledSocialIcons>
+                    <StyledTitle>Main net is live!</StyledTitle>
+                    <StyledSubtitle>Re-listen our recent AMA with CryptoGems below.</StyledSubtitle>
+
                 </StyledSectionPart>
                 <StyledSectionPart>
-                    <StyledImage src="/images/logo.svg" alt="logo" />
+                    <Video className='videoTag' autoPlay playsInline loop muted>
+                        <source src={gemsblockgang} type='video/mp4' />
+                    </Video>
                 </StyledSectionPart>
+                <StyledAudioWrapper>
+                    <ReactAudioPlayer
+                        src="AMA.ogg"
+                        controls
+                    />
+                </StyledAudioWrapper>
+                <StyledTimerText> Join us now on social media to get started right away! </StyledTimerText>
+                <StyledSocialIcons>
+                    <StyledSocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">
+                        <FaDiscord />
+                    </StyledSocialIconLink>
+                    <StyledSocialIconLink href="https://twitter.com/blockgangsters" target="_blank" aria-label="Twitter">
+                        <FaTwitter />
+                    </StyledSocialIconLink>
+                    <StyledSocialIconLink href="https://t.me/joinchat/hIJ1FYLDul1jNGQ0" target="_blank" aria-label="Telegram">
+                        <FaTelegram />
+                    </StyledSocialIconLink>
+                </StyledSocialIcons>
             </StyledPageSection>
             <StyledPageSection>
                 <StyledSectionPart>
@@ -72,88 +83,100 @@ const Home = () => {
 export default Home;
 
 const StyledHome = styled.div`
-::-webkit-scrollbar {
-display: none;
+                ::-webkit-scrollbar {
+                    display: none;
 }
-`
+                `
 const StyledPageSection = styled.div`
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
 
-    flex-wrap: wrap;
-    color: ${Colors.White};
-    background: ${Colors.DarkTransparant};
-    padding: 16px 16px;
-    
-    ${breakpoint.m} {
-        flex-direction: row;
-        width: 80%;
-        margin-left: 20%;
-        padding: 60px 50px;
+                flex-wrap: wrap;
+                color: ${Colors.White};
+                background: ${Colors.DarkTransparant};
+                padding: 16px 16px;
+
+                ${breakpoint.m} {
+                    flex - direction: row;
+                width: 80%;
+                margin-left: 20%;
+                padding: 60px 50px;
     }
 
-    :nth-child(even) {
-        background: ${Colors.LightTransparant};
-        color: ${Colors.Black};
+                :nth-child(even) {
+                    background: ${Colors.LightTransparant};
+                color: ${Colors.Black};
     }
-`
+                `
 
 const StyledSectionPart = styled.div`
-    display: flex;
-    flex-direction: column;
-    
-    ${breakpoint.l} {
-        justify-content: center;
-        width: 50%;
+                display: flex;
+                flex-direction: column;
+
+                ${breakpoint.l} {
+                    justify - content: center;
+                width: 50%;
     }
-`
+                `
 
 const StyledTimerText = styled.div`
-    color: white;
-    font-size: 20px;
-    text-align: center;
-`;
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                `;
 
 const StyledSocialIcons = styled.div`
-    display: flex;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-`
+                display: flex;
+                margin-top: 40px;
+                justify-content: center;
+                align-items: center;
+                `
 
 const StyledSocialIconLink = styled.a`
-    color: #fff;
-    font-size: 24px;
-    margin-left: 30px;
-    margin-right: 30px;
-`
+                color: #fff;
+                font-size: 24px;
+                margin-left: 30px;
+                margin-right: 30px;
+                `
 
 const StyledImage = styled.img`
-    width: 100%;
-    height: 100%;
+                width: 100%;
+                height: 100%;
 
-    ${breakpoint.l} {
-        padding-left: 20px;
+                ${breakpoint.l} {
+                    padding-left: 20px;
     }
-`
+                `
 
 const StyledTopLine = styled.div`
-    font-size: 18px;
-    line-height: 16px;
-    letter-spacing: 1.4px;
-    margin-bottom: 16px;
-`;
+                font-size: 18px;
+                line-height: 16px;
+                letter-spacing: 1.4px;
+                margin-bottom: 16px;
+                `;
 
 const StyledTitle = styled.h1`
-    margin-bottom: 24px;
-    font-size: 48px;
-    line-height: 1.1;
-`
+                margin-bottom: 24px;
+                font-size: 48px;
+                line-height: 1.1;
+                `
 
 const StyledSubtitle = styled.p`
-    margin-bottom: 35px;
-    font-size: 18px;
-    line-height: 24px;
-`
+                margin-bottom: 35px;
+                font-size: 18px;
+                line-height: 24px;
+                `
+
+const Video = styled.video`
+                position: relative;
+                border-radius: 20px;
+                margin-bottom: 30px;
+                `;
+
+const StyledAudioWrapper = styled.p`
+                margin-bottom: 10px;
+                justify-self: center;
+                align-self: center;
+                `

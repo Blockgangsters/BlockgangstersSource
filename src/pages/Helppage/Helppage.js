@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, UnorderedList, Hyperlink, HyperlinkWhite } from './Helppage.elements';
+import { ListItem, UnorderedList, Hyperlink, StyledLinkWhite } from './Helppage.elements';
 import styled from '@emotion/styled/macro';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
@@ -20,8 +20,9 @@ const Helppage = () => {
             <ListItem><Hyperlink href="https://www.binance.com/en/trade/MATIC_USDT" target="_blank" rel="noreferrer noopener">Binance</Hyperlink></ListItem>
             <ListItem><Hyperlink href="https://v2.info.uniswap.org/pair/0x819f3450da6f110ba6ea52195b3beafa246062de" target="_blank" rel="noreferrer noopener">Uniswap</Hyperlink></ListItem>
           </UnorderedList>
-          To move your funds from Ethereum mainnet to Polygon, it is recommended to use the official <nobr><Hyperlink href="https://wallet.polygon.technology/bridge" target="_blank" rel="noreferrer noopener">Polygon bridge</Hyperlink>.</nobr>
-          <nobr>Adding Polygon to Metamask can be achieved via this <Hyperlink href="https://community.metamask.io/t/how-to-add-custom-networks-to-metamask-like-binance-and-polygon-matic/3634" target="_blank" rel="noreferrer noopener">Metamask community page</Hyperlink>.</nobr>
+          To move your funds from Ethereum mainnet to Polygon, it is recommended to use the official <Hyperlink href="https://wallet.polygon.technology/bridge" target="_blank" rel="noreferrer noopener">Polygon bridge</Hyperlink>.
+          When moving from other chains, one can use <Hyperlink href="https://www.xpollinate.io/" target="_blank" rel="noreferrer noopener">xpollinate.io</Hyperlink>. Hereafter, the official When moving from other chains, one can use <Hyperlink href="https://wallet.polygon.technology/swap/" target="_blank" rel="noreferrer noopener">Swap for Gas</Hyperlink> function can be used to convert to MATIC.
+          Adding Polygon to Metamask can be achieved via this <Hyperlink href="https://community.metamask.io/t/how-to-add-custom-networks-to-metamask-like-binance-and-polygon-matic/3634" target="_blank" rel="noreferrer noopener">Metamask community page</Hyperlink>.
         </StyledSectionPart>
       </StyledPageSection>
 
@@ -29,9 +30,9 @@ const Helppage = () => {
         <StyledSectionPart>
 
           <StyledTitle>On-boarding to Blockgangsters</StyledTitle>
-          The onboarding process to Blockgangsters.io is fairly simple. Option one is depositing funds via the <HyperlinkWhite href="https://blockgangsters.io/#/deposit" rel="noreferrer noopener">deposit function</HyperlinkWhite>.
+          The onboarding process to Blockgangsters.io is fairly simple. Option one is depositing funds via the <StyledLinkWhite href="https://blockgangsters.io/#/deposit" rel="noreferrer noopener">deposit function</StyledLinkWhite>.
           The second option is by training your attack or defense for the first time.
-          The contract is coded such that performing your first training triggers your profile to be an active profile. <HyperlinkWhite href="https://blockgangsters.io/#/trainstats" rel="noreferrer noopener">Click here</HyperlinkWhite> to perform your first training.
+          The contract is coded such that performing your first training triggers your profile to be an active profile. <StyledLinkWhite href="https://blockgangsters.io/#/trainstats" rel="noreferrer noopener">Click here</StyledLinkWhite> to perform your first training.
           Withdrawing all your funds from the game will in turn remove your account from the active profiles. That is, it will be ignored in attacks, families et cetera.
         </StyledSectionPart>
 
@@ -70,7 +71,7 @@ const StyledPageSection = styled.div`
 `
 
 const StyledSectionPart = styled.div`
-    display: flex;
+    display: inline;
     flex-direction: column;
     
     ${breakpoint.l} {

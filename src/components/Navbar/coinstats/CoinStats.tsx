@@ -73,6 +73,7 @@ const StatsContainer = styled.ul`
     font-size: 10px;
     text-align: center;
     padding-left: 0;
+    align-self: center;
 
     @media screen and (max-width: 960px) {
         height: 120px;
