@@ -78,7 +78,7 @@ function App() {
     const fetchBalance = async (address) => {
         const newETHBalance = await EthBalance(address)
         const newBalanceWei = ethers.utils.formatEther(newETHBalance)
-        if (window.ethereum.chainId === "0x13881") {
+        if (window.ethereum.chainId === "0x89") {
             const newGANGBalance = await getERCBalance(address);
             setgangBalance(newGANGBalance);
         } else {
@@ -151,7 +151,7 @@ function App() {
                 console.log("connected account: ", result[0])
                 setchainConnected(window.ethereum.chainId)
 
-                if (result[0] === "0xa338c42cd68dd24931f270836cdbddcea4132770") {
+                if (result[0] === "0x212057855F52669966a472Dc48B543dEEFE32A38") {
                     setadminConnected(true)
                 }
                 if (result.length !== 0) {
@@ -159,7 +159,7 @@ function App() {
                     console.log("Set connected to true")
                     setmmConnected(true);
                     fetchBalance(result[0]);
-                    if (window.ethereum.chainId === "0x1") {
+                    if (window.ethereum.chainId === "0x89") {
                         setmainConnected(true);
                         settestConnected(false);
                     } else if (window.ethereum.chainId === "0x13881") {
@@ -229,7 +229,7 @@ function App() {
     const [connectedAccount, setConnectedAccount] = useState();
     // --------------------- get all values initially ------------
     useEffect(() => {
-        if (chainConnected === "0x13881" && mmConnected) {
+        if (chainConnected === "0x89" && mmConnected) {
             getingameFunds(connectedAccount).then((data) => {
                 setInGameFunds(data.toNumber());
             });
@@ -591,7 +591,7 @@ function App() {
 
     // no timestamp necessary since transaction goes through directly, just do + 300 sec 
     const handleTrained = (choice, address, newXP) => {
-        setTrainSeconds(120);
+        setTrainSeconds(86400);
     }
 
     return (

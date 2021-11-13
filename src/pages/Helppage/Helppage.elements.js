@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from "react-router-dom";
 
 //TokenomicsContainer is around whole page, sets background etc.
 export const TokenomicsContainer = styled.div`
@@ -99,5 +100,9 @@ export const HyperlinkWhite = styled.a`
 color: black;
 display:inline;
 text-decoration: underline;
-
+`
+export const StyledLinkWhite = styled(Link)`
+color: black;
+display:inline-block;
+text-decoration: underline;
 `
