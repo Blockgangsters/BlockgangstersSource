@@ -55,7 +55,7 @@ export const BootstrapSlots: FC = () => {
             <StyledContent>
                 <StyledTitle>Bootstrap slots available</StyledTitle>
                 <CounterWrapper>
-                    <BootstrapCounter bootstrapUsed={bootstrapUsed} />
+
                     <BuyButton onClick={() => { setPopUp(true) }}> Get them!</BuyButton>
                 </CounterWrapper>
             </StyledContent>
@@ -63,6 +63,8 @@ export const BootstrapSlots: FC = () => {
         </StyledBootstrapSlots>
     )
 }
+
+// <BootstrapCounter bootstrapUsed={bootstrapUsed} />
 
 const StyledBootstrapSlots = styled.div`
     display: flex;
