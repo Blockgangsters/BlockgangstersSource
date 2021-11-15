@@ -530,8 +530,8 @@ function App() {
     const handleCrime = (success, loot, crimeStamp) => {
         console.log("Got crime event");
         console.log("success: ", success);
-        setCrimeSeconds(300 + crimeStamp.toNumber() - Math.floor(+new Date().getTime() / 1000));
-        console.log("Set crime seconds by event: ", 300 + crimeStamp.toNumber() - Math.floor(+new Date().getTime() / 1000))
+        setCrimeSeconds(7200 + crimeStamp.toNumber() - Math.floor(+new Date().getTime() / 1000));
+        console.log("Set crime seconds by event: ", 7200 + crimeStamp.toNumber() - Math.floor(+new Date().getTime() / 1000))
         // if success 1 --> second index is payment. if success 2 --> second index is bonus fee
         if (success === true) {
             console.log("Crime succesful, loot: ", loot);
@@ -570,8 +570,8 @@ function App() {
 
     const handlePlayerAttacked = (success, loot, attackStamp) => {
         console.log("HandlePlayerattacked success value: ", success)
-        setAttackSeconds(100 + attackStamp.toNumber() - Math.floor(+new Date().getTime() / 1000));
-        console.log("Set attack seconds by event: ", 100 + attackStamp.toNumber() - Math.floor(+new Date().getTime() / 1000))
+        setAttackSeconds(7200 + attackStamp.toNumber() - Math.floor(+new Date().getTime() / 1000));
+        console.log("Set attack seconds by event: ", 7200 + attackStamp.toNumber() - Math.floor(+new Date().getTime() / 1000))
         if (success === true) {
             console.log("Total loot: ", loot.toNumber());
             setLastAttackResult(true);
