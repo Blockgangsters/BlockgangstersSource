@@ -1,9 +1,10 @@
-import React from 'react';
-import { PDFContainer } from './Contract.elements';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import solidity from 'react-syntax-highlighter/dist/esm/languages/prism/solidity';
-import { PageWrapper } from '../../globalStyles'
 import { dark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import { PageWrapper } from '../../globalStyles'
+
+import { PDFContainer } from './Contract.elements';
 
 SyntaxHighlighter.registerLanguage('solidity', solidity);
 
@@ -867,6 +868,7 @@ contract Token is ERC20("Blockgangsters", "GANG"), helperContract, VRFConsumerBa
     }
 }
     `;
+
     return (
 
         <PageWrapper>

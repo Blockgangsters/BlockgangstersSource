@@ -1,9 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import styled from '@emotion/styled/macro';
+
+import { MetaMaskConnect } from '../Navbar/metamaskconnect/MetaMaskConnect';
+
 import { BootstrapSlots } from './bootstrapslots/ui/BootstrapSlots';
 import { GameNavigation } from './gamenavigation/ui/GameNavigation';
 import { GameStats } from './gamestats/ui/GameStats';
-import { MetaMaskConnect } from '../Navbar/metamaskconnect/MetaMaskConnect';
 
 const Gamebar = () => {
     return (

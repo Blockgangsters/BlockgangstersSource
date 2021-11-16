@@ -1,13 +1,16 @@
-import { CrimeContainer, Title, SubTitle } from './Deposit.elements';
 import React, { useEffect, useState } from 'react';
-import { tokenAddress, withdrawFunds, depositFunds } from '../../components/EthFunctions';
-import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
-import NumberFormat from "react-number-format";
-import { StateContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+
 import styled from "@emotion/styled/macro";
+import { ethers } from 'ethers';
+import NumberFormat from "react-number-format";
+
+import { StateContext } from '../../App';
+import tokenABI from '../../components/EthABI'
+import { tokenAddress, withdrawFunds, depositFunds } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { CrimeContainer, Title, SubTitle } from './Deposit.elements';
 
 
 
@@ -39,14 +42,17 @@ const Deposit = () => {
                 // deposit events
                 let depositFilter = gangContract.filters.tokensDeposited(null, null) // sender, amount
                 let deposit = await gangContract.queryFilter(depositFilter, providerBlock - 70000, providerBlock)
+
                 setDepositEvents(deposit.reverse())
 
                 // deposit events
                 let withdrawFilter = gangContract.filters.tokensWithdrawn(null, null) // sender, amount
                 let withdraw = await gangContract.queryFilter(withdrawFilter, providerBlock - 70000, providerBlock)
+
                 setWithdrawEvents(withdraw.reverse())
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 

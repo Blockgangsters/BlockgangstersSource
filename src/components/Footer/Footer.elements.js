@@ -1,5 +1,6 @@
 import styled from '@emotion/styled/macro'
 import { Link } from 'react-router-dom';
+
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
 
 export const FooterContainer = styled.div`

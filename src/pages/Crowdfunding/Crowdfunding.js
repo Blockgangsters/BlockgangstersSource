@@ -1,16 +1,19 @@
-import { Title, SubTitle, TitleTwo, Box, TextBox } from './Crowdfunding.elements';
 import React, { useEffect } from 'react';
-import { tokenAddress, crowdFundStart, crowdFundingReturn } from '../../components/EthFunctions';
+
 
 import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
-import { StateContext, EthContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
 import Select from 'react-select'
 import { useTable } from 'react-table'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
+
+import { StateContext, EthContext } from '../../App';
+import tokenABI from '../../components/EthABI'
+import { tokenAddress, crowdFundStart, crowdFundingReturn } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { Title, SubTitle, TitleTwo, Box, TextBox } from './Crowdfunding.elements';
 
 
 const Styles = styled.div`
@@ -69,8 +72,9 @@ function Table({ columns, data }) {
                 ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-                {rows.map((row, i) => {
+                {rows.map((row) => {
                     prepareRow(row)
+
                     return (
                         <tr {...row.getRowProps()}>
                             {row.cells.map(cell => {
@@ -124,9 +128,11 @@ const Crowdfunding = () => {
                 let providerBlock = await provider.getBlockNumber();
                 let crowdFundFilter = gangContract.filters.crowdFundGains(null, null) // initiator, reward
                 let eventCrowdFund = await gangContract.queryFilter(crowdFundFilter, providerBlock - 70000, providerBlock)
+
                 setGainsLast(eventCrowdFund.reverse())
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 
@@ -149,6 +155,7 @@ const Crowdfunding = () => {
             flex: 1
         })
     }
+
     const onChangeHandler = event => {
         setAmount(event);
     };

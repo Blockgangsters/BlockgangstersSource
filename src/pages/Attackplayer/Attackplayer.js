@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { AttackPlayerContainer, Title, SubTitle, AttackDoubleContainer } from './Attackplayer.elements';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { StateContext, EthContext } from '../../App';
-import { tokenAddress, attackPlayer, hireAttorney } from '../../components/EthFunctions';
+
 import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
+
+import { StateContext, EthContext } from '../../App';
+import tokenABI from '../../components/EthABI'
+import { tokenAddress, attackPlayer, hireAttorney } from '../../components/EthFunctions';
 import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { AttackPlayerContainer, Title, SubTitle, AttackDoubleContainer } from './Attackplayer.elements';
 
 const Attackplayer = () => {
     const [, , mmConnected, , ,] = React.useContext(StateContext);
@@ -30,6 +33,7 @@ const Attackplayer = () => {
                 let events = await gangContract.queryFilter(attackFilter, providerBlock - 70000, providerBlock)
                 let eventsMe = await gangContract.queryFilter(attackMeFilter, providerBlock - 70000, providerBlock)
                 let lastEventsMe = eventsMe.reverse();
+
                 if (lastEventsMe.length !== 0) {
                     setLastAttacker(lastEventsMe[0].args[1]);
                     setLastLoot(lastEventsMe[0].args[3].toNumber());

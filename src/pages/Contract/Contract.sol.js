@@ -5,4 +5,5 @@ contract ui_contract_name {\n\
         ui_string1_name = value;\n\
     }\n\
 }';
+
 module.exports = mycontracttemplate;

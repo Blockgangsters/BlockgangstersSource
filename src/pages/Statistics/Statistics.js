@@ -1,10 +1,15 @@
-import { CrimeContainer, Title, SubTitle } from './Statistics.elements';
 import React, { useEffect } from 'react';
-import { getAttackXP, getDefenseXP, getActiveList, getingameFunds } from '../../components/EthFunctions';
-import { getFamilyNames } from '../../components/EthFamilyFunctions';
-import { PageWrapper } from '../../globalStyles'
+
 import NumberFormat from "react-number-format";
+
 import { StateContext } from '../../App';
+import { getFamilyNames } from '../../components/EthFamilyFunctions';
+import { getAttackXP, getDefenseXP, getActiveList, getingameFunds } from '../../components/EthFunctions';
+import { PageWrapper } from '../../globalStyles'
+
+
+
+import { CrimeContainer, Title, SubTitle } from './Statistics.elements';
 
 const Statistics = () => {
   const [, , mmConnected, , ,] = React.useContext(StateContext);
@@ -32,6 +37,7 @@ const Statistics = () => {
       if (mmConnected) {
         let FamilyNames = await getFamilyNames();
         let playerList = await getActiveList();
+
         setTotalAmountFamilies(FamilyNames.length)
         let totalAtt = 0;
         let totalDef = 0;
@@ -42,17 +48,20 @@ const Statistics = () => {
           let stringAddress = playerList[i].toString();
           let attackItem = await getAttackXP(stringAddress);
           let attackInt = attackItem.toNumber();
+
           totalAtt = totalAtt + attackInt;
         }
         for (let i = 0; i < playerList.length; i++) {
           let stringAddress = playerList[i].toString();
           let defenseItem = await getDefenseXP(stringAddress);
+
           totalDef = totalDef + defenseItem.toNumber();
         }
 
         for (let i = 0; i < playerList.length; i++) {
           let stringAddress = playerList[i].toString();
           let fundsItem = await getingameFunds(stringAddress);
+
           totalFunds = totalFunds + fundsItem.toNumber();
         }
 
@@ -62,6 +71,7 @@ const Statistics = () => {
         setTotalIngameFunds(totalFunds);
       }
     }
+
     fetchEvents();
   }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 

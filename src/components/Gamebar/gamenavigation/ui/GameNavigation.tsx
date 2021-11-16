@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom'
-import styled from '@emotion/styled/macro';
-import { getIfActive } from '../../../EthFunctions';
 import React, { useState, useEffect } from 'react';
+
+import styled from '@emotion/styled/macro';
+import { Link } from 'react-router-dom'
+
 import { StateContext } from '../../../../App';
+import { getIfActive } from '../../../EthFunctions';
 
 export const GameNavigation = () => {
     const [activePlayer, setActivePlayer] = useState(false);
@@ -11,9 +13,11 @@ export const GameNavigation = () => {
     useEffect(() => {
         if (mmConnected && mainConnected) {
             const getActiveStatus = async () => {
-                let resultActive = await getIfActive();
+                const resultActive = await getIfActive();
+
                 setActivePlayer(resultActive)
             }
+
             getActiveStatus();
         }
     }, [mmConnected, mainConnected]); // trigger on setTriggerEvents if we want to update every 20s

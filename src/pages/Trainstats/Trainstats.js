@@ -1,10 +1,14 @@
-import { CrimeContainer, Title, SubTitle } from './Trainstats.elements';
 import React from 'react';
-import { Statstraining } from '../../components/EthFunctions';
-import { EthContext } from '../../App';
-import { PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+
 import Select from 'react-select'
+
+import { EthContext } from '../../App';
+import { Statstraining } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { PageWrapper } from '../../globalStyles'
+
+
+import { CrimeContainer, Title, SubTitle } from './Trainstats.elements';
 
 const Trainstats = () => {
     const [, , , , , , , , , , jailSeconds, , , crimeSeconds, trainSeconds] = React.useContext(EthContext);

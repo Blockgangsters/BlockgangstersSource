@@ -1,6 +1,8 @@
 import React from 'react';
-import { Ulist, Uitem, FooterContainer, FooterSubscription, FooterSubHeading, FooterSubText, SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink, SocialIcon } from './Footer.elements';
+
 import { FaTelegram, FaTwitter, FaDiscord } from 'react-icons/fa';
+
+import { Ulist, Uitem, FooterContainer, FooterSubscription, FooterSubHeading, FooterSubText, SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIcons, SocialIconLink, SocialIcon } from './Footer.elements';
 
 const Footer = () => {
     return (

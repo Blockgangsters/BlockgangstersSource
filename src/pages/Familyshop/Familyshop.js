@@ -1,14 +1,17 @@
-import { CrimeContainer, Title, SubTitle, ItemContainer } from './Familyshop.elements';
 import React, { useEffect, useState } from 'react';
-import { tokenAddress } from '../../components/EthFunctions';
+
 import { ethers } from 'ethers';
-import tokenABI from '../../components/EthABI'
 import NumberFormat from "react-number-format";
-import { StateContext } from '../../App';
-import { ColoredLine, PageWrapper } from '../../globalStyles'
-import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
 import Select from 'react-select'
+
+import { StateContext } from '../../App';
+import tokenABI from '../../components/EthABI'
 import { upgradeFamilyItems, depositFamilyBank, getFamilyNames } from '../../components/EthFamilyFunctions';
+import { tokenAddress } from '../../components/EthFunctions';
+import { SubmitButton } from '../../features/shared/ui/buttons/SubmitButton';
+import { ColoredLine, PageWrapper } from '../../globalStyles'
+
+import { CrimeContainer, Title, SubTitle, ItemContainer } from './Familyshop.elements';
 
 const Familyshop = () => {
     const [, , mmConnected, , ,] = React.useContext(StateContext);
@@ -44,6 +47,7 @@ const Familyshop = () => {
 
     const [eventsDeposit, setEventsDeposit] = useState([]);
     const [familyNamesState, setFamilyNamesState] = useState([]);
+
     useEffect(() => {
         const fetchEvents = async () => {
             if (mmConnected) {
@@ -55,12 +59,15 @@ const Familyshop = () => {
 
                 let familyDepositsFilter = gangContract.filters.fundsDeposited(null, null, null) // familyindex, sender, amount
                 let eventsDeposit = await gangContract.queryFilter(familyDepositsFilter, providerBlock - 70000, providerBlock)
+
                 setEventsDeposit(eventsDeposit.reverse())
 
                 let FamilyNames = await getFamilyNames();
+
                 setFamilyNamesState(FamilyNames);
             }
         }
+
         fetchEvents();
     }, [mmConnected]); // trigger on setTriggerEvents if we want to update every 20s
 

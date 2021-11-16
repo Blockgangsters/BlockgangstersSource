@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { GiThompsonM1 } from "react-icons/gi";
 
 import styled from '@emotion/styled/macro';
-import { StateContext } from '../../App';
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { GiThompsonM1 } from "react-icons/gi";
 import { Link } from 'react-router-dom';
+
+import { StateContext } from '../../App';
+import { ZIndex } from '../../styles/globals/ZIndex';
 import { Colors } from '../../styles/theme/colors/Colors';
 import { breakpoint } from '../../styles/theme/responsive/breakpoint';
+
 import { CoinStats } from './coinstats/CoinStats';
-import { ZIndex } from '../../styles/globals/ZIndex';
 
 
 const Navbar = () => {
