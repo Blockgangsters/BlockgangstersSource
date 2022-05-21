@@ -16,33 +16,16 @@ const Home = () => {
     return (
         <StyledHome>
             <StyledPageSection>
-                <StyledSectionPart>
-                    <StyledTitle>Main net is live!</StyledTitle>
-                    <StyledSubtitle>Re-listen our recent AMA with CryptoGems below.</StyledSubtitle>
 
-                </StyledSectionPart>
-                <StyledSectionPart>
-                    <Video className='videoTag' autoPlay playsInline loop muted>
-                        <source src={gemsblockgang} type='video/mp4' />
-                    </Video>
-                </StyledSectionPart>
-                <StyledAudioWrapper>
-                    <ReactAudioPlayer
-                        src="AMA.ogg"
-                        controls
-                    />
-                </StyledAudioWrapper>
-                <StyledTimerText> Join us now on social media to get started right away! </StyledTimerText>
+                <StyledTitle>Development has been paused.</StyledTitle>
+
+                <StyledTimerText> Reach out on Discord to keep talking:  </StyledTimerText>
                 <StyledSocialIcons>
-                    <StyledSocialIconLink href="https://discord.gg/j3JGYthB" target="_blank" aria-label="Discord">
+                    <StyledSocialIconLink href="https://discordapp.com/users/266513480771829760" target="_blank" aria-label="Discord">
                         <FaDiscord />
                     </StyledSocialIconLink>
-                    <StyledSocialIconLink href="https://twitter.com/blockgangsters" target="_blank" aria-label="Twitter">
-                        <FaTwitter />
-                    </StyledSocialIconLink>
-                    <StyledSocialIconLink href="https://t.me/joinchat/hIJ1FYLDul1jNGQ0" target="_blank" aria-label="Telegram">
-                        <FaTelegram />
-                    </StyledSocialIconLink>
+
+
                 </StyledSocialIcons>
             </StyledPageSection>
             <StyledPageSection>
